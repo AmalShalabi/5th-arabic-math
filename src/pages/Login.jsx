@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { useGoogleAuth } from '../hooks/useGoogleAuth'
+import { useGoogleAuth } from '../hooks/useGoogleAuth.jsx'
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState('')
