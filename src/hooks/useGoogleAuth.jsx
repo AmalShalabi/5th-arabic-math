@@ -24,20 +24,34 @@ export const useGoogleAuth = (onLogin) => {
   }, [])
 
   const initializeGoogleSignIn = () => {
+    console.log('🔧 Initializing Google Sign-In...')
+    console.log('- Demo Mode:', IS_DEMO_MODE)
+    console.log('- Client ID:', GOOGLE_CLIENT_ID)
+    console.log('- Google API:', !!window.google?.accounts?.id)
+    
     // Don't initialize Google Sign-In in demo mode to prevent errors
-    if (IS_DEMO_MODE || !window.google?.accounts?.id) {
+    if (IS_DEMO_MODE) {
+      console.log('⏭️ Skipping initialization - Demo mode active')
+      return
+    }
+    
+    if (!window.google?.accounts?.id) {
+      console.log('⏭️ Skipping initialization - Google API not loaded')
       return
     }
     
     try {
+      console.log('🚀 Calling google.accounts.id.initialize...')
       window.google.accounts.id.initialize({
         client_id: GOOGLE_CLIENT_ID,
         callback: handleGoogleSignIn,
         auto_select: false,
         cancel_on_tap_outside: true,
       })
+      console.log('✅ Google Sign-In initialized successfully')
     } catch (error) {
-      console.error('Google Sign-In initialization failed:', error)
+      console.error('❌ Google Sign-In initialization failed:', error)
+      setError(`خطأ في تهيئة Google Sign-In: ${error.message}`)
     }
   }
 
@@ -100,6 +114,11 @@ export const useGoogleAuth = (onLogin) => {
 
   const signInWithGoogle = () => {
     setError('')
+    console.log('🔍 Google Sign-In Debug Info:')
+    console.log('- Client ID:', GOOGLE_CLIENT_ID)
+    console.log('- Is Demo Mode:', IS_DEMO_MODE)
+    console.log('- Google API Available:', !!window.google?.accounts?.id)
+    console.log('- Current URL:', window.location.href)
     
     // Handle demo mode
     if (IS_DEMO_MODE) {
@@ -107,15 +126,32 @@ export const useGoogleAuth = (onLogin) => {
       return
     }
 
-    if (window.google?.accounts?.id) {
+    if (!window.google?.accounts?.id) {
+      setError('❌ Google Identity Services لم يتم تحميله. تحقق من الاتصال بالإنترنت وأعد تحميل الصفحة.')
+      console.error('Google Identity Services not loaded')
+      return
+    }
+
+    try {
+      setIsLoading(true)
+      console.log('🚀 Attempting Google Sign-In...')
+      
       window.google.accounts.id.prompt((notification) => {
-        if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-          // Try alternative method if popup is blocked
-          setError('تم حظر النافذة المنبثقة. يرجى السماح بالنوافذ المنبثقة والمحاولة مرة أخرى.')
+        console.log('📋 Google Prompt Notification:', notification)
+        setIsLoading(false)
+        
+        if (notification.isNotDisplayed()) {
+          setError('❌ لم تظهر نافذة Google. السبب المحتمل: تم حظر النوافذ المنبثقة أو مشكلة في Client ID.')
+        } else if (notification.isSkippedMoment()) {
+          setError('⏭️ تم تخطي تسجيل الدخول. جرب مرة أخرى.')
+        } else if (notification.isDismissedMoment()) {
+          setError('❌ تم إغلاق نافذة تسجيل الدخول.')
         }
       })
-    } else {
-      setError('خدمة Google غير متاحة حالياً. حاول مرة أخرى لاحقاً.')
+    } catch (error) {
+      console.error('Google Sign-In Error:', error)
+      setError(`❌ خطأ في Google Sign-In: ${error.message}`)
+      setIsLoading(false)
     }
   }
 

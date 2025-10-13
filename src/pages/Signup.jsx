@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useGoogleAuth } from '../hooks/useGoogleAuth.jsx'
+import GoogleAuthDebug from '../components/GoogleAuthDebug.jsx'
 
 function Signup() {
   const [name, setName] = useState('')
@@ -253,6 +254,9 @@ function Signup() {
               </Link>
             </p>
           </div>
+
+          {/* Google Auth Debug */}
+          <GoogleAuthDebug />
         </div>
       </div>
     </div>

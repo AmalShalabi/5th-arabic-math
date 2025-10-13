@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useGoogleAuth } from '../hooks/useGoogleAuth.jsx'
+import GoogleAuthDebug from '../components/GoogleAuthDebug.jsx'
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState('')
@@ -171,6 +172,9 @@ function Login({ onLogin }) {
               كلمة المرور: 123456
             </p>
           </div>
+
+          {/* Google Auth Debug */}
+          <GoogleAuthDebug />
         </div>
       </div>
     </div>
