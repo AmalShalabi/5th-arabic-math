@@ -4,6 +4,9 @@ function ResultCard({ score, total, answers, lessonTitle, onRestart, onHome }) {
   let message = ''
   let emoji = ''
   let bgColor = ''
+  
+  // رسالة تحفيزية خاصة للدرس الأول
+  const specialMessage = score >= 3 ? 'أحسنت! أنت نجم الرياضيات 🌟' : ''
 
   if (percentage === 100) {
     message = 'ممتاز! أنت بطل الرياضيات! 🏆'
@@ -107,6 +110,8 @@ function ResultCard({ score, total, answers, lessonTitle, onRestart, onHome }) {
             <p className="text-2xl font-bold text-purple-700">
               {score === total 
                 ? '🎊 ممتاز! أكملت جميع الأسئلة بنجاح!'
+                : score >= 3
+                ? '🌟 أحسنت! أجبت على 3 أسئلة صحيحة أو أكثر، أنت نجم الرياضيات!'
                 : '💪 استمر في التعلم وستصبح أفضل!'}
             </p>
             <p className="text-lg text-gray-700 mt-2">
