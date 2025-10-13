@@ -5,6 +5,8 @@ import LessonPage from './pages/LessonPage'
 import QuizPage from './pages/QuizPage'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import ForgotPassword from './pages/ForgotPassword'
+import ResetPassword from './pages/ResetPassword'
 import ScoreDisplay from './components/ScoreDisplay'
 import UserMenu from './components/UserMenu'
 
@@ -70,6 +72,8 @@ function App() {
           {/* Public Routes */}
           <Route path="/login" element={!user ? <Login onLogin={handleLogin} /> : <Navigate to="/" />} />
           <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/" />} />
+          <Route path="/forgot-password" element={!user ? <ForgotPassword /> : <Navigate to="/" />} />
+          <Route path="/reset-password" element={!user ? <ResetPassword /> : <Navigate to="/" />} />
           
           {/* Protected Routes */}
           <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />

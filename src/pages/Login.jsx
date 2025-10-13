@@ -91,6 +91,16 @@ function Login({ onLogin }) {
               />
             </div>
 
+            {/* Forgot Password Link */}
+            <div className="text-center">
+              <Link
+                to="/forgot-password"
+                className="text-primary font-semibold hover:underline text-sm"
+              >
+                🔑 نسيت كلمة المرور؟
+              </Link>
+            </div>
+
             {/* Submit Button */}
             <button
               type="submit"
