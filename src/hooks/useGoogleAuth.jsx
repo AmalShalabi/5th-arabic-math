@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react'
+import { GOOGLE_AUTH_CONFIG, IS_DEMO_MODE } from '../config/googleAuth.js'
 
-// Demo Client ID - Replace with your actual Google OAuth Client ID from Google Cloud Console
-const GOOGLE_CLIENT_ID = "your-google-client-id.apps.googleusercontent.com"
-
-// Check if we're in demo mode (using placeholder Client ID)
-const IS_DEMO_MODE = GOOGLE_CLIENT_ID.includes("your-google-client-id")
+// Get Client ID from config file
+const GOOGLE_CLIENT_ID = GOOGLE_AUTH_CONFIG.CLIENT_ID
 
 export const useGoogleAuth = (onLogin) => {
   const [isLoading, setIsLoading] = useState(false)
