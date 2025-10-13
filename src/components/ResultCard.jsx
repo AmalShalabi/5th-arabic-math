@@ -47,10 +47,21 @@ function ResultCard({ score, total, answers, lessonTitle, onRestart, onHome }) {
               <div className="text-3xl font-bold text-white mt-2">
                 {percentage}%
               </div>
+              <div className="text-xl font-bold text-white mt-2 bg-white bg-opacity-20 rounded-full px-4 py-2">
+                الدرجة النهائية
+              </div>
             </div>
             <h3 className="text-4xl font-bold text-gray-800 mb-4">{message}</h3>
-            <div className="text-6xl">
-              {"⭐".repeat(score)}
+            
+            {/* Grade Badge */}
+            <div className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-xl shadow-lg mb-4">
+              <div className="text-sm font-semibold">تم حفظ درجتك</div>
+              <div className="text-3xl font-black">{percentage}%</div>
+              <div className="text-sm">يمكنك مراجعتها من سجل الدرجات</div>
+            </div>
+            
+            <div className="text-6xl mt-4">
+              {"⭐".repeat(Math.min(5, score))}
             </div>
           </div>
 

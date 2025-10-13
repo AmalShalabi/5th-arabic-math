@@ -80,6 +80,19 @@ function QuizPage({ addStar }) {
         isCorrect: false
       }
     })
+    
+    // حساب وحفظ الدرجة
+    const finalScore = Object.values(userAnswers).filter(a => a.isCorrect).length
+    const percentage = Math.round((finalScore / quiz.length) * 100)
+    
+    // حفظ الدرجة في localStorage
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}')
+    if (currentUser.email) {
+      const userGrades = JSON.parse(localStorage.getItem(`grades_${currentUser.email}`) || '{}')
+      userGrades[lesson.id] = percentage
+      localStorage.setItem(`grades_${currentUser.email}`, JSON.stringify(userGrades))
+    }
+    
     setShowResults(true)
   }
 
