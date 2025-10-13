@@ -8,8 +8,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import ForgotPassword from './pages/ForgotPassword'
 import ResetPassword from './pages/ResetPassword'
-import ScoreDisplay from './components/ScoreDisplay'
-import UserMenu from './components/UserMenu'
+import Header from './components/Header'
 
 function App() {
   const [totalStars, setTotalStars] = useState(0)
@@ -61,12 +60,9 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-300">
+      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-300 pt-16">
         {user && (
-          <>
-            <UserMenu user={user} onLogout={handleLogout} />
-            <ScoreDisplay stars={totalStars} />
-          </>
+          <Header user={user} onLogout={handleLogout} stars={totalStars} />
         )}
         
         <Routes>
