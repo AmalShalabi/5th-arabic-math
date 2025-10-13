@@ -2,8 +2,8 @@
 // لتفعيل تسجيل الدخول بـ Gmail، ضع Client ID الحقيقي هنا
 
 export const GOOGLE_AUTH_CONFIG = {
-  // استبدل هذا بـ Client ID الحقيقي من Google Cloud Console
-  CLIENT_ID: "your-google-client-id.apps.googleusercontent.com",
+  // Client ID للاختبار المؤقت - استبدل بواحد حقيقي لاحقاً
+  CLIENT_ID: "764086051850-6qr4p6gpi6hn506pt8ejuq83di341hur.apps.googleusercontent.com",
   
   // ⚠️ تعليمات مهمة:
   // 1. اذهب إلى: https://console.cloud.google.com/
