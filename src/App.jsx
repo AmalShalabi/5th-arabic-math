@@ -14,6 +14,7 @@ function App() {
   const [totalStars, setTotalStars] = useState(0)
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [visitorCount, setVisitorCount] = useState(0)
 
   // التحقق من وجود مستخدم مسجل عند تحميل التطبيق
   useEffect(() => {
@@ -32,6 +33,21 @@ function App() {
         createdAt: new Date().toISOString()
       }
       localStorage.setItem('users', JSON.stringify([demoUser]))
+    }
+    
+    // تتبع الزوار الجدد
+    const hasVisitedThisSession = sessionStorage.getItem('hasVisited')
+    if (!hasVisitedThisSession) {
+      // زائر جديد في هذه الجلسة
+      const currentVisitorCount = parseInt(localStorage.getItem('totalVisitors') || '0')
+      const newVisitorCount = currentVisitorCount + 1
+      localStorage.setItem('totalVisitors', newVisitorCount.toString())
+      sessionStorage.setItem('hasVisited', 'true')
+      setVisitorCount(newVisitorCount)
+    } else {
+      // زائر عائد في نفس الجلسة
+      const currentVisitorCount = parseInt(localStorage.getItem('totalVisitors') || '0')
+      setVisitorCount(currentVisitorCount)
     }
     
     setLoading(false)
@@ -62,7 +78,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-300 pt-16">
         {user && (
-          <Header user={user} onLogout={handleLogout} stars={totalStars} />
+          <Header user={user} onLogout={handleLogout} stars={totalStars} visitors={visitorCount} />
         )}
         
         <Routes>

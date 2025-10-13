@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function Header({ user, onLogout, stars }) {
+function Header({ user, onLogout, stars, visitors }) {
   const [showMenu, setShowMenu] = useState(false)
   const [showCelebration, setShowCelebration] = useState(false)
   const navigate = useNavigate()
@@ -35,7 +35,8 @@ function Header({ user, onLogout, stars }) {
         <div className="flex items-center justify-between px-4 py-2 max-w-7xl mx-auto">
           
           {/* Left Side - User Info */}
-          <div className="relative">
+          <div className="flex-1">
+            <div className="relative inline-block">
             <button
               onClick={() => setShowMenu(!showMenu)}
               className="bg-blue-50 hover:bg-blue-100 rounded-lg px-3 py-1.5 flex items-center gap-2 transition-all duration-300 border border-blue-200"
@@ -99,10 +100,20 @@ function Header({ user, onLogout, stars }) {
                 </div>
               </div>
             )}
+            </div>
+          </div>
+
+          {/* Center - Visitor Counter */}
+          <div className="flex items-center gap-2 bg-green-50 rounded-lg px-3 py-1.5 border border-green-200">
+            <span className="text-2xl">👥</span>
+            <div className="flex flex-col">
+              <span className="text-xs text-gray-600 font-semibold leading-none">الزوار</span>
+              <span className="text-lg font-black text-green-600 leading-none">{visitors}</span>
+            </div>
           </div>
 
           {/* Right Side - Stars */}
-          <div className="flex items-center gap-3">
+          <div className="flex-1 flex justify-end">
             <div className="flex items-center gap-2 bg-yellow-50 rounded-lg px-3 py-1.5 border border-yellow-200">
               <span className="text-2xl">⭐</span>
               <div className="flex flex-col">
