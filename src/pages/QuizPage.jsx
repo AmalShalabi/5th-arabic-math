@@ -134,13 +134,24 @@ function QuizPage({ addStar }) {
   return (
     <div className="min-h-screen py-12 px-4">
       <div className="max-w-4xl mx-auto">
-        {/* Back Button */}
-        <button
-          onClick={() => navigate(`/lesson/${lesson.id}`)}
-          className="mb-6 bg-white text-gray-700 font-bold py-2 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-        >
-          ← العودة للدرس
-        </button>
+        {/* Navigation Buttons */}
+        <div className="mb-6 flex gap-3">
+          <button
+            onClick={() => navigate('/')}
+            className="bg-white/90 backdrop-blur-sm text-primary font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 text-sm border-2 border-primary/20 hover:border-primary/40"
+          >
+            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+            </svg>
+            الرئيسية
+          </button>
+          <button
+            onClick={() => navigate(`/lesson/${lesson.id}`)}
+            className="bg-white/90 backdrop-blur-sm text-gray-700 font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 text-sm border-2 border-gray-200 hover:border-gray-300"
+          >
+            📖 الدرس
+          </button>
+        </div>
 
         {/* Quiz Card */}
         <div className="card animate-fadeIn">

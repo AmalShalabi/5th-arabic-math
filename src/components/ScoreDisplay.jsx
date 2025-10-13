@@ -12,11 +12,11 @@ function ScoreDisplay({ stars }) {
 
   return (
     <>
-      <div className="fixed top-4 left-4 z-50 bg-white rounded-full shadow-2xl px-6 py-3 flex items-center gap-3 animate-bounce">
-        <span className="text-4xl">⭐</span>
+      <div className="fixed top-4 left-4 z-50 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg px-4 py-2 flex items-center gap-2 border-2 border-yellow-400/30">
+        <span className="text-3xl">⭐</span>
         <div className="flex flex-col">
-          <span className="text-sm text-gray-600 font-semibold">نجومك</span>
-          <span className="text-2xl font-bold text-yellow-500">{stars}</span>
+          <span className="text-xs text-gray-600 font-semibold">النجوم</span>
+          <span className="text-xl font-black text-yellow-500">{stars}</span>
         </div>
       </div>
 
