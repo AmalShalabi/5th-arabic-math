@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { useGoogleAuth } from '../hooks/useGoogleAuth'
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState('')
@@ -8,9 +9,16 @@ function Login({ onLogin }) {
   const [error, setError] = useState('')
   const navigate = useNavigate()
 
+  // Google Authentication
+  const { renderGoogleButton, error: googleError, setError: setGoogleError } = useGoogleAuth((user) => {
+    onLogin(user)
+    navigate('/')
+  })
+
   const handleSubmit = (e) => {
     e.preventDefault()
     setError('')
+    setGoogleError('')
 
     // التحقق من البريد الإلكتروني وكلمة المرور
     const users = JSON.parse(localStorage.getItem('users') || '[]')
@@ -50,9 +58,9 @@ function Login({ onLogin }) {
           </div>
 
           {/* Error Message */}
-          {error && (
+          {(error || googleError) && (
             <div className="mb-6 bg-red-100 border-r-4 border-red-500 text-red-700 p-4 rounded-lg animate-fadeIn">
-              <p className="font-bold">❌ {error}</p>
+              <p className="font-bold">❌ {error || googleError}</p>
             </div>
           )}
 
@@ -129,6 +137,18 @@ function Login({ onLogin }) {
               🚀 دخول
             </button>
           </form>
+
+          {/* Divider */}
+          <div className="my-6 flex items-center">
+            <div className="flex-grow border-t border-gray-300"></div>
+            <span className="mx-4 text-gray-500 text-sm font-semibold">أو</span>
+            <div className="flex-grow border-t border-gray-300"></div>
+          </div>
+
+          {/* Google Login Button */}
+          <div className="mb-6">
+            {renderGoogleButton("تسجيل الدخول باستخدام Google")}
+          </div>
 
           {/* Signup Link */}
           <div className="mt-8 text-center">

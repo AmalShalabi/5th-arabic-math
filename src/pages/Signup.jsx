@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { useGoogleAuth } from '../hooks/useGoogleAuth'
 
 function Signup() {
   const [name, setName] = useState('')
@@ -12,9 +13,19 @@ function Signup() {
   const [success, setSuccess] = useState(false)
   const navigate = useNavigate()
 
+  // Google Authentication - for signup, we'll show success and redirect to login
+  const { renderGoogleButton, error: googleError, setError: setGoogleError } = useGoogleAuth((user) => {
+    // Show success message for Google signup
+    setSuccess(true)
+    setTimeout(() => {
+      navigate('/login')
+    }, 2000)
+  })
+
   const handleSubmit = (e) => {
     e.preventDefault()
     setError('')
+    setGoogleError('')
 
     // التحقق من البيانات
     if (password !== confirmPassword) {
@@ -94,9 +105,9 @@ function Signup() {
           </div>
 
           {/* Error Message */}
-          {error && (
+          {(error || googleError) && (
             <div className="mb-6 bg-red-100 border-r-4 border-red-500 text-red-700 p-4 rounded-lg animate-fadeIn">
-              <p className="font-bold">❌ {error}</p>
+              <p className="font-bold">❌ {error || googleError}</p>
             </div>
           )}
 
@@ -217,6 +228,18 @@ function Signup() {
               ✨ إنشاء حساب
             </button>
           </form>
+
+          {/* Divider */}
+          <div className="my-6 flex items-center">
+            <div className="flex-grow border-t border-gray-300"></div>
+            <span className="mx-4 text-gray-500 text-sm font-semibold">أو</span>
+            <div className="flex-grow border-t border-gray-300"></div>
+          </div>
+
+          {/* Google Signup Button */}
+          <div className="mb-6">
+            {renderGoogleButton("إنشاء حساب باستخدام Google")}
+          </div>
 
           {/* Login Link */}
           <div className="mt-8 text-center">
