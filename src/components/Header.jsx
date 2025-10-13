@@ -107,7 +107,7 @@ function Header({ user, onLogout, stars, visitors }) {
           <div className="flex items-center gap-2 bg-green-50 rounded-lg px-3 py-1.5 border border-green-200">
             <span className="text-2xl">👥</span>
             <div className="flex flex-col">
-              <span className="text-xs text-gray-600 font-semibold leading-none">الزوار</span>
+              <span className="text-xs text-gray-600 font-semibold leading-none">زوار الموقع</span>
               <span className="text-lg font-black text-green-600 leading-none">{visitors}</span>
             </div>
           </div>
