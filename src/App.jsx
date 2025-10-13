@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Home from './pages/Home'
 import LessonPage from './pages/LessonPage'
 import QuizPage from './pages/QuizPage'
+import InteractivePage from './pages/InteractivePage'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import ForgotPassword from './pages/ForgotPassword'
@@ -79,6 +80,7 @@ function App() {
           <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
           <Route path="/lesson/:id" element={user ? <LessonPage /> : <Navigate to="/login" />} />
           <Route path="/quiz/:id" element={user ? <QuizPage addStar={addStar} /> : <Navigate to="/login" />} />
+          <Route path="/interactive/:id" element={user ? <InteractivePage /> : <Navigate to="/login" />} />
         </Routes>
       </div>
     </Router>

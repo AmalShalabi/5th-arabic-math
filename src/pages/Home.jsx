@@ -80,18 +80,29 @@ function Home() {
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   {lesson.description}
                 </p>
-                <div className="flex gap-3 justify-center">
+                <div className="flex gap-2 justify-center flex-wrap">
                   <Link
                     to={`/lesson/${lesson.id}`}
-                    className="bg-primary hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    className="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg text-sm"
                   >
-                    📖 ابدأ التعلم
+                    📖 الدرس
                   </Link>
+                  
+                  {/* زر الألعاب التفاعلية - فقط للكسور العادية */}
+                  {lesson.id === 3 && (
+                    <Link
+                      to={`/interactive/${lesson.id}`}
+                      className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg text-sm"
+                    >
+                      🎮 ألعاب
+                    </Link>
+                  )}
+                  
                   <Link
                     to={`/quiz/${lesson.id}`}
-                    className="bg-secondary hover:bg-yellow-500 text-gray-800 font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    className="bg-secondary hover:bg-yellow-500 text-gray-800 font-bold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg text-sm"
                   >
-                    {hasGrade ? '🔄 إعادة' : '🎯 اختبر'}
+                    {hasGrade ? '🔄 إعادة' : '🎯 اختبار'}
                   </Link>
                 </div>
               </div>
