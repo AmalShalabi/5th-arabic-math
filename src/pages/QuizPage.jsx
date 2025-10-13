@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import lessonsData from '../data/lessons.json'
 import ResultCard from '../components/ResultCard'
@@ -9,11 +9,9 @@ function QuizPage({ addStar }) {
   const lesson = lessonsData.lessons.find(l => l.id === parseInt(id))
 
   const [currentQuestion, setCurrentQuestion] = useState(0)
-  const [selectedAnswer, setSelectedAnswer] = useState(null)
-  const [isAnswered, setIsAnswered] = useState(false)
-  const [score, setScore] = useState(0)
-  const [answers, setAnswers] = useState([])
+  const [userAnswers, setUserAnswers] = useState({}) // تخزين جميع الإجابات
   const [showResults, setShowResults] = useState(false)
+  const [starsAwarded, setStarsAwarded] = useState(new Set()) // تتبع الأسئلة التي حصل عليها نجوم
 
   if (!lesson) {
     return (
@@ -31,52 +29,88 @@ function QuizPage({ addStar }) {
   const quiz = lesson.quiz
   const question = quiz[currentQuestion]
 
-  const handleAnswerClick = (index) => {
-    if (isAnswered) return
-    
-    setSelectedAnswer(index)
-    setIsAnswered(true)
+  // حساب النقاط من الإجابات المحفوظة
+  const score = Object.values(userAnswers).filter(answer => answer.isCorrect).length
 
+  // إضافة نجمة عند الإجابة الصحيحة لأول مرة
+  useEffect(() => {
+    const currentAnswer = userAnswers[currentQuestion]
+    if (currentAnswer && currentAnswer.isCorrect && !starsAwarded.has(currentQuestion)) {
+      addStar()
+      setStarsAwarded(new Set([...starsAwarded, currentQuestion]))
+    }
+  }, [userAnswers, currentQuestion, starsAwarded, addStar])
+
+  const handleAnswerClick = (index) => {
     const isCorrect = index === question.correct
     
-    if (isCorrect) {
-      setScore(score + 1)
-      addStar()
-    }
-
-    setAnswers([...answers, {
-      question: question.question,
-      selected: index,
-      correct: question.correct,
-      isCorrect
-    }])
+    // حفظ الإجابة
+    setUserAnswers({
+      ...userAnswers,
+      [currentQuestion]: {
+        questionId: currentQuestion,
+        question: question.question,
+        selected: index,
+        correct: question.correct,
+        isCorrect
+      }
+    })
   }
 
   const handleNext = () => {
     if (currentQuestion < quiz.length - 1) {
       setCurrentQuestion(currentQuestion + 1)
-      setSelectedAnswer(null)
-      setIsAnswered(false)
-    } else {
-      setShowResults(true)
     }
+  }
+
+  const handlePrevious = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1)
+    }
+  }
+
+  const handleShowResults = () => {
+    // تحويل الإجابات إلى مصفوفة للنتائج
+    const answersArray = quiz.map((q, index) => {
+      const userAnswer = userAnswers[index]
+      return userAnswer || {
+        question: q.question,
+        selected: null,
+        correct: q.correct,
+        isCorrect: false
+      }
+    })
+    setShowResults(true)
   }
 
   const restartQuiz = () => {
     setCurrentQuestion(0)
-    setSelectedAnswer(null)
-    setIsAnswered(false)
-    setScore(0)
-    setAnswers([])
+    setUserAnswers({})
+    setStarsAwarded(new Set())
     setShowResults(false)
   }
 
+  // الحصول على الإجابة الحالية
+  const currentAnswer = userAnswers[currentQuestion]
+  const isAnswered = currentAnswer !== undefined
+
   if (showResults) {
+    // تحويل الإجابات إلى مصفوفة
+    const answersArray = quiz.map((q, index) => {
+      const userAnswer = userAnswers[index]
+      return userAnswer || {
+        question: q.question,
+        selected: null,
+        correct: q.correct,
+        isCorrect: false
+      }
+    })
+
     return (
       <ResultCard
         score={score}
         total={quiz.length}
-        answers={answers}
+        answers={answersArray}
         lessonTitle={lesson.title}
         onRestart={restartQuiz}
         onHome={() => navigate('/')}
@@ -144,12 +178,12 @@ function QuizPage({ addStar }) {
                   bgColor = 'bg-green-100'
                   borderColor = 'border-green-500'
                   icon = '✅'
-                } else if (index === selectedAnswer) {
+                } else if (index === currentAnswer.selected) {
                   bgColor = 'bg-red-100'
                   borderColor = 'border-red-500'
                   icon = '❌'
                 }
-              } else if (selectedAnswer === index) {
+              } else if (currentAnswer && currentAnswer.selected === index) {
                 bgColor = 'bg-blue-100'
                 borderColor = 'border-blue-500'
               }
@@ -158,8 +192,7 @@ function QuizPage({ addStar }) {
                 <button
                   key={index}
                   onClick={() => handleAnswerClick(index)}
-                  disabled={isAnswered}
-                  className={`${bgColor} border-4 ${borderColor} rounded-xl p-6 text-right text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:cursor-not-allowed`}
+                  className={`${bgColor} border-4 ${borderColor} rounded-xl p-6 text-right text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
                 >
                   <div className="flex justify-between items-center">
                     <span className="text-gray-800">{option}</span>
@@ -173,11 +206,11 @@ function QuizPage({ addStar }) {
           {/* Feedback */}
           {isAnswered && (
             <div className={`mb-6 p-6 rounded-xl text-center text-2xl font-bold animate-fadeIn ${
-              selectedAnswer === question.correct
+              currentAnswer.isCorrect
                 ? 'bg-green-100 text-green-700'
                 : 'bg-red-100 text-red-700'
             }`}>
-              {selectedAnswer === question.correct ? (
+              {currentAnswer.isCorrect ? (
                 <div>
                   <div className="text-5xl mb-2">🎉</div>
                   <p>رائع! إجابة صحيحة! 🌟</p>
@@ -185,23 +218,99 @@ function QuizPage({ addStar }) {
               ) : (
                 <div>
                   <div className="text-5xl mb-2">💪</div>
-                  <p>حاول مرة أخرى! لا تستسلم! 📚</p>
+                  <p>يمكنك تغيير إجابتك! 📚</p>
                 </div>
               )}
             </div>
           )}
 
-          {/* Next Button */}
-          {isAnswered && (
-            <div className="text-center">
-              <button
-                onClick={handleNext}
-                className="btn-primary text-2xl"
-              >
-                {currentQuestion < quiz.length - 1 ? '➡️ السؤال التالي' : '🎊 عرض النتائج'}
-              </button>
+          {/* Question Navigator - أرقام الأسئلة */}
+          <div className="mb-8 bg-gray-50 p-6 rounded-xl">
+            <h3 className="text-xl font-bold text-gray-700 mb-4 text-center">
+              📋 جميع الأسئلة
+            </h3>
+            <div className="grid grid-cols-5 md:grid-cols-10 gap-3">
+              {quiz.map((_, index) => {
+                const answered = userAnswers[index] !== undefined
+                const correct = answered && userAnswers[index].isCorrect
+                const current = index === currentQuestion
+
+                return (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentQuestion(index)}
+                    className={`
+                      py-3 px-4 rounded-lg font-bold text-lg transition-all duration-300
+                      ${current ? 'ring-4 ring-primary ring-offset-2 scale-110' : ''}
+                      ${!answered ? 'bg-gray-200 text-gray-600 hover:bg-gray-300' : ''}
+                      ${answered && correct ? 'bg-green-400 text-white hover:bg-green-500' : ''}
+                      ${answered && !correct ? 'bg-red-400 text-white hover:bg-red-500' : ''}
+                    `}
+                  >
+                    {index + 1}
+                  </button>
+                )
+              })}
             </div>
-          )}
+            <div className="flex justify-center gap-6 mt-4 text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 bg-green-400 rounded"></div>
+                <span>صحيح</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 bg-red-400 rounded"></div>
+                <span>خطأ</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 bg-gray-200 rounded"></div>
+                <span>لم يُجب</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Navigation Buttons */}
+          <div className="flex justify-between items-center gap-4">
+            {/* Previous Button */}
+            <button
+              onClick={handlePrevious}
+              disabled={currentQuestion === 0}
+              className={`flex-1 py-4 px-6 rounded-lg font-bold text-xl transition-all duration-300 ${
+                currentQuestion === 0
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : 'bg-blue-500 text-white hover:bg-blue-600 transform hover:scale-105 shadow-lg'
+              }`}
+            >
+              ⬅️ السابق
+            </button>
+
+            {/* Show Results Button */}
+            {Object.keys(userAnswers).length === quiz.length && (
+              <button
+                onClick={handleShowResults}
+                className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white py-4 px-6 rounded-lg font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                🎊 عرض النتائج
+              </button>
+            )}
+
+            {/* Next Button */}
+            <button
+              onClick={handleNext}
+              disabled={currentQuestion === quiz.length - 1}
+              className={`flex-1 py-4 px-6 rounded-lg font-bold text-xl transition-all duration-300 ${
+                currentQuestion === quiz.length - 1
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : 'bg-blue-500 text-white hover:bg-blue-600 transform hover:scale-105 shadow-lg'
+              }`}
+            >
+              التالي ➡️
+            </button>
+          </div>
+
+          {/* Progress Info */}
+          <div className="mt-6 text-center text-lg text-gray-600">
+            تم الإجابة على {Object.keys(userAnswers).length} من {quiz.length} سؤال
+          </div>
         </div>
       </div>
     </div>
