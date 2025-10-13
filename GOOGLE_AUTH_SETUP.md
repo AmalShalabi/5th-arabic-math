@@ -1,37 +1,55 @@
 # Google Authentication Setup
 
-## 🔧 Setup Instructions
+## ⚠️ Current Status: Demo Mode
 
-To enable Google Gmail signup/login, you need to get a Google OAuth Client ID:
+The app is currently running in **Demo Mode** with placeholder Google OAuth credentials. The Google login/signup buttons are visible but will show a helpful error message when clicked instead of attempting authentication.
+
+## 🎯 Demo Mode Features
+
+✅ **What Works:**
+- Google buttons display with "🔧 (عرض توضيحي)" indicator
+- Orange styling to indicate demo mode
+- Clear error message in Arabic explaining setup is needed
+- No malformed requests or authentication errors
+- UI is fully functional and styled
+
+❌ **What Doesn't Work (Until Setup):**
+- Actual Google authentication
+- Real Gmail account login/signup
+
+## 🔧 Setup Instructions for Production
+
+To enable **real** Google Gmail signup/login, follow these steps:
 
 ### 1. Create Google Cloud Project
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Create a new project or select existing one
-3. Enable the Google+ API
+3. Enable the **Google Identity** API (not Google+ - that's deprecated)
 
 ### 2. Create OAuth 2.0 Credentials
 1. Go to **APIs & Services** > **Credentials**
-2. Click **+ CREATE CREDENTIALS** > **OAuth client ID**
+2. Click **+ CREATE CREDENTIALS** > **OAuth client ID**  
 3. Choose **Web application**
 4. Add authorized origins:
    - `http://localhost:5174` (for development)
-   - Your production domain (for deployment)
+   - `https://yourdomain.com` (for production)
+5. Add authorized redirect URIs:
+   - `http://localhost:5174` (for development) 
+   - `https://yourdomain.com` (for production)
 
 ### 3. Update Client ID
-1. Copy your Client ID from Google Cloud Console
-2. Replace the placeholder in `src/hooks/useGoogleAuth.js`:
+1. Copy your **real** Client ID from Google Cloud Console
+2. Replace the placeholder in `src/hooks/useGoogleAuth.jsx`:
    ```javascript
-   const GOOGLE_CLIENT_ID = "YOUR_ACTUAL_CLIENT_ID.apps.googleusercontent.com"
+   const GOOGLE_CLIENT_ID = "1234567890-abcdefghijklmnop.apps.googleusercontent.com"
    ```
 
-## 🎯 Demo Mode
-
-Currently, the app runs in demo mode with a placeholder Client ID. The Google login buttons are visible but will show an error when clicked.
-
-To test the UI without setting up Google OAuth:
-- The buttons are styled and functional
-- Error handling is implemented
-- Integration with localStorage is complete
+### 4. Test Authentication
+After updating with your real Client ID:
+- Demo mode indicators will disappear
+- Google buttons will show normal styling
+- Real Gmail authentication will work
+- Users can sign up/login with their Google accounts
 
 ## ✅ Features Implemented
 

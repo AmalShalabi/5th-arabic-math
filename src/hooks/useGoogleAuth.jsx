@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react'
 // Demo Client ID - Replace with your actual Google OAuth Client ID from Google Cloud Console
 const GOOGLE_CLIENT_ID = "your-google-client-id.apps.googleusercontent.com"
 
+// Check if we're in demo mode (using placeholder Client ID)
+const IS_DEMO_MODE = GOOGLE_CLIENT_ID.includes("your-google-client-id")
+
 export const useGoogleAuth = (onLogin) => {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
@@ -23,13 +26,20 @@ export const useGoogleAuth = (onLogin) => {
   }, [])
 
   const initializeGoogleSignIn = () => {
-    if (window.google?.accounts?.id) {
+    // Don't initialize Google Sign-In in demo mode to prevent errors
+    if (IS_DEMO_MODE || !window.google?.accounts?.id) {
+      return
+    }
+    
+    try {
       window.google.accounts.id.initialize({
         client_id: GOOGLE_CLIENT_ID,
         callback: handleGoogleSignIn,
         auto_select: false,
         cancel_on_tap_outside: true,
       })
+    } catch (error) {
+      console.error('Google Sign-In initialization failed:', error)
     }
   }
 
@@ -91,8 +101,15 @@ export const useGoogleAuth = (onLogin) => {
   }
 
   const signInWithGoogle = () => {
+    setError('')
+    
+    // Handle demo mode
+    if (IS_DEMO_MODE) {
+      setError('🔧 وضع العرض التوضيحي: يرجى إعداد Google OAuth Client ID الحقيقي أولاً. راجع ملف GOOGLE_AUTH_SETUP.md للتعليمات المفصلة.')
+      return
+    }
+
     if (window.google?.accounts?.id) {
-      setError('')
       window.google.accounts.id.prompt((notification) => {
         if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
           // Try alternative method if popup is blocked
@@ -105,11 +122,18 @@ export const useGoogleAuth = (onLogin) => {
   }
 
   const renderGoogleButton = (buttonText = "تسجيل الدخول باستخدام Google") => {
+    // Add demo mode indicator to button text
+    const displayText = IS_DEMO_MODE ? `🔧 ${buttonText} (عرض توضيحي)` : buttonText
+    
     return (
       <button
         onClick={signInWithGoogle}
         disabled={isLoading}
-        className="w-full flex items-center justify-center gap-3 bg-white border-2 border-gray-300 rounded-lg px-4 py-3 text-gray-700 font-semibold hover:bg-gray-50 hover:border-gray-400 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+        className={`w-full flex items-center justify-center gap-3 bg-white border-2 rounded-lg px-4 py-3 font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed ${
+          IS_DEMO_MODE 
+            ? 'border-orange-300 text-orange-700 hover:bg-orange-50 hover:border-orange-400' 
+            : 'border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400'
+        }`}
       >
         {isLoading ? (
           <>
@@ -124,7 +148,7 @@ export const useGoogleAuth = (onLogin) => {
               <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
               <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
             </svg>
-            <span>{buttonText}</span>
+            <span>{displayText}</span>
           </>
         )}
       </button>
