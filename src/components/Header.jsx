@@ -34,28 +34,17 @@ function Header({ user, onLogout, stars }) {
       <header className="fixed top-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-200/50">
         <div className="flex items-center justify-between px-4 py-2 max-w-7xl mx-auto">
           
-          {/* Left Side - Stars */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 bg-yellow-50 rounded-lg px-3 py-1.5 border border-yellow-200">
-              <span className="text-2xl">⭐</span>
-              <div className="flex flex-col">
-                <span className="text-xs text-gray-600 font-semibold leading-none">النجوم</span>
-                <span className="text-lg font-black text-yellow-600 leading-none">{stars}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Side - User Info */}
+          {/* Left Side - User Info */}
           <div className="relative">
             <button
               onClick={() => setShowMenu(!showMenu)}
               className="bg-blue-50 hover:bg-blue-100 rounded-lg px-3 py-1.5 flex items-center gap-2 transition-all duration-300 border border-blue-200"
             >
-              <div className="text-right hidden sm:block">
-                <div className="font-bold text-gray-800 text-sm max-w-[120px] truncate">{user.name}</div>
-              </div>
               <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md">
                 {user.name.charAt(0).toUpperCase()}
+              </div>
+              <div className="text-left hidden sm:block">
+                <div className="font-bold text-gray-800 text-sm max-w-[120px] truncate">{user.name}</div>
               </div>
               <svg
                 className={`w-4 h-4 text-gray-600 transition-transform duration-300 ${showMenu ? 'rotate-180' : ''}`}
@@ -69,7 +58,7 @@ function Header({ user, onLogout, stars }) {
 
             {/* Dropdown Menu */}
             {showMenu && (
-              <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-2xl overflow-hidden animate-fadeIn border-2 border-gray-200 z-50">
+              <div className="absolute left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl overflow-hidden animate-fadeIn border-2 border-gray-200 z-50">
                 {/* Header with gradient */}
                 <div className="bg-gradient-to-r from-blue-500 to-purple-500 px-5 py-4 text-white">
                   <p className="text-xs opacity-90 mb-1">مرحباً،</p>
@@ -110,6 +99,17 @@ function Header({ user, onLogout, stars }) {
                 </div>
               </div>
             )}
+          </div>
+
+          {/* Right Side - Stars */}
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 bg-yellow-50 rounded-lg px-3 py-1.5 border border-yellow-200">
+              <span className="text-2xl">⭐</span>
+              <div className="flex flex-col">
+                <span className="text-xs text-gray-600 font-semibold leading-none">النجوم</span>
+                <span className="text-lg font-black text-yellow-600 leading-none">{stars}</span>
+              </div>
+            </div>
           </div>
         </div>
       </header>
