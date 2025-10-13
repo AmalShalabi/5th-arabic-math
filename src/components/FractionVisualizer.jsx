@@ -91,19 +91,19 @@ function FractionVisualizer() {
     setShowFeedback(false)
   }
 
-  const checkAnswer = () => {
-    const selectedCount = Object.keys(selectedPieces).filter(
-      key => key.startsWith(`${currentExercise}-`) && selectedPieces[key]
-    ).length
-
-    setShowFeedback(true)
-    return selectedCount === exercise.fraction.numerator
-  }
-
   const getSelectedCount = () => {
     return Object.keys(selectedPieces).filter(
       key => key.startsWith(`${currentExercise}-`) && selectedPieces[key]
     ).length
+  }
+
+  const checkAnswer = () => {
+    setShowFeedback(true)
+  }
+
+  const isAnswerCorrect = () => {
+    const selectedCount = getSelectedCount()
+    return selectedCount === exercise.fraction.numerator
   }
 
   const nextExercise = () => {
@@ -130,8 +130,8 @@ function FractionVisualizer() {
     setShowFeedback(false)
   }
 
-  const isCorrect = checkAnswer()
   const selectedCount = getSelectedCount()
+  const isCorrect = showFeedback ? isAnswerCorrect() : false
 
   const getDifficultyColor = (difficulty) => {
     if (difficulty === 'سهل') return 'bg-green-100 text-green-700 border-green-500'
