@@ -12,7 +12,7 @@ function ScoreDisplay({ stars }) {
 
   return (
     <>
-      <div className="fixed top-4 left-4 z-50 bg-white/90 backdrop-blur-sm rounded-lg shadow-lg px-4 py-2 flex items-center gap-2 border-2 border-yellow-400/30">
+      <div className="fixed top-4 left-4 z-50 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg px-4 py-2 flex items-center gap-2 border-2 border-yellow-400/30">
         <span className="text-3xl">⭐</span>
         <div className="flex flex-col">
           <span className="text-xs text-gray-600 font-semibold">النجوم</span>

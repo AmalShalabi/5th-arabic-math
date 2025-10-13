@@ -12,21 +12,22 @@ function UserMenu({ user, onLogout }) {
   }
 
   return (
-    <div className="fixed top-4 right-4 z-[100]">
+    <>
       {/* Backdrop overlay */}
       {showMenu && (
         <div
-          className="fixed inset-0 z-40"
+          className="fixed inset-0 z-[90] bg-black/10"
           onClick={() => setShowMenu(false)}
         />
       )}
 
-      <div className="relative z-50">
-        {/* User Button - Compact Design */}
-        <button
-          onClick={() => setShowMenu(!showMenu)}
-          className="bg-white/95 backdrop-blur-sm rounded-lg shadow-lg px-4 py-2 flex items-center gap-2 hover:shadow-xl transition-all duration-300 hover:bg-white border-2 border-primary/30"
-        >
+      <div className="fixed top-4 right-4 z-[100]">
+        <div className="relative">
+          {/* User Button - Compact Design */}
+          <button
+            onClick={() => setShowMenu(!showMenu)}
+            className="bg-white/95 backdrop-blur-sm rounded-lg shadow-lg px-4 py-2 flex items-center gap-2 hover:shadow-xl transition-all duration-300 hover:bg-white border-2 border-primary/30"
+          >
           <div className="w-9 h-9 bg-gradient-to-br from-primary to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md">
             {user.name.charAt(0).toUpperCase()}
           </div>
@@ -86,8 +87,9 @@ function UserMenu({ user, onLogout }) {
             </div>
           </div>
         )}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
