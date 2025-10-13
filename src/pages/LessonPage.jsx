@@ -1,6 +1,7 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import lessonsData from '../data/lessons.json'
 import NumberLine from '../components/NumberLine'
+import FractionVisualizer from '../components/FractionVisualizer'
 
 function LessonPage() {
   const { id } = useParams()
@@ -69,6 +70,9 @@ function LessonPage() {
 
           {/* Number Line - للدرس الأول فقط */}
           {lesson.id === 1 && <NumberLine />}
+
+          {/* Fraction Visualizer - للكسور العادية فقط */}
+          {lesson.id === 3 && <FractionVisualizer />}
 
           {/* Practice Section */}
           <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-xl border-4 border-purple-300">
