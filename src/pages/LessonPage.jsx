@@ -70,60 +70,73 @@ function LessonPage() {
           {/* Number Line - للدرس الأول فقط */}
           {lesson.id === 1 && <NumberLine />}
 
-          {/* Interactive Games Section - للكسور العادية */}
-          {lesson.id === 3 && (
-            <div className="mb-8 bg-gradient-to-r from-orange-50 to-yellow-50 p-8 rounded-xl border-4 border-orange-300">
-              <h2 className="text-3xl font-bold text-orange-700 mb-4 text-center flex items-center justify-center gap-3">
-                <span>🎮</span>
-                ألعاب تفاعلية
+          {/* Special Layout for Lesson 3 - Side by Side Cards */}
+          {lesson.id === 3 ? (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Interactive Games Card */}
+              <div className="bg-gradient-to-r from-orange-50 to-yellow-50 p-8 rounded-xl border-4 border-orange-300 hover:shadow-xl transition-all duration-300">
+                <h2 className="text-3xl font-bold text-orange-700 mb-4 text-center flex items-center justify-center gap-3">
+                  <span>🎮</span>
+                  ألعاب تفاعلية
+                </h2>
+                <p className="text-lg text-gray-700 mb-6 text-center">
+                  تعلّم الكسور بطريقة ممتعة! لوّن الأشكال وتفاعل مع التمارين 🎨
+                </p>
+                <div className="text-center">
+                  <Link
+                    to={`/interactive/${lesson.id}`}
+                    className="btn-secondary inline-flex items-center gap-3 text-xl w-full justify-center py-4"
+                  >
+                    <span>🎨</span>
+                    ابدأ الألعاب التفاعلية
+                    <span>🎨</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Quiz Card */}
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-xl border-4 border-purple-300 hover:shadow-xl transition-all duration-300">
+                <h2 className="text-3xl font-bold text-purple-700 mb-4 text-center flex items-center justify-center gap-3">
+                  <span>🎯</span>
+                  اختبر نفسك
+                </h2>
+                <p className="text-lg text-gray-700 mb-6 text-center">
+                  الآن حان وقت تطبيق ما تعلمته! اختبر مهاراتك واجمع النجوم ⭐
+                </p>
+                <div className="text-center">
+                  <Link
+                    to={`/quiz/${lesson.id}`}
+                    className="btn-secondary inline-flex items-center gap-3 text-xl w-full justify-center py-4"
+                  >
+                    <span>🚀</span>
+                    ابدأ الاختبار
+                    <span>🚀</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ) : (
+            /* Default Practice Section for other lessons */
+            <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-xl border-4 border-purple-300">
+              <h2 className="text-3xl font-bold text-purple-700 mb-4 text-center flex items-center justify-center gap-3">
+                <span>🎯</span>
+                هل أنت جاهز للاختبار؟
               </h2>
               <p className="text-xl text-gray-700 mb-6 text-center">
-                تعلّم الكسور بطريقة ممتعة! لوّن الأشكال وتفاعل مع التمارين 🎨
+                الآن حان وقت تطبيق ما تعلمته! اختبر مهاراتك واجمع النجوم ⭐
               </p>
               <div className="text-center">
                 <Link
-                  to={`/interactive/${lesson.id}`}
-                  className="btn-secondary inline-flex items-center gap-3 text-2xl"
+                  to={`/quiz/${lesson.id}`}
+                  className="btn-secondary inline-flex items-center gap-3 text-xl py-3 px-6"
                 >
-                  <span>🎨</span>
-                  ابدأ الألعاب التفاعلية
-                  <span>🎨</span>
+                  <span>🚀</span>
+                  ابدأ الاختبار
+                  <span>🚀</span>
                 </Link>
               </div>
             </div>
           )}
-
-          {/* Practice Section */}
-          <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-xl border-4 border-purple-300">
-            <h2 className="text-3xl font-bold text-purple-700 mb-4 text-center flex items-center justify-center gap-3">
-              <span>🎯</span>
-              هل أنت جاهز للاختبار؟
-            </h2>
-            <p className="text-xl text-gray-700 mb-6 text-center">
-              الآن حان وقت تطبيق ما تعلمته! اختبر مهاراتك واجمع النجوم ⭐
-            </p>
-            <div className="text-center flex gap-4 justify-center flex-wrap">
-              {/* زر الألعاب التفاعلية - للكسور فقط */}
-              {lesson.id === 3 && (
-                <Link
-                  to={`/interactive/${lesson.id}`}
-                  className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg inline-flex items-center gap-3 text-xl"
-                >
-                  <span>🎮</span>
-                  الألعاب التفاعلية
-                </Link>
-              )}
-              
-              <Link
-                to={`/quiz/${lesson.id}`}
-                className="btn-secondary inline-flex items-center gap-3 text-xl py-3 px-6"
-              >
-                <span>🚀</span>
-                ابدأ الاختبار
-                <span>🚀</span>
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
     </div>
