@@ -98,7 +98,7 @@ function LessonPage() {
         {/* Home Button */}
         <button
           onClick={() => navigate('/')}
-          className="mb-6 bg-white/90 backdrop-blur-sm text-primary font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 text-sm border-2 border-primary/20 hover:border-primary/40"
+          className="mb-6 bg-white/90 backdrop-blur-sm text-primary font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 text-sm border-2 border-primary/20 hover:border-primary/40 relative z-50"
         >
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
             <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
@@ -107,7 +107,7 @@ function LessonPage() {
         </button>
 
         {/* Lesson Card */}
-        <div className="card animate-fadeIn">
+        <div className="card animate-fadeIn relative z-10">
           {/* Header */}
           <div className="text-center mb-6 sm:mb-8 pb-4 sm:pb-6 border-b-4 border-primary px-2">
             <div className="text-3xl sm:text-5xl md:text-6xl mb-4 transition-transform duration-300 hover:scale-110">{lesson.icon}</div>
