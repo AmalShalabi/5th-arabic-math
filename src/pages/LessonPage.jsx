@@ -1,4 +1,5 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import lessonsData from '../data/lessons.json'
 import NumberLine from '../components/NumberLine'
 import jsPDF from 'jspdf'
@@ -8,8 +9,10 @@ function LessonPage() {
   const { id } = useParams()
   const navigate = useNavigate()
   const lesson = lessonsData.lessons.find(l => l.id === parseInt(id))
+  const [generatingPDF, setGeneratingPDF] = useState(false)
 
   const generateFractionPDF = async () => {
+    setGeneratingPDF(true)
     try {
       // Create a temporary iframe to load the HTML content
       const iframe = document.createElement('iframe')
@@ -71,6 +74,8 @@ function LessonPage() {
     } catch (error) {
       console.error('Error generating PDF:', error)
       alert('حدث خطأ في إنشاء ملف PDF. يرجى المحاولة مرة أخرى.')
+    } finally {
+      setGeneratingPDF(false)
     }
   }
 
@@ -151,11 +156,26 @@ function LessonPage() {
               <div className="text-center">
                 <button
                   onClick={generateFractionPDF}
-                  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl mr-3"
+                  disabled={generatingPDF}
+                  className={`font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 transform shadow-lg inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl mr-3 ${
+                    generatingPDF 
+                      ? 'bg-gray-400 cursor-not-allowed' 
+                      : 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 hover:scale-105 hover:shadow-xl'
+                  } text-white`}
                 >
-                  <span>📥</span>
-                  <span className="whitespace-nowrap">تحميل PDF</span>
-                  <span>📄</span>
+                  {generatingPDF ? (
+                    <>
+                      <span className="animate-spin">⏳</span>
+                      <span className="whitespace-nowrap">جاري إنشاء PDF...</span>
+                      <span className="animate-pulse">📄</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>📥</span>
+                      <span className="whitespace-nowrap">تحميل PDF</span>
+                      <span>📄</span>
+                    </>
+                  )}
                 </button>
                 <a
                   href="/fraction-workbook.html"
