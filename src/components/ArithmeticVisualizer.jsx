@@ -257,47 +257,60 @@ function ArithmeticVisualizer() {
       )}
 
       {/* Navigation */}
-      <div className="mt-6 flex justify-between items-center">
-        <button
-          onClick={previousExercise}
-          disabled={currentExercise === 0}
-          className={`py-2 px-6 rounded-lg font-bold transition-all ${
-            currentExercise === 0
-              ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-              : 'bg-secondary text-gray-800 hover:bg-yellow-500 shadow-lg hover:shadow-xl'
-          }`}
-        >
-          ➡️ السابق
-        </button>
-
+      <div className="mt-6 space-y-4">
+        {/* Progress Info */}
         <div className="text-center">
-          <div className="text-sm text-gray-600 font-semibold">
-            {currentExercise + 1} / {exercises.length}
+          <div className="text-base sm:text-lg font-bold text-gray-700 mb-3">
+            التمرين {currentExercise + 1} من {exercises.length}
+          </div>
+          {/* Progress Bar */}
+          <div className="w-full bg-gray-200 rounded-full h-3 mb-3">
+            <div 
+              className="bg-gradient-to-r from-primary to-purple-500 h-3 rounded-full transition-all duration-500" 
+              style={{ width: `${((currentExercise + 1) / exercises.length) * 100}%` }}
+            ></div>
           </div>
           {/* Progress Dots */}
-          <div className="flex gap-2 mt-2">
+          <div className="flex gap-2 justify-center flex-wrap">
             {exercises.map((_, index) => (
               <div
                 key={index}
-                className={`w-3 h-3 rounded-full ${
-                  index === currentExercise ? 'bg-primary' : 'bg-gray-300'
+                className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all ${
+                  index === currentExercise ? 'bg-primary scale-125' : 'bg-gray-300'
                 }`}
               />
             ))}
           </div>
         </div>
 
-        <button
-          onClick={nextExercise}
-          disabled={currentExercise === exercises.length - 1}
-          className={`py-2 px-6 rounded-lg font-bold transition-all ${
-            currentExercise === exercises.length - 1
-              ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-              : 'bg-secondary text-gray-800 hover:bg-yellow-500 shadow-lg hover:shadow-xl'
-          }`}
-        >
-          التالي ⬅️
-        </button>
+        {/* Navigation Buttons */}
+        <div className="flex flex-col sm:flex-row gap-3 sm:justify-between">
+          <button
+            onClick={previousExercise}
+            disabled={currentExercise === 0}
+            className={`w-full sm:w-auto flex items-center justify-center gap-2 py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 transform ${
+              currentExercise === 0
+                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-gradient-to-r from-secondary to-yellow-400 text-gray-800 hover:scale-105 shadow-lg hover:shadow-xl active:scale-95'
+            }`}
+          >
+            <span className="text-xl">⬅️</span>
+            <span>السابق</span>
+          </button>
+
+          <button
+            onClick={nextExercise}
+            disabled={currentExercise === exercises.length - 1}
+            className={`w-full sm:w-auto flex items-center justify-center gap-2 py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 transform ${
+              currentExercise === exercises.length - 1
+                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-gradient-to-r from-secondary to-yellow-400 text-gray-800 hover:scale-105 shadow-lg hover:shadow-xl active:scale-95'
+            }`}
+          >
+            <span>التالي</span>
+            <span className="text-xl">➡️</span>
+          </button>
+        </div>
       </div>
 
       {/* Instructions */}
