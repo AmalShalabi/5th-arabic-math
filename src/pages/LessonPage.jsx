@@ -1,11 +1,117 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import lessonsData from '../data/lessons.json'
 import NumberLine from '../components/NumberLine'
+import jsPDF from 'jspdf'
 
 function LessonPage() {
   const { id } = useParams()
   const navigate = useNavigate()
   const lesson = lessonsData.lessons.find(l => l.id === parseInt(id))
+
+  const generateFractionPDF = () => {
+    const doc = new jsPDF('p', 'mm', 'a4')
+    
+    // Set font for Arabic (using a basic approach)
+    doc.setFont('helvetica', 'normal')
+    doc.setFontSize(20)
+    
+    // Title
+    doc.text('كراسة تمارين الكسور العادية - الصف الخامس', 105, 20, { align: 'center' })
+    
+    doc.setFontSize(14)
+    let yPos = 40
+    
+    // Add content
+    const content = [
+      '📚 المفاهيم الأساسية:',
+      '• الكسر العادي يتكون من بسط ومقام',
+      '• البسط: عدد الأجزاء المأخوذة',  
+      '• المقام: عدد الأجزاء الكلية',
+      '',
+      '🎨 التمرين الأول: تلوين الكسور',
+      '1. لوّن 1/2 (نصف) الدائرة',
+      '2. لوّن 3/4 (ثلاثة أرباع) المربعات', 
+      '3. لوّن 2/3 (ثلثين) المثلثات',
+      '',
+      '✍️ التمرين الثاني: كتابة الكسور',
+      '4. قسمت تفاحة إلى 8 قطع وأكلت 3 قطع. ما الكسر؟',
+      '5. في الصف 20 طالباً، 12 منهم بنات. ما نسبة البنات؟',
+      '6. شرب سامر 3 أكواب من 5 أكواب عصير. ما شربه؟',
+      '',
+      '🔢 التمرين الثالث: العمليات على الكسور',
+      '7. 1/4 + 1/4 = ؟',
+      '8. 3/5 - 1/5 = ؟', 
+      '9. 1/2 + 1/3 = ؟',
+      '10. 5/6 - 1/3 = ؟',
+      '',
+      '📖 التمرين الرابع: مسائل كلامية',
+      '11. أكل أحمد 1/3 قطعة حلوى، وأكل محمد 1/4 قطعة. من أكل أكثر؟',
+      '12. قرأت فاطمة 3/4 كتاب في الأسبوع الأول، و1/8 في الثاني. كم المجموع؟',
+      '13. كان مع سارة كعكة. أعطت 2/5 لأختها، و1/4 لأمها. كم بقي؟',
+      '14. في بستان، 1/3 الأشجار ليمون، 1/4 برتقال، والباقي تفاح. ما نسبة التفاح؟',
+      '',
+      '🎯 التمرين الخامس: المقارنة والترتيب',
+      '15. أي كسر أكبر: 3/4 أم 2/3؟',
+      '16. رتب الكسور تصاعدياً: 1/2، 1/3، 2/3',
+      '17. أكمل الناقص: □/8 + 3/8 = 7/8'
+    ]
+    
+    content.forEach((line) => {
+      if (yPos > 270) {
+        doc.addPage()
+        yPos = 20
+      }
+      
+      if (line.includes('التمرين')) {
+        doc.setFontSize(16)
+        doc.setFont('helvetica', 'bold')
+      } else if (line.includes('المفاهيم')) {
+        doc.setFontSize(16) 
+        doc.setFont('helvetica', 'bold')
+      } else {
+        doc.setFontSize(12)
+        doc.setFont('helvetica', 'normal')
+      }
+      
+      doc.text(line, 20, yPos)
+      yPos += line === '' ? 5 : 8
+    })
+    
+    // Add answers page
+    doc.addPage()
+    doc.setFontSize(18)
+    doc.setFont('helvetica', 'bold')
+    doc.text('📋 ورقة الإجابات', 105, 20, { align: 'center' })
+    
+    doc.setFontSize(12)
+    doc.setFont('helvetica', 'normal')
+    yPos = 40
+    
+    const answers = [
+      '4. 3/8',
+      '5. 12/20 = 3/5', 
+      '6. 3/5',
+      '7. 2/4 = 1/2',
+      '8. 2/5',
+      '9. 5/6',
+      '10. 1/2',
+      '11. أحمد',
+      '12. 7/8',
+      '13. 7/20',
+      '14. 5/12',
+      '15. 3/4',
+      '16. 1/3، 1/2، 2/3',
+      '17. 4'
+    ]
+    
+    answers.forEach((answer) => {
+      doc.text(answer, 20, yPos)
+      yPos += 10
+    })
+    
+    // Save the PDF
+    doc.save('كراسة-تمارين-الكسور-الصف-الخامس.pdf')
+  }
 
   if (!lesson) {
     return (
@@ -83,19 +189,11 @@ function LessonPage() {
               </p>
               <div className="text-center">
                 <button
-                  onClick={() => {
-                    // Create PDF content
-                    const printWindow = window.open('/fraction-workbook.html', '_blank');
-                    printWindow.onload = function() {
-                      setTimeout(() => {
-                        printWindow.print();
-                      }, 500);
-                    };
-                  }}
+                  onClick={generateFractionPDF}
                   className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl mr-3"
                 >
-                  <span>🖨️</span>
-                  <span className="whitespace-nowrap">طباعة الكراسة</span>
+                  <span>📥</span>
+                  <span className="whitespace-nowrap">تحميل PDF</span>
                   <span>📄</span>
                 </button>
                 <a
@@ -104,13 +202,13 @@ function LessonPage() {
                   className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl"
                 >
                   <span>📖</span>
-                  <span className="whitespace-nowrap">عرض الكراسة</span>
-                  <span>🔍</span>
+                  <span className="whitespace-nowrap">عرض في المتصفح</span>
+                  <span>🌐</span>
                 </a>
               </div>
               <div className="mt-4 text-center">
                 <p className="text-xs sm:text-sm text-gray-600">
-                  💡 اضغط "عرض الكراسة" ثم Ctrl+P لحفظها كـ PDF، أو اضغط "طباعة الكراسة" مباشرة
+                  💡 اضغط "تحميل PDF" لتحميل ملف PDF مباشرة، أو "عرض في المتصفح" للمشاهدة أولاً
                 </p>
               </div>
             </div>
