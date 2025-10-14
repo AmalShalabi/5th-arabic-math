@@ -153,43 +153,44 @@ function LessonPage() {
               <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6 text-center px-2">
                 حمّل كراسة تمارين شاملة تحتوي على أكثر من 17 تمرين متنوع على الكسور مع الحلول! 📚
               </p>
-              <div className="text-center">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
                 <button
                   onClick={generateFractionPDF}
                   disabled={generatingPDF}
-                  className={`font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 transform shadow-lg inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl mr-3 ${
+                  className={`w-full sm:w-auto font-bold py-4 px-8 rounded-xl transition-all duration-300 transform shadow-lg hover:shadow-2xl inline-flex items-center justify-center gap-3 text-lg min-w-0 ${
                     generatingPDF 
                       ? 'bg-gray-400 cursor-not-allowed' 
-                      : 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 hover:scale-105 hover:shadow-xl'
+                      : 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 hover:scale-105'
                   } text-white`}
                 >
                   {generatingPDF ? (
                     <>
-                      <span className="animate-spin">⏳</span>
-                      <span className="whitespace-nowrap">جاري إنشاء PDF...</span>
-                      <span className="animate-pulse">📄</span>
+                      <span className="animate-spin text-xl">⏳</span>
+                      <span className="whitespace-nowrap font-bold">جاري إنشاء PDF...</span>
+                      <span className="animate-pulse text-xl">📄</span>
                     </>
                   ) : (
                     <>
-                      <span>📥</span>
-                      <span className="whitespace-nowrap">تحميل PDF</span>
-                      <span>📄</span>
+                      <span className="text-xl">📥</span>
+                      <span className="whitespace-nowrap font-bold">تحميل ملف PDF</span>
+                      <span className="text-xl">💾</span>
                     </>
                   )}
                 </button>
+                
                 <a
                   href="/fraction-workbook.html"
                   target="_blank"
-                  className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl"
+                  className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-2xl inline-flex items-center justify-center gap-3 text-lg min-w-0"
                 >
-                  <span>📖</span>
-                  <span className="whitespace-nowrap">عرض في المتصفح</span>
-                  <span>🌐</span>
+                  <span className="text-xl">👁️</span>
+                  <span className="whitespace-nowrap font-bold">معاينة الكراسة</span>
+                  <span className="text-xl">🌐</span>
                 </a>
               </div>
-              <div className="mt-4 text-center">
-                <p className="text-xs sm:text-sm text-gray-600">
-                  💡 اضغط "تحميل PDF" لتحميل ملف PDF مباشرة، أو "عرض في المتصفح" للمشاهدة أولاً
+              <div className="mt-6 text-center">
+                <p className="text-sm text-gray-600 bg-blue-50 p-4 rounded-lg border-r-4 border-blue-400">
+                  💡 <strong>تحميل ملف PDF:</strong> تحميل مباشر للكراسة كملف PDF • <strong>معاينة الكراسة:</strong> عرض المحتوى في المتصفح أولاً
                 </p>
               </div>
             </div>
