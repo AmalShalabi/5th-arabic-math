@@ -59,7 +59,7 @@ function Home() {
             return (
             <div
               key={lesson.id}
-              className="lesson-card group animate-slideUp relative"
+              className="lesson-card group animate-slideUp relative flex flex-col"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Grade Badge */}
@@ -70,17 +70,17 @@ function Home() {
                 </div>
               )}
               
-              <div className="text-center">
+              <div className="text-center flex flex-col flex-grow">
                 <div className="text-7xl mb-4 transform group-hover:scale-125 transition-transform duration-300">
                   {lesson.icon}
                 </div>
                 <h2 className="text-2xl font-bold text-gray-800 mb-3">
                   {lesson.title}
                 </h2>
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-6 leading-relaxed flex-grow">
                   {lesson.description}
                 </p>
-                <div className="flex gap-2 justify-center flex-wrap">
+                <div className="flex gap-2 justify-center flex-wrap mt-auto">
                   <Link
                     to={`/lesson/${lesson.id}`}
                     className="bg-primary hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg text-sm"
