@@ -70,8 +70,8 @@ function LessonPage() {
           {/* Number Line - للدرس الأول فقط */}
           {lesson.id === 1 && <NumberLine />}
 
-          {/* Special Layout for Lesson 3 - Side by Side Cards */}
-          {lesson.id === 3 ? (
+          {/* Interactive Games and Quiz Cards - Side by Side Layout for lessons with interactive content */}
+          {[1, 2, 3, 4, 6, 7, 8].includes(lesson.id) ? (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
               {/* Interactive Games Card */}
               <div className="bg-gradient-to-r from-orange-50 to-yellow-50 p-4 sm:p-6 md:p-8 rounded-xl border-2 sm:border-4 border-orange-300 hover:shadow-xl transition-all duration-300">
@@ -80,7 +80,7 @@ function LessonPage() {
                   ألعاب تفاعلية
                 </h2>
                 <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6 text-center px-2">
-                  تعلّم الكسور بطريقة ممتعة! لوّن الأشكال وتفاعل مع التمارين 🎨
+                  تعلّم بطريقة ممتعة! تفاعل مع التمارين والأنشطة التفاعلية 🎨
                 </p>
                 <div className="text-center">
                   <Link
@@ -116,7 +116,7 @@ function LessonPage() {
               </div>
             </div>
           ) : (
-            /* Default Practice Section for other lessons */
+            /* Default Practice Section for lessons without interactive content */
             <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 sm:p-6 md:p-8 rounded-xl border-2 sm:border-4 border-purple-300">
               <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-purple-700 mb-3 sm:mb-4 text-center flex items-center justify-center gap-2 sm:gap-3">
                 <span>🎯</span>
