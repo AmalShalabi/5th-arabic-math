@@ -77,8 +77,38 @@
             padding-top: 2px;
         }
         @media print {
-            body { padding: 20px; }
+            body { 
+                padding: 20px; 
+                background: white !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
             .no-print { display: none; }
+            .concept-box, .exercise-box, .problem {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            h1, h2, h3 {
+                break-after: avoid;
+                page-break-after: avoid;
+            }
+            .exercise-box {
+                margin-bottom: 30px;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+        }
+        
+        /* PDF-friendly styles */
+        .pdf-page-break {
+            page-break-before: always;
+        }
+        
+        .avoid-break {
+            break-inside: avoid;
+            page-break-inside: avoid;
         }
     </style>
 </head>
@@ -164,7 +194,7 @@
         </div>
     </div>
 
-    <div class="exercise-box">
+    <div class="exercise-box pdf-page-break">
         <h2>📖 التمرين الرابع: مسائل كلامية</h2>
         
         <div class="problem">
@@ -207,7 +237,7 @@
         </div>
     </div>
 
-    <div class="concept-box">
+    <div class="concept-box pdf-page-break">
         <h2>📋 ورقة الإجابات</h2>
         <p><strong>4.</strong> <span class="fraction"><span class="fraction-num">3</span><span class="fraction-den">8</span></span> | <strong>5.</strong> <span class="fraction"><span class="fraction-num">12</span><span class="fraction-den">20</span></span> = <span class="fraction"><span class="fraction-num">3</span><span class="fraction-den">5</span></span> | <strong>6.</strong> <span class="fraction"><span class="fraction-num">3</span><span class="fraction-den">5</span></span></p>
         <p><strong>7.</strong> <span class="fraction"><span class="fraction-num">2</span><span class="fraction-den">4</span></span> = <span class="fraction"><span class="fraction-num">1</span><span class="fraction-den">2</span></span> | <strong>8.</strong> <span class="fraction"><span class="fraction-num">2</span><span class="fraction-den">5</span></span> | <strong>9.</strong> <span class="fraction"><span class="fraction-num">5</span><span class="fraction-den">6</span></span></p>

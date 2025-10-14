@@ -82,19 +82,35 @@ function LessonPage() {
                 حمّل كراسة تمارين شاملة تحتوي على أكثر من 17 تمرين متنوع على الكسور مع الحلول! 📚
               </p>
               <div className="text-center">
+                <button
+                  onClick={() => {
+                    // Create PDF content
+                    const printWindow = window.open('/fraction-workbook.html', '_blank');
+                    printWindow.onload = function() {
+                      setTimeout(() => {
+                        printWindow.print();
+                      }, 500);
+                    };
+                  }}
+                  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl mr-3"
+                >
+                  <span>🖨️</span>
+                  <span className="whitespace-nowrap">طباعة الكراسة</span>
+                  <span>📄</span>
+                </button>
                 <a
                   href="/fraction-workbook.html"
-                  download="كراسة-تمارين-الكسور-الصف-الخامس.html"
-                  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl"
+                  target="_blank"
+                  className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl"
                 >
-                  <span>📥</span>
-                  <span className="whitespace-nowrap">تحميل كراسة التمارين</span>
-                  <span>📄</span>
+                  <span>📖</span>
+                  <span className="whitespace-nowrap">عرض الكراسة</span>
+                  <span>🔍</span>
                 </a>
               </div>
               <div className="mt-4 text-center">
                 <p className="text-xs sm:text-sm text-gray-600">
-                  💡 يمكنك طباعة الكراسة والعمل عليها ورقياً أو حلها رقمياً
+                  💡 اضغط "عرض الكراسة" ثم Ctrl+P لحفظها كـ PDF، أو اضغط "طباعة الكراسة" مباشرة
                 </p>
               </div>
             </div>
