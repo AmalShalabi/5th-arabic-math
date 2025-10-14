@@ -21,8 +21,8 @@ function LessonPage() {
   }
 
   return (
-    <div className="min-h-screen py-12 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen py-6 sm:py-12 px-2 sm:px-4">
+      <div className="max-w-4xl mx-auto w-full">
         {/* Home Button */}
         <button
           onClick={() => navigate('/')}
@@ -37,32 +37,32 @@ function LessonPage() {
         {/* Lesson Card */}
         <div className="card animate-fadeIn">
           {/* Header */}
-          <div className="text-center mb-8 pb-6 border-b-4 border-primary">
-            <div className="text-8xl mb-4">{lesson.icon}</div>
-            <h1 className="text-5xl font-black text-gray-800 mb-2">
+          <div className="text-center mb-6 sm:mb-8 pb-4 sm:pb-6 border-b-4 border-primary px-2">
+            <div className="text-5xl sm:text-7xl md:text-8xl mb-4">{lesson.icon}</div>
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-gray-800 mb-2 leading-tight">
               {lesson.title}
             </h1>
-            <p className="text-xl text-gray-600">{lesson.description}</p>
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 px-4">{lesson.description}</p>
           </div>
 
           {/* Explanation Section */}
-          <div className="mb-8 bg-blue-50 p-8 rounded-xl border-r-8 border-primary">
-            <h2 className="text-3xl font-bold text-primary mb-4 flex items-center gap-3">
+          <div className="mb-6 sm:mb-8 bg-blue-50 p-4 sm:p-6 md:p-8 rounded-xl border-r-4 sm:border-r-8 border-primary">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
               <span>📚</span>
               الشرح
             </h2>
-            <div className="text-xl text-gray-800 leading-relaxed whitespace-pre-line">
+            <div className="text-sm sm:text-lg md:text-xl text-gray-800 leading-relaxed whitespace-pre-line">
               {lesson.content.explanation}
             </div>
           </div>
 
           {/* Example Section */}
-          <div className="mb-8 bg-yellow-50 p-8 rounded-xl border-r-8 border-secondary">
-            <h2 className="text-3xl font-bold text-yellow-700 mb-4 flex items-center gap-3">
+          <div className="mb-6 sm:mb-8 bg-yellow-50 p-4 sm:p-6 md:p-8 rounded-xl border-r-4 sm:border-r-8 border-secondary">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-yellow-700 mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
               <span>💡</span>
               مثال عملي
             </h2>
-            <div className="text-xl text-gray-800 leading-relaxed whitespace-pre-line">
+            <div className="text-sm sm:text-lg md:text-xl text-gray-800 leading-relaxed whitespace-pre-line">
               {lesson.content.example}
             </div>
           </div>
@@ -72,44 +72,44 @@ function LessonPage() {
 
           {/* Special Layout for Lesson 3 - Side by Side Cards */}
           {lesson.id === 3 ? (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
               {/* Interactive Games Card */}
-              <div className="bg-gradient-to-r from-orange-50 to-yellow-50 p-8 rounded-xl border-4 border-orange-300 hover:shadow-xl transition-all duration-300">
-                <h2 className="text-3xl font-bold text-orange-700 mb-4 text-center flex items-center justify-center gap-3">
+              <div className="bg-gradient-to-r from-orange-50 to-yellow-50 p-4 sm:p-6 md:p-8 rounded-xl border-2 sm:border-4 border-orange-300 hover:shadow-xl transition-all duration-300">
+                <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-orange-700 mb-3 sm:mb-4 text-center flex items-center justify-center gap-2 sm:gap-3">
                   <span>🎮</span>
                   ألعاب تفاعلية
                 </h2>
-                <p className="text-lg text-gray-700 mb-6 text-center">
+                <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6 text-center px-2">
                   تعلّم الكسور بطريقة ممتعة! لوّن الأشكال وتفاعل مع التمارين 🎨
                 </p>
                 <div className="text-center">
                   <Link
                     to={`/interactive/${lesson.id}`}
-                    className="btn-secondary inline-flex items-center gap-3 text-xl w-full justify-center py-4"
+                    className="btn-secondary inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl w-full justify-center py-3 sm:py-4 px-2"
                   >
                     <span>🎨</span>
-                    ابدأ الألعاب التفاعلية
+                    <span className="whitespace-nowrap">ابدأ الألعاب التفاعلية</span>
                     <span>🎨</span>
                   </Link>
                 </div>
               </div>
 
               {/* Quiz Card */}
-              <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-xl border-4 border-purple-300 hover:shadow-xl transition-all duration-300">
-                <h2 className="text-3xl font-bold text-purple-700 mb-4 text-center flex items-center justify-center gap-3">
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 sm:p-6 md:p-8 rounded-xl border-2 sm:border-4 border-purple-300 hover:shadow-xl transition-all duration-300">
+                <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-purple-700 mb-3 sm:mb-4 text-center flex items-center justify-center gap-2 sm:gap-3">
                   <span>🎯</span>
                   اختبر نفسك
                 </h2>
-                <p className="text-lg text-gray-700 mb-6 text-center">
+                <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6 text-center px-2">
                   الآن حان وقت تطبيق ما تعلمته! اختبر مهاراتك واجمع النجوم ⭐
                 </p>
                 <div className="text-center">
                   <Link
                     to={`/quiz/${lesson.id}`}
-                    className="btn-secondary inline-flex items-center gap-3 text-xl w-full justify-center py-4"
+                    className="btn-secondary inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl w-full justify-center py-3 sm:py-4 px-2"
                   >
                     <span>🚀</span>
-                    ابدأ الاختبار
+                    <span className="whitespace-nowrap">ابدأ الاختبار</span>
                     <span>🚀</span>
                   </Link>
                 </div>
@@ -117,18 +117,18 @@ function LessonPage() {
             </div>
           ) : (
             /* Default Practice Section for other lessons */
-            <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-xl border-4 border-purple-300">
-              <h2 className="text-3xl font-bold text-purple-700 mb-4 text-center flex items-center justify-center gap-3">
+            <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 sm:p-6 md:p-8 rounded-xl border-2 sm:border-4 border-purple-300">
+              <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-purple-700 mb-3 sm:mb-4 text-center flex items-center justify-center gap-2 sm:gap-3">
                 <span>🎯</span>
                 هل أنت جاهز للاختبار؟
               </h2>
-              <p className="text-xl text-gray-700 mb-6 text-center">
+              <p className="text-sm sm:text-lg md:text-xl text-gray-700 mb-4 sm:mb-6 text-center px-2">
                 الآن حان وقت تطبيق ما تعلمته! اختبر مهاراتك واجمع النجوم ⭐
               </p>
               <div className="text-center">
                 <Link
                   to={`/quiz/${lesson.id}`}
-                  className="btn-secondary inline-flex items-center gap-3 text-xl py-3 px-6"
+                  className="btn-secondary inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl py-3 px-4 sm:px-6"
                 >
                   <span>🚀</span>
                   ابدأ الاختبار

@@ -13,22 +13,22 @@ function Home() {
     <div className="min-h-screen py-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 animate-fadeIn">
-          <h1 className="text-6xl font-black text-white mb-4 drop-shadow-2xl">
+        <div className="text-center mb-8 sm:mb-12 animate-fadeIn px-2">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 drop-shadow-2xl leading-tight">
             🎓 تعلّم الرياضيات مع جمانة
           </h1>
-          <p className="text-3xl text-white font-semibold drop-shadow-lg">
+          <p className="text-lg sm:text-2xl md:text-3xl text-white font-semibold drop-shadow-lg">
             الصف الخامس الابتدائي
           </p>
-          <div className="mt-6 text-2xl text-white">
+          <div className="mt-4 sm:mt-6 text-base sm:text-xl md:text-2xl text-white px-4">
             اختر موضوعاً لتبدأ رحلة التعلم! 🚀
           </div>
           
           {/* Toggle Grades Button */}
-          <div className="mt-6">
+          <div className="mt-4 sm:mt-6">
             <button
               onClick={() => setShowGrades(!showGrades)}
-              className="bg-white text-primary font-bold py-3 px-8 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-xl"
+              className="bg-white text-primary font-bold py-2 sm:py-3 px-4 sm:px-8 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-lg md:text-xl"
             >
               {showGrades ? '📚 عرض المواضيع' : '📊 عرض سجل الدرجات'}
             </button>

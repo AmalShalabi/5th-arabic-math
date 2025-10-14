@@ -33,7 +33,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-300 pt-16">
+      <div className="min-h-screen bg-gradient-to-br from-blue-400 via-purple-400 to-pink-300 pt-16 overflow-x-hidden w-full">
         <Header stars={totalStars} visitors={visitorCount} />
         
         <Routes>
