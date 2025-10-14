@@ -2,115 +2,76 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import lessonsData from '../data/lessons.json'
 import NumberLine from '../components/NumberLine'
 import jsPDF from 'jspdf'
+import html2canvas from 'html2canvas'
 
 function LessonPage() {
   const { id } = useParams()
   const navigate = useNavigate()
   const lesson = lessonsData.lessons.find(l => l.id === parseInt(id))
 
-  const generateFractionPDF = () => {
-    const doc = new jsPDF('p', 'mm', 'a4')
-    
-    // Set font for Arabic (using a basic approach)
-    doc.setFont('helvetica', 'normal')
-    doc.setFontSize(20)
-    
-    // Title
-    doc.text('كراسة تمارين الكسور العادية - الصف الخامس', 105, 20, { align: 'center' })
-    
-    doc.setFontSize(14)
-    let yPos = 40
-    
-    // Add content
-    const content = [
-      '📚 المفاهيم الأساسية:',
-      '• الكسر العادي يتكون من بسط ومقام',
-      '• البسط: عدد الأجزاء المأخوذة',  
-      '• المقام: عدد الأجزاء الكلية',
-      '',
-      '🎨 التمرين الأول: تلوين الكسور',
-      '1. لوّن 1/2 (نصف) الدائرة',
-      '2. لوّن 3/4 (ثلاثة أرباع) المربعات', 
-      '3. لوّن 2/3 (ثلثين) المثلثات',
-      '',
-      '✍️ التمرين الثاني: كتابة الكسور',
-      '4. قسمت تفاحة إلى 8 قطع وأكلت 3 قطع. ما الكسر؟',
-      '5. في الصف 20 طالباً، 12 منهم بنات. ما نسبة البنات؟',
-      '6. شرب سامر 3 أكواب من 5 أكواب عصير. ما شربه؟',
-      '',
-      '🔢 التمرين الثالث: العمليات على الكسور',
-      '7. 1/4 + 1/4 = ؟',
-      '8. 3/5 - 1/5 = ؟', 
-      '9. 1/2 + 1/3 = ؟',
-      '10. 5/6 - 1/3 = ؟',
-      '',
-      '📖 التمرين الرابع: مسائل كلامية',
-      '11. أكل أحمد 1/3 قطعة حلوى، وأكل محمد 1/4 قطعة. من أكل أكثر؟',
-      '12. قرأت فاطمة 3/4 كتاب في الأسبوع الأول، و1/8 في الثاني. كم المجموع؟',
-      '13. كان مع سارة كعكة. أعطت 2/5 لأختها، و1/4 لأمها. كم بقي؟',
-      '14. في بستان، 1/3 الأشجار ليمون، 1/4 برتقال، والباقي تفاح. ما نسبة التفاح؟',
-      '',
-      '🎯 التمرين الخامس: المقارنة والترتيب',
-      '15. أي كسر أكبر: 3/4 أم 2/3؟',
-      '16. رتب الكسور تصاعدياً: 1/2، 1/3، 2/3',
-      '17. أكمل الناقص: □/8 + 3/8 = 7/8'
-    ]
-    
-    content.forEach((line) => {
-      if (yPos > 270) {
-        doc.addPage()
-        yPos = 20
+  const generateFractionPDF = async () => {
+    try {
+      // Create a temporary iframe to load the HTML content
+      const iframe = document.createElement('iframe')
+      iframe.src = '/fraction-workbook.html'
+      iframe.style.position = 'fixed'
+      iframe.style.left = '-9999px'
+      iframe.style.width = '794px' // A4 width in pixels (at 96 DPI)
+      iframe.style.height = '1123px' // A4 height in pixels
+      document.body.appendChild(iframe)
+
+      // Wait for iframe to load
+      await new Promise((resolve) => {
+        iframe.onload = resolve
+      })
+
+      // Wait a bit more for content to render
+      await new Promise(resolve => setTimeout(resolve, 1000))
+
+      const iframeDoc = iframe.contentDocument || iframe.contentWindow.document
+      const body = iframeDoc.body
+
+      // Configure html2canvas options for better quality
+      const canvas = await html2canvas(body, {
+        scale: 2, // Higher resolution
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#ffffff',
+        width: 794,
+        height: body.scrollHeight
+      })
+
+      // Create PDF
+      const pdf = new jsPDF('p', 'mm', 'a4')
+      const imgWidth = 210 // A4 width in mm
+      const pageHeight = 297 // A4 height in mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width
+      let heightLeft = imgHeight
+
+      let position = 0
+
+      // Add first page
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight)
+      heightLeft -= pageHeight
+
+      // Add additional pages if content is longer
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight
+        pdf.addPage()
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight)
+        heightLeft -= pageHeight
       }
+
+      // Clean up
+      document.body.removeChild(iframe)
+
+      // Save the PDF
+      pdf.save('كراسة-تمارين-الكسور-الصف-الخامس.pdf')
       
-      if (line.includes('التمرين')) {
-        doc.setFontSize(16)
-        doc.setFont('helvetica', 'bold')
-      } else if (line.includes('المفاهيم')) {
-        doc.setFontSize(16) 
-        doc.setFont('helvetica', 'bold')
-      } else {
-        doc.setFontSize(12)
-        doc.setFont('helvetica', 'normal')
-      }
-      
-      doc.text(line, 20, yPos)
-      yPos += line === '' ? 5 : 8
-    })
-    
-    // Add answers page
-    doc.addPage()
-    doc.setFontSize(18)
-    doc.setFont('helvetica', 'bold')
-    doc.text('📋 ورقة الإجابات', 105, 20, { align: 'center' })
-    
-    doc.setFontSize(12)
-    doc.setFont('helvetica', 'normal')
-    yPos = 40
-    
-    const answers = [
-      '4. 3/8',
-      '5. 12/20 = 3/5', 
-      '6. 3/5',
-      '7. 2/4 = 1/2',
-      '8. 2/5',
-      '9. 5/6',
-      '10. 1/2',
-      '11. أحمد',
-      '12. 7/8',
-      '13. 7/20',
-      '14. 5/12',
-      '15. 3/4',
-      '16. 1/3، 1/2، 2/3',
-      '17. 4'
-    ]
-    
-    answers.forEach((answer) => {
-      doc.text(answer, 20, yPos)
-      yPos += 10
-    })
-    
-    // Save the PDF
-    doc.save('كراسة-تمارين-الكسور-الصف-الخامس.pdf')
+    } catch (error) {
+      console.error('Error generating PDF:', error)
+      alert('حدث خطأ في إنشاء ملف PDF. يرجى المحاولة مرة أخرى.')
+    }
   }
 
   if (!lesson) {
