@@ -561,7 +561,7 @@ function RatioVisualizer() {
                 : 'bg-gradient-to-r from-secondary to-yellow-400 text-gray-800 hover:scale-105 shadow-lg hover:shadow-xl active:scale-95'
             }`}
           >
-            <span className="text-xl">⬅️</span>
+            <span className="text-xl">➡️</span>
             <span>السابق</span>
           </button>
 
@@ -575,7 +575,7 @@ function RatioVisualizer() {
             }`}
           >
             <span>التالي</span>
-            <span className="text-xl">➡️</span>
+            <span className="text-xl">⬅️</span>
           </button>
         </div>
       </div>
