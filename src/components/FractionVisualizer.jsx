@@ -277,7 +277,7 @@ function FractionVisualizer() {
               : 'bg-secondary text-gray-800 hover:bg-yellow-500 shadow-lg hover:shadow-xl'
           }`}
         >
-          ⬅️ السابق
+          السابق ➡️
         </button>
 
         <div className="text-center">
@@ -306,7 +306,7 @@ function FractionVisualizer() {
               : 'bg-secondary text-gray-800 hover:bg-yellow-500 shadow-lg hover:shadow-xl'
           }`}
         >
-          التالي ➡️
+          ⬅️ التالي
         </button>
       </div>
 

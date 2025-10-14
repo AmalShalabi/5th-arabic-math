@@ -304,7 +304,7 @@ function QuizPage({ addStar }) {
                   : 'bg-blue-500 text-white hover:bg-blue-600 transform hover:scale-105 shadow-lg'
               }`}
             >
-              ⬅️ السابق
+              السابق ➡️
             </button>
 
             {/* Show Results Button */}
@@ -327,7 +327,7 @@ function QuizPage({ addStar }) {
                   : 'bg-blue-500 text-white hover:bg-blue-600 transform hover:scale-105 shadow-lg'
               }`}
             >
-              التالي ➡️
+              ⬅️ التالي
             </button>
           </div>
 
