@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background Circle -->
+  <circle cx="50" cy="50" r="48" fill="#4F46E5" stroke="#312E81" stroke-width="3"/>
+  
+  <!-- Math Symbols -->
+  <!-- Plus Sign -->
+  <text x="25" y="35" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#FBBF24">+</text>
+  
+  <!-- Division Sign -->
+  <text x="62" y="35" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#10B981">÷</text>
+  
+  <!-- Number Pi Symbol -->
+  <text x="20" y="70" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#F59E0B">π</text>
+  
+  <!-- Multiplication Sign -->
+  <text x="60" y="70" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#EC4899">×</text>
+  
+  <!-- Star decoration -->
+  <path d="M 50 45 L 52 51 L 58 51 L 53 55 L 55 61 L 50 57 L 45 61 L 47 55 L 42 51 L 48 51 Z" fill="#FCD34D"/>
+</svg>
+
