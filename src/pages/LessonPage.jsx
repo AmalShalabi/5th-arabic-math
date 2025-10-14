@@ -70,6 +70,36 @@ function LessonPage() {
           {/* Number Line - للدرس الأول فقط */}
           {lesson.id === 1 && <NumberLine />}
 
+          {/* Download PDF for Lesson 3 - Fractions */}
+          {lesson.id === 3 && (
+            <div className="bg-gradient-to-r from-emerald-50 to-teal-50 p-4 sm:p-6 md:p-8 rounded-xl border-2 sm:border-4 border-emerald-300 mb-6 sm:mb-8">
+              <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-emerald-700 mb-3 sm:mb-4 text-center flex items-center justify-center gap-2 sm:gap-3">
+                <span>📁</span>
+                كراسة تمارين إضافية
+                <span>📁</span>
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6 text-center px-2">
+                حمّل كراسة تمارين شاملة تحتوي على أكثر من 17 تمرين متنوع على الكسور مع الحلول! 📚
+              </p>
+              <div className="text-center">
+                <a
+                  href="/fraction-workbook.html"
+                  download="كراسة-تمارين-الكسور-الصف-الخامس.html"
+                  className="bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-flex items-center gap-2 sm:gap-3 text-sm sm:text-lg md:text-xl"
+                >
+                  <span>📥</span>
+                  <span className="whitespace-nowrap">تحميل كراسة التمارين</span>
+                  <span>📄</span>
+                </a>
+              </div>
+              <div className="mt-4 text-center">
+                <p className="text-xs sm:text-sm text-gray-600">
+                  💡 يمكنك طباعة الكراسة والعمل عليها ورقياً أو حلها رقمياً
+                </p>
+              </div>
+            </div>
+          )}
+
           {/* Interactive Games and Quiz Cards - Side by Side Layout for lessons with interactive content */}
           {[1, 2, 3, 4, 6, 7, 8].includes(lesson.id) ? (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
