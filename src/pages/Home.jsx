@@ -71,7 +71,7 @@ function Home() {
               )}
               
               <div className="text-center flex flex-col flex-grow">
-                <div className="text-7xl mb-4 transform group-hover:scale-125 transition-transform duration-300">
+                <div className="text-5xl sm:text-6xl mb-4 transform group-hover:scale-110 transition-transform duration-300 flex justify-center items-center">
                   {lesson.icon}
                 </div>
                 <h2 className="text-2xl font-bold text-gray-800 mb-3">
