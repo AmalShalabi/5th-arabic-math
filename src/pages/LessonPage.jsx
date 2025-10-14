@@ -38,7 +38,7 @@ function LessonPage() {
         <div className="card animate-fadeIn">
           {/* Header */}
           <div className="text-center mb-6 sm:mb-8 pb-4 sm:pb-6 border-b-4 border-primary px-2">
-            <div className="text-4xl sm:text-6xl md:text-7xl mb-4 transition-transform duration-300 hover:scale-110">{lesson.icon}</div>
+            <div className="text-3xl sm:text-5xl md:text-6xl mb-4 transition-transform duration-300 hover:scale-110">{lesson.icon}</div>
             <h1 className="text-2xl sm:text-3xl md:text-5xl font-black text-gray-800 mb-2 leading-tight">
               {lesson.title}
             </h1>
