@@ -88,8 +88,8 @@ function Home() {
                     📖 الدرس
                   </Link>
                   
-                  {/* زر الألعاب التفاعلية - فقط للكسور العادية */}
-                  {lesson.id === 3 && (
+                  {/* زر الألعاب التفاعلية - للدروس التي تحتوي على محتوى تفاعلي */}
+                  {[1, 2, 3, 4, 6, 7, 8].includes(lesson.id) && (
                     <Link
                       to={`/interactive/${lesson.id}`}
                       className="bg-gradient-to-r from-orange-500 to-yellow-500 hover:from-orange-600 hover:to-yellow-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg text-sm"
