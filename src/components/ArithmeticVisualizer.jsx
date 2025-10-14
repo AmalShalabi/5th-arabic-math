@@ -134,8 +134,8 @@ function ArithmeticVisualizer() {
   }
 
   return (
-    <div className="bg-gradient-to-r from-green-50 to-blue-50 p-4 sm:p-6 md:p-8 rounded-xl border-2 sm:border-4 border-primary mt-6 sm:mt-8 overflow-hidden">
-      <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-primary mb-4 sm:mb-6 text-center">
+    <div className="bg-gradient-to-r from-green-50 to-blue-50 p-3 sm:p-4 md:p-6 rounded-xl border-2 border-primary mt-4 sm:mt-6 overflow-hidden">
+      <h3 className="text-base sm:text-xl md:text-2xl font-bold text-primary mb-3 sm:mb-4 text-center">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3">
           <div className="flex items-center gap-1">
             <span>🧮</span>

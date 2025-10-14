@@ -140,8 +140,8 @@ function FractionVisualizer() {
   }
 
   return (
-    <div className="bg-gradient-to-r from-pink-50 to-purple-50 p-4 sm:p-6 md:p-8 rounded-xl border-2 sm:border-4 border-secondary mt-6 sm:mt-8 overflow-hidden">
-      <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-purple-700 mb-4 sm:mb-6 text-center">
+    <div className="bg-gradient-to-r from-pink-50 to-purple-50 p-3 sm:p-4 md:p-6 rounded-xl border-2 border-secondary mt-4 sm:mt-6 overflow-hidden">
+      <h3 className="text-base sm:text-xl md:text-2xl font-bold text-purple-700 mb-3 sm:mb-4 text-center">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3">
           <div className="flex items-center gap-1">
             <span>🎨</span>
@@ -163,12 +163,12 @@ function FractionVisualizer() {
           </div>
         </div>
 
-        <h4 className="text-base sm:text-lg md:text-2xl font-bold text-gray-800 text-center mb-2 px-2 leading-tight">
+        <h4 className="text-sm sm:text-base md:text-lg font-bold text-gray-800 text-center mb-2 px-2 leading-tight">
           {exercise.icon} {exercise.question}
         </h4>
         
         <div className="text-center">
-          <span className="text-2xl sm:text-3xl md:text-5xl font-black text-primary">
+          <span className="text-xl sm:text-2xl md:text-3xl font-black text-primary">
             {exercise.fraction.numerator}/{exercise.fraction.denominator}
           </span>
         </div>
@@ -216,9 +216,9 @@ function FractionVisualizer() {
         </div>
 
         {/* Counter */}
-        <div className="mt-4 sm:mt-6 text-center">
-          <div className="inline-block bg-blue-100 px-3 sm:px-6 py-2 sm:py-3 rounded-full">
-            <span className="text-sm sm:text-lg md:text-xl font-bold text-blue-700">
+        <div className="mt-3 text-center">
+          <div className="inline-block bg-blue-100 px-4 py-2 rounded-full">
+            <span className="text-sm sm:text-base font-bold text-blue-700">
               لونت {selectedCount} من {exercise.pieces} قطعة
             </span>
           </div>
@@ -227,27 +227,27 @@ function FractionVisualizer() {
 
       {/* Feedback */}
       {showFeedback && (
-        <div className={`p-6 rounded-xl mb-6 text-center text-2xl font-bold animate-fadeIn ${
+        <div className={`p-4 rounded-xl mb-4 text-center text-lg font-bold animate-fadeIn ${
           isCorrect
-            ? 'bg-green-100 text-green-700 border-4 border-green-500'
-            : 'bg-red-100 text-red-700 border-4 border-red-500'
+            ? 'bg-green-100 text-green-700 border-2 border-green-500'
+            : 'bg-red-100 text-red-700 border-2 border-red-500'
         }`}>
           {isCorrect ? (
             <div>
-              <div className="text-6xl mb-2">🎉</div>
+              <div className="text-4xl mb-2">🎉</div>
               <p>ممتاز! لونت الكسر بشكل صحيح! ✨</p>
-              <p className="text-lg mt-2">
+              <p className="text-base mt-2">
                 {exercise.fraction.numerator}/{exercise.fraction.denominator} = {selectedCount} من {exercise.pieces} قطعة
               </p>
             </div>
           ) : (
             <div>
-              <div className="text-6xl mb-2">💭</div>
+              <div className="text-4xl mb-2">💭</div>
               <p>حاول مرة أخرى!</p>
-              <p className="text-lg mt-2">
+              <p className="text-base mt-2">
                 يجب تلوين {exercise.fraction.numerator} من {exercise.pieces} قطعة
               </p>
-              <p className="text-sm mt-2">
+              <p className="text-sm mt-1">
                 لونت {selectedCount} قطعة (يجب {exercise.fraction.numerator})
               </p>
             </div>
