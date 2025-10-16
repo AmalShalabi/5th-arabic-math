@@ -135,7 +135,7 @@ function QuizPage({ addStar }) {
     <div className="min-h-screen py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Navigation Buttons */}
-        <div className="mb-6 flex gap-3">
+        <div className="mb-6 flex gap-3 relative z-[100]">
           <button
             onClick={() => navigate('/')}
             className="bg-white/90 backdrop-blur-sm text-primary font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 text-sm border-2 border-primary/20 hover:border-primary/40"
@@ -216,7 +216,18 @@ function QuizPage({ addStar }) {
                 <button
                   key={index}
                   onClick={() => handleAnswerClick(index)}
-                  className={`${bgColor} border-4 ${borderColor} rounded-xl p-6 text-right text-xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl`}
+                  className={`${bgColor} border-4 ${borderColor} rounded-xl p-6 text-right text-xl font-bold transition-all duration-300 shadow-lg relative z-10`}
+                  style={{ transform: 'scale(1)', transition: 'all 0.3s ease' }}
+                  onMouseEnter={(e) => {
+                    e.target.style.transform = 'scale(1.05)';
+                    e.target.style.zIndex = '20';
+                    e.target.style.boxShadow = '0 25px 50px -12px rgba(0, 0, 0, 0.25)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.transform = 'scale(1)';
+                    e.target.style.zIndex = '10';
+                    e.target.style.boxShadow = '';
+                  }}
                 >
                   <div className="flex justify-between items-center">
                     <span className="text-gray-800">{option}</span>
@@ -298,10 +309,10 @@ function QuizPage({ addStar }) {
             <button
               onClick={handlePrevious}
               disabled={currentQuestion === 0}
-              className={`flex-1 py-4 px-6 rounded-lg font-bold text-xl transition-all duration-300 ${
+              className={`flex-1 py-4 px-6 rounded-lg font-bold text-xl transition-all duration-300 relative z-10 ${
                 currentQuestion === 0
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-blue-500 text-white hover:bg-blue-600 transform hover:scale-105 shadow-lg'
+                  : 'bg-blue-500 text-white hover:bg-blue-600 shadow-lg'
               }`}
             >
               ➡️ السابق
@@ -321,10 +332,10 @@ function QuizPage({ addStar }) {
             <button
               onClick={handleNext}
               disabled={currentQuestion === quiz.length - 1}
-              className={`flex-1 py-4 px-6 rounded-lg font-bold text-xl transition-all duration-300 ${
+              className={`flex-1 py-4 px-6 rounded-lg font-bold text-xl transition-all duration-300 relative z-10 ${
                 currentQuestion === quiz.length - 1
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-blue-500 text-white hover:bg-blue-600 transform hover:scale-105 shadow-lg'
+                  : 'bg-blue-500 text-white hover:bg-blue-600 shadow-lg'
               }`}
             >
               التالي ⬅️

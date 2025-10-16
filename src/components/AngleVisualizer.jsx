@@ -261,7 +261,7 @@ function AngleVisualizer() {
                 <button
                   key={index}
                   onClick={() => setUserAnswer(option)}
-                  className={`p-4 rounded-lg font-bold text-lg transition-all duration-300 transform hover:scale-105 ${
+                  className={`p-4 rounded-lg font-bold text-lg transition-all duration-300 relative z-10 ${
                     userAnswer === option
                       ? 'bg-primary text-white border-4 border-blue-600'
                       : 'bg-gray-100 text-gray-700 border-2 border-gray-300 hover:bg-gray-200'

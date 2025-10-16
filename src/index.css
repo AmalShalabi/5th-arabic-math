@@ -27,19 +27,50 @@ html {
 
 @layer components {
   .btn-primary {
-    @apply bg-primary hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
+    @apply bg-primary hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg;
+    transform: scale(1);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    transform: scale(1.05);
+    z-index: 10;
   }
 
   .btn-secondary {
-    @apply bg-secondary hover:bg-yellow-500 text-gray-800 font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg;
+    @apply bg-secondary hover:bg-yellow-500 text-gray-800 font-bold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg;
+    transform: scale(1);
+    transition: all 0.3s ease;
+  }
+  
+  .btn-secondary:hover {
+    transform: scale(1.05);
+    z-index: 10;
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-xl p-6 transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-105;
+    @apply bg-white rounded-xl shadow-xl p-6 transition-all duration-300;
+    transform: scale(1);
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    z-index: 10;
   }
 
   .lesson-card {
-    @apply bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 cursor-pointer transition-all duration-300 hover:shadow-2xl hover:transform hover:scale-105 border-2 border-transparent hover:border-primary;
+    @apply bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 cursor-pointer transition-all duration-300 border-2 border-transparent;
+    transform: scale(1);
+    transition: all 0.3s ease;
+  }
+  
+  .lesson-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border-color: #60A5FA;
+    z-index: 10;
   }
 }
 
@@ -96,5 +127,29 @@ html {
   direction: ltr;
   text-align: left;
   unicode-bidi: bidi-override;
+}
+
+/* Z-index management for hover effects */
+.hover-scale {
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+.hover-scale:hover {
+  z-index: 20;
+  transform: scale(1.05);
+}
+
+/* Ensure header and navigation elements stay on top */
+.header-element {
+  position: relative;
+  z-index: 1000;
+}
+
+.navigation-element {
+  position: relative;
+  z-index: 100;
 }
 

@@ -16,7 +16,7 @@ function Header({ stars, visitors }) {
   return (
     <>
       {/* Thin Header Bar */}
-      <header className="fixed top-0 left-0 right-0 z-[100] bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-200/50">
+      <header className="fixed top-0 left-0 right-0 z-[1000] bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-200/50">
         <div className="flex items-center justify-between px-2 sm:px-4 py-2 max-w-7xl mx-auto w-full">
           
           {/* Left Side - Home Button */}
@@ -64,7 +64,7 @@ function Header({ stars, visitors }) {
 
       {/* Celebration Modal */}
       {showCelebration && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black bg-opacity-50 animate-fadeIn p-4">
+        <div className="fixed inset-0 z-[1100] flex items-center justify-center bg-black bg-opacity-50 animate-fadeIn p-4">
           <div className="bg-white rounded-3xl p-6 sm:p-12 shadow-2xl text-center transform animate-bounce max-w-sm sm:max-w-md mx-4">
             <div className="text-4xl sm:text-7xl mb-4">🎉🌟🎊</div>
             <h2 className="text-xl sm:text-4xl font-bold text-blue-600 mb-4 leading-tight">

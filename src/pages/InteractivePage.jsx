@@ -30,7 +30,7 @@ function InteractivePage() {
     <div className="min-h-screen py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Navigation Buttons */}
-        <div className="mb-6 flex gap-3">
+        <div className="mb-6 flex gap-3 relative z-[100]">
           <button
             onClick={() => navigate('/')}
             className="bg-white/90 backdrop-blur-sm text-primary font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 text-sm border-2 border-primary/20 hover:border-primary/40"
