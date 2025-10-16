@@ -107,11 +107,11 @@ function SimpleHome() {
         {/* Lesson Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {lessonsData.lessons.map((lesson, index) => (
-            <div key={lesson.id} className="bg-white rounded-2xl shadow-2xl p-8 text-center hover:scale-105 transition-transform duration-300">
+            <div key={lesson.id} className="bg-white rounded-2xl shadow-2xl p-8 text-center hover:scale-105 transition-transform duration-300 flex flex-col h-full">
               <div className="text-6xl mb-4">{lesson.icon}</div>
               <h2 className="text-2xl font-bold text-gray-800 mb-3">{lesson.title}</h2>
-              <p className="text-gray-600 mb-6">{lesson.description}</p>
-              <div className="space-y-2">
+              <p className="text-gray-600 mb-6 flex-grow">{lesson.description}</p>
+              <div className="space-y-2 mt-auto">
                 <button 
                   onClick={() => handleLessonClick(lesson.id)}
                   className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-all"
