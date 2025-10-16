@@ -27,68 +27,68 @@ function ResultCard({ score, total, answers, lessonTitle, onRestart, onHome }) {
   }
 
   return (
-    <div className="min-h-screen py-12 px-4">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen py-6 px-4">
+      <div className="max-w-3xl mx-auto">
         {/* Results Card */}
         <div className="card animate-fadeIn">
-          {/* Header with gradient */}
-          <div className={`bg-gradient-to-r ${bgColor} rounded-t-xl -mt-6 -mx-6 p-12 text-white text-center mb-8`}>
-            <div className="text-7xl mb-4">{emoji}</div>
-            <h1 className="text-5xl font-black mb-4">نتائج الاختبار</h1>
-            <h2 className="text-3xl font-bold">{lessonTitle}</h2>
+          {/* Compact Header with gradient */}
+          <div className={`bg-gradient-to-r ${bgColor} rounded-t-xl -mt-6 -mx-6 p-6 text-white text-center mb-4`}>
+            <div className="text-4xl mb-2">{emoji}</div>
+            <h1 className="text-2xl font-black mb-2">نتائج الاختبار</h1>
+            <h2 className="text-lg font-bold">{lessonTitle}</h2>
           </div>
 
-          {/* Score Display */}
-          <div className="text-center mb-8">
-            <div className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full p-8 shadow-2xl mb-6">
-              <div className="text-8xl font-black text-white number-ltr">
+          {/* Compact Score Display */}
+          <div className="text-center mb-4">
+            <div className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full p-4 shadow-2xl mb-3">
+              <div className="text-4xl font-black text-white number-ltr">
                 {score}/{total}
               </div>
-              <div className="text-3xl font-bold text-white mt-2 number-ltr">
+              <div className="text-xl font-bold text-white mt-1 number-ltr">
                 {percentage}%
               </div>
-              <div className="text-xl font-bold text-white mt-2 bg-white bg-opacity-20 rounded-full px-4 py-2">
+              <div className="text-sm font-bold text-white mt-1 bg-white bg-opacity-20 rounded-full px-3 py-1">
                 الدرجة النهائية
               </div>
             </div>
-            <h3 className="text-4xl font-bold text-gray-800 mb-4">{message}</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">{message}</h3>
             
-            {/* Grade Badge */}
-            <div className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-xl shadow-lg mb-4">
-              <div className="text-sm font-semibold">تم حفظ درجتك</div>
-              <div className="text-3xl font-black number-ltr">{percentage}%</div>
-              <div className="text-sm">يمكنك مراجعتها من سجل الدرجات</div>
+            {/* Compact Grade Badge */}
+            <div className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-lg shadow-lg mb-2">
+              <div className="text-xs font-semibold">تم حفظ درجتك</div>
+              <div className="text-xl font-black number-ltr">{percentage}%</div>
+              <div className="text-xs">يمكنك مراجعتها من سجل الدرجات</div>
             </div>
             
-            <div className="text-6xl mt-4">
+            <div className="text-3xl">
               {"⭐".repeat(Math.min(5, score))}
             </div>
           </div>
 
-          {/* Answers Review */}
-          <div className="mb-8">
-            <h3 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+          {/* Compact Answers Review */}
+          <div className="mb-4">
+            <h3 className="text-lg font-bold text-gray-800 mb-3 text-center">
               📋 مراجعة الإجابات
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-2">
               {answers.map((answer, index) => (
                 <div
                   key={index}
-                  className={`p-6 rounded-xl border-r-8 ${
+                  className={`p-3 rounded-lg border-r-4 ${
                     answer.isCorrect
                       ? 'bg-green-50 border-green-500'
                       : 'bg-red-50 border-red-500'
                   }`}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="text-4xl">
+                  <div className="flex items-start gap-3">
+                    <div className="text-2xl">
                       {answer.isCorrect ? '✅' : '❌'}
                     </div>
                     <div className="flex-1">
-                      <p className="text-xl font-bold text-gray-800 mb-2">
+                      <p className="text-sm font-bold text-gray-800 mb-1">
                         السؤال <span className="number-ltr">{index + 1}</span>: {answer.question}
                       </p>
-                      <p className={`text-lg ${
+                      <p className={`text-sm ${
                         answer.isCorrect ? 'text-green-700' : 'text-red-700'
                       }`}>
                         {answer.isCorrect ? 'إجابة صحيحة! 🎉' : 'إجابة خاطئة 💭'}
@@ -100,32 +100,32 @@ function ResultCard({ score, total, answers, lessonTitle, onRestart, onHome }) {
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex gap-4 justify-center flex-wrap">
+          {/* Compact Action Buttons */}
+          <div className="flex gap-3 justify-center flex-wrap mb-3">
             <button
               onClick={onRestart}
-              className="btn-secondary text-xl"
+              className="btn-secondary text-base px-4 py-2"
             >
               🔄 إعادة الاختبار
             </button>
             <button
               onClick={onHome}
-              className="btn-primary text-xl"
+              className="btn-primary text-base px-4 py-2"
             >
               🏠 العودة للرئيسية
             </button>
           </div>
 
-          {/* Motivational Message */}
-          <div className="mt-8 bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-xl text-center">
-            <p className="text-2xl font-bold text-purple-700">
+          {/* Compact Motivational Message */}
+          <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-3 rounded-lg text-center">
+            <p className="text-base font-bold text-purple-700">
               {score === total 
                 ? '🎊 ممتاز! أكملت جميع الأسئلة بنجاح!'
                 : score >= 3
                 ? '🌟 أحسنت! أجبت على 3 أسئلة صحيحة أو أكثر، أنت نجم الرياضيات!'
                 : '💪 استمر في التعلم وستصبح أفضل!'}
             </p>
-            <p className="text-lg text-gray-700 mt-2">
+            <p className="text-sm text-gray-700 mt-1">
               "النجاح يحتاج إلى تدريب مستمر" ✨
             </p>
           </div>
