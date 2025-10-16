@@ -153,7 +153,7 @@ function ArithmeticVisualizer() {
             {exercise.difficulty}
           </div>
           <div className="text-sm sm:text-base md:text-lg font-semibold text-gray-600">
-            تمرين {currentExercise + 1} من {exercises.length}
+            تمرين <span className="number-ltr">{currentExercise + 1}</span> من <span className="number-ltr">{exercises.length}</span>
           </div>
         </div>
 
@@ -162,7 +162,7 @@ function ArithmeticVisualizer() {
         </h4>
         
         <div className="text-center mb-4">
-          <div className="inline-block bg-gray-100 p-4 rounded-lg text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-gray-800">
+          <div className="inline-block bg-gray-100 p-4 rounded-lg text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-gray-800 number-ltr">
             {exercise.expression}
           </div>
         </div>
@@ -172,13 +172,13 @@ function ArithmeticVisualizer() {
           <label className="block text-lg font-semibold text-gray-700 mb-2">
             الإجابة:
           </label>
-          <input
-            type="number"
-            value={userAnswer}
-            onChange={(e) => setUserAnswer(e.target.value)}
-            className="w-32 p-3 text-2xl font-bold text-center border-4 border-primary rounded-lg focus:outline-none focus:ring-4 focus:ring-primary/20"
-            placeholder="؟"
-          />
+            <input
+              type="number"
+              value={userAnswer}
+              onChange={(e) => setUserAnswer(e.target.value)}
+              className="w-32 p-3 text-2xl font-bold text-center border-4 border-primary rounded-lg focus:outline-none focus:ring-4 focus:ring-primary/20 number-input"
+              placeholder="؟"
+            />
         </div>
       </div>
 
@@ -216,7 +216,7 @@ function ArithmeticVisualizer() {
               <div className="text-6xl mb-2">🎉</div>
               <p className="text-2xl font-bold">ممتاز! إجابة صحيحة! ✨</p>
               <p className="text-lg mt-2">
-                الناتج = {exercise.answer}
+                الناتج = <span className="number-ltr">{exercise.answer}</span>
               </p>
             </div>
           ) : (
@@ -224,7 +224,7 @@ function ArithmeticVisualizer() {
               <div className="text-6xl mb-2">💭</div>
               <p className="text-2xl font-bold">حاول مرة أخرى!</p>
               <p className="text-lg mt-2">
-                الإجابة الصحيحة هي: {exercise.answer}
+                الإجابة الصحيحة هي: <span className="number-ltr">{exercise.answer}</span>
               </p>
             </div>
           )}
@@ -241,7 +241,7 @@ function ArithmeticVisualizer() {
             {calculationSteps.map((step, index) => (
               <div key={index} className="bg-blue-50 p-4 rounded-lg border-r-4 border-primary">
                 <div className="flex items-start gap-3">
-                  <div className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">
+                  <div className="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm number-ltr">
                     {index + 1}
                   </div>
                   <div className="text-lg text-gray-700 leading-relaxed flex-1">
@@ -261,7 +261,7 @@ function ArithmeticVisualizer() {
         {/* Progress Info */}
         <div className="text-center">
           <div className="text-base sm:text-lg font-bold text-gray-700 mb-3">
-            التمرين {currentExercise + 1} من {exercises.length}
+            التمرين <span className="number-ltr">{currentExercise + 1}</span> من <span className="number-ltr">{exercises.length}</span>
           </div>
           {/* Progress Bar */}
           <div className="w-full bg-gray-200 rounded-full h-3 mb-3">

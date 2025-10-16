@@ -41,10 +41,10 @@ function ResultCard({ score, total, answers, lessonTitle, onRestart, onHome }) {
           {/* Score Display */}
           <div className="text-center mb-8">
             <div className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full p-8 shadow-2xl mb-6">
-              <div className="text-8xl font-black text-white">
+              <div className="text-8xl font-black text-white number-ltr">
                 {score}/{total}
               </div>
-              <div className="text-3xl font-bold text-white mt-2">
+              <div className="text-3xl font-bold text-white mt-2 number-ltr">
                 {percentage}%
               </div>
               <div className="text-xl font-bold text-white mt-2 bg-white bg-opacity-20 rounded-full px-4 py-2">
@@ -56,7 +56,7 @@ function ResultCard({ score, total, answers, lessonTitle, onRestart, onHome }) {
             {/* Grade Badge */}
             <div className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-xl shadow-lg mb-4">
               <div className="text-sm font-semibold">تم حفظ درجتك</div>
-              <div className="text-3xl font-black">{percentage}%</div>
+              <div className="text-3xl font-black number-ltr">{percentage}%</div>
               <div className="text-sm">يمكنك مراجعتها من سجل الدرجات</div>
             </div>
             
@@ -86,7 +86,7 @@ function ResultCard({ score, total, answers, lessonTitle, onRestart, onHome }) {
                     </div>
                     <div className="flex-1">
                       <p className="text-xl font-bold text-gray-800 mb-2">
-                        السؤال {index + 1}: {answer.question}
+                        السؤال <span className="number-ltr">{index + 1}</span>: {answer.question}
                       </p>
                       <p className={`text-lg ${
                         answer.isCorrect ? 'text-green-700' : 'text-red-700'

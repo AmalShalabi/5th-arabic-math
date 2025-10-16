@@ -204,11 +204,11 @@ function AreaCalculator() {
                 fill="#3B82F6" fillOpacity="0.3" 
                 stroke="#1E40AF" strokeWidth="3"
               />
-              <text x="100" y="105" textAnchor="middle" className="fill-current text-lg font-bold">
+              <text x="100" y="105" textAnchor="middle" className="fill-current text-lg font-bold number-ltr">
                 {dimensions.side} سم
               </text>
             </svg>
-            <p className="text-sm text-gray-600">طول الضلع = {dimensions.side} سم</p>
+            <p className="text-sm text-gray-600">طول الضلع = <span className="number-ltr">{dimensions.side}</span> سم</p>
           </div>
         )
       
@@ -221,13 +221,13 @@ function AreaCalculator() {
                 fill="#10B981" fillOpacity="0.3" 
                 stroke="#059669" strokeWidth="3"
               />
-              <text x="100" y="105" textAnchor="middle" className="fill-current text-sm font-bold">
+              <text x="100" y="105" textAnchor="middle" className="fill-current text-sm font-bold number-ltr">
                 {dimensions.length} × {dimensions.width}
               </text>
             </svg>
             <p className="text-sm text-gray-600">
-              الطول = {dimensions.length} {exercise.unit === 'متر²' ? 'متر' : 'سم'}، 
-              العرض = {dimensions.width} {exercise.unit === 'متر²' ? 'متر' : 'سم'}
+              الطول = <span className="number-ltr">{dimensions.length}</span> {exercise.unit === 'متر²' ? 'متر' : 'سم'}، 
+              العرض = <span className="number-ltr">{dimensions.width}</span> {exercise.unit === 'متر²' ? 'متر' : 'سم'}
             </p>
           </div>
         )
@@ -247,28 +247,28 @@ function AreaCalculator() {
               )}
               {exercise.dimensions.base && exercise.dimensions.height ? (
                 <>
-                  <text x="100" y="170" textAnchor="middle" className="fill-current text-sm font-bold">
+                  <text x="100" y="170" textAnchor="middle" className="fill-current text-sm font-bold number-ltr">
                     القاعدة = {exercise.dimensions.base} سم
                   </text>
-                  <text x="120" y="100" className="fill-current text-sm font-bold">
+                  <text x="120" y="100" className="fill-current text-sm font-bold number-ltr">
                     ع = {exercise.dimensions.height} سم
                   </text>
                 </>
               ) : (
                 <>
-                  <text x="75" y="175" className="fill-current text-xs font-bold">{exercise.dimensions.side1}</text>
-                  <text x="125" y="175" className="fill-current text-xs font-bold">{exercise.dimensions.side2}</text>
-                  <text x="100" y="40" className="fill-current text-xs font-bold">{exercise.dimensions.side3}</text>
+                  <text x="75" y="175" className="fill-current text-xs font-bold number-ltr">{exercise.dimensions.side1}</text>
+                  <text x="125" y="175" className="fill-current text-xs font-bold number-ltr">{exercise.dimensions.side2}</text>
+                  <text x="100" y="40" className="fill-current text-xs font-bold number-ltr">{exercise.dimensions.side3}</text>
                 </>
               )}
             </svg>
             {exercise.dimensions.base && exercise.dimensions.height ? (
               <p className="text-sm text-gray-600">
-                القاعدة = {exercise.dimensions.base} سم، الارتفاع = {exercise.dimensions.height} سم
+                القاعدة = <span className="number-ltr">{exercise.dimensions.base}</span> سم، الارتفاع = <span className="number-ltr">{exercise.dimensions.height}</span> سم
               </p>
             ) : (
               <p className="text-sm text-gray-600">
-                الأضلاع: {exercise.dimensions.side1} سم، {exercise.dimensions.side2} سم، {exercise.dimensions.side3} سم
+                الأضلاع: <span className="number-ltr">{exercise.dimensions.side1}</span> سم، <span className="number-ltr">{exercise.dimensions.side2}</span> سم، <span className="number-ltr">{exercise.dimensions.side3}</span> سم
               </p>
             )}
           </div>
@@ -290,16 +290,16 @@ function AreaCalculator() {
                 fill="#10B981" fillOpacity="0.3" 
                 stroke="#059669" strokeWidth="2"
               />
-              <text x="80" y="115" textAnchor="middle" className="fill-current text-xs font-bold">
+              <text x="80" y="115" textAnchor="middle" className="fill-current text-xs font-bold number-ltr">
                 {exercise.dimensions.rectLength}×{exercise.dimensions.rectWidth}
               </text>
-              <text x="150" y="125" textAnchor="middle" className="fill-current text-xs font-bold">
+              <text x="150" y="125" textAnchor="middle" className="fill-current text-xs font-bold number-ltr">
                 {exercise.dimensions.squareSide}×{exercise.dimensions.squareSide}
               </text>
             </svg>
             <p className="text-sm text-gray-600">
-              مستطيل ({exercise.dimensions.rectLength}×{exercise.dimensions.rectWidth}) + 
-              مربع ({exercise.dimensions.squareSide}×{exercise.dimensions.squareSide})
+              مستطيل (<span className="number-ltr">{exercise.dimensions.rectLength}×{exercise.dimensions.rectWidth}</span>) + 
+              مربع (<span className="number-ltr">{exercise.dimensions.squareSide}×{exercise.dimensions.squareSide}</span>)
             </p>
           </div>
         )
@@ -329,7 +329,7 @@ function AreaCalculator() {
             {exercise.difficulty}
           </div>
           <div className="text-sm sm:text-base md:text-lg font-semibold text-gray-600">
-            تمرين {currentExercise + 1} من {exercises.length}
+            تمرين <span className="number-ltr">{currentExercise + 1}</span> من <span className="number-ltr">{exercises.length}</span>
           </div>
         </div>
 
@@ -362,7 +362,7 @@ function AreaCalculator() {
               type="number"
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
-              className="w-32 p-3 text-2xl font-bold text-center border-4 border-primary rounded-lg focus:outline-none focus:ring-4 focus:ring-primary/20"
+              className="w-32 p-3 text-2xl font-bold text-center border-4 border-primary rounded-lg focus:outline-none focus:ring-4 focus:ring-primary/20 number-input"
               placeholder="؟"
               step="0.1"
             />
@@ -405,7 +405,7 @@ function AreaCalculator() {
               <div className="text-6xl mb-2">🎉</div>
               <p className="text-2xl font-bold">ممتاز! إجابة صحيحة! ✨</p>
               <p className="text-lg mt-2">
-                الناتج = {exercise.answer} {exercise.unit}
+                الناتج = <span className="number-ltr">{exercise.answer}</span> {exercise.unit}
               </p>
             </div>
           ) : (
@@ -413,7 +413,7 @@ function AreaCalculator() {
               <div className="text-6xl mb-2">💭</div>
               <p className="text-2xl font-bold">حاول مرة أخرى!</p>
               <p className="text-lg mt-2">
-                الإجابة الصحيحة: {exercise.answer} {exercise.unit}
+                الإجابة الصحيحة: <span className="number-ltr">{exercise.answer}</span> {exercise.unit}
               </p>
             </div>
           )}
@@ -430,7 +430,7 @@ function AreaCalculator() {
             {calculationSteps.map((step, index) => (
               <div key={index} className="bg-green-50 p-4 rounded-lg border-r-4 border-green-500">
                 <div className="flex items-start gap-3">
-                  <div className="bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">
+                  <div className="bg-green-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm number-ltr">
                     {index + 1}
                   </div>
                   <div className="text-lg text-gray-700 leading-relaxed flex-1">
@@ -448,7 +448,7 @@ function AreaCalculator() {
         {/* Progress Info */}
         <div className="text-center">
           <div className="text-base sm:text-lg font-bold text-gray-700 mb-3">
-            التمرين {currentExercise + 1} من {exercises.length}
+            التمرين <span className="number-ltr">{currentExercise + 1}</span> من <span className="number-ltr">{exercises.length}</span>
           </div>
           {/* Progress Bar */}
           <div className="w-full bg-gray-200 rounded-full h-3 mb-3">

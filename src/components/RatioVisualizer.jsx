@@ -213,12 +213,12 @@ function RatioVisualizer() {
             <div className="flex justify-center gap-8 mb-4">
               <div className="text-center">
                 <div className="text-4xl mb-2">👦</div>
-                <div className="text-2xl font-bold text-blue-600">{data.boys}</div>
+                <div className="text-2xl font-bold text-blue-600 number-ltr">{data.boys}</div>
                 <div className="text-sm text-gray-600">طلاب</div>
               </div>
               <div className="text-center">
                 <div className="text-4xl mb-2">👧</div>
-                <div className="text-2xl font-bold text-pink-600">{data.girls}</div>
+                <div className="text-2xl font-bold text-pink-600 number-ltr">{data.girls}</div>
                 <div className="text-sm text-gray-600">طالبات</div>
               </div>
             </div>
@@ -232,13 +232,13 @@ function RatioVisualizer() {
             <div className="flex justify-center items-center gap-4 mb-4">
               <div className="text-center">
                 <div className="text-6xl mb-2">🍎</div>
-                <div className="text-lg">×{data.items1}</div>
-                <div className="text-sm text-gray-600">{data.cost1} ريال</div>
+                <div className="text-lg number-ltr">×{data.items1}</div>
+                <div className="text-sm text-gray-600"><span className="number-ltr">{data.cost1}</span> ريال</div>
               </div>
               <div className="text-2xl">➡️</div>
               <div className="text-center">
                 <div className="text-6xl mb-2">🍎</div>
-                <div className="text-lg">×{data.items2}</div>
+                <div className="text-lg number-ltr">×{data.items2}</div>
                 <div className="text-sm text-gray-600">؟ ريال</div>
               </div>
             </div>
@@ -262,11 +262,11 @@ function RatioVisualizer() {
             <div className="flex justify-center gap-8">
               <div className="text-center">
                 <div className="w-6 h-6 bg-red-500 rounded-full mx-auto mb-1"></div>
-                <div className="text-sm">حمراء: {data.red}</div>
+                <div className="text-sm">حمراء: <span className="number-ltr">{data.red}</span></div>
               </div>
               <div className="text-center">
                 <div className="w-6 h-6 bg-blue-500 rounded-full mx-auto mb-1"></div>
-                <div className="text-sm">زرقاء: {data.blue}</div>
+                <div className="text-sm">زرقاء: <span className="number-ltr">{data.blue}</span></div>
               </div>
             </div>
           </div>
@@ -279,14 +279,14 @@ function RatioVisualizer() {
             <div className="flex justify-center items-center gap-4 mb-4">
               <div className="text-center">
                 <div className="text-6xl mb-2">🚗</div>
-                <div className="text-lg">{data.distance1} كم</div>
-                <div className="text-sm text-gray-600">{data.time1} ساعة</div>
+                <div className="text-lg number-ltr">{data.distance1} كم</div>
+                <div className="text-sm text-gray-600"><span className="number-ltr">{data.time1}</span> ساعة</div>
               </div>
               <div className="text-2xl">➡️</div>
               <div className="text-center">
                 <div className="text-6xl mb-2">🚗</div>
                 <div className="text-lg">؟ كم</div>
-                <div className="text-sm text-gray-600">{data.time2} ساعات</div>
+                <div className="text-sm text-gray-600"><span className="number-ltr">{data.time2}</span> ساعات</div>
               </div>
             </div>
           </div>
@@ -299,14 +299,14 @@ function RatioVisualizer() {
             <div className="flex justify-center items-center gap-4 mb-4">
               <div className="text-center">
                 <div className="text-6xl mb-2">🥣</div>
-                <div className="text-lg">{data.flour1} كوب دقيق</div>
-                <div className="text-sm text-gray-600">{data.people1} أشخاص</div>
+                <div className="text-lg number-ltr">{data.flour1} كوب دقيق</div>
+                <div className="text-sm text-gray-600"><span className="number-ltr">{data.people1}</span> أشخاص</div>
               </div>
               <div className="text-2xl">➡️</div>
               <div className="text-center">
                 <div className="text-6xl mb-2">🥣</div>
                 <div className="text-lg">؟ كوب دقيق</div>
-                <div className="text-sm text-gray-600">{data.people2} أشخاص</div>
+                <div className="text-sm text-gray-600"><span className="number-ltr">{data.people2}</span> أشخاص</div>
               </div>
             </div>
           </div>
@@ -318,13 +318,13 @@ function RatioVisualizer() {
             <h5 className="font-bold text-gray-700 mb-4">مقارنة النسب</h5>
             <div className="flex justify-center items-center gap-8 mb-4">
               <div className="bg-blue-100 p-4 rounded-lg">
-                <div className="text-2xl font-bold text-blue-700">
+                <div className="text-2xl font-bold text-blue-700 number-ltr">
                   {data.ratio1[0]}/{data.ratio1[1]}
                 </div>
               </div>
               <div className="text-2xl">⚖️</div>
               <div className="bg-green-100 p-4 rounded-lg">
-                <div className="text-2xl font-bold text-green-700">
+                <div className="text-2xl font-bold text-green-700 number-ltr">
                   {data.ratio2[0]}/{data.ratio2[1]}
                 </div>
               </div>
@@ -339,13 +339,13 @@ function RatioVisualizer() {
             <div className="flex justify-center items-center gap-4 mb-4">
               <div className="text-center">
                 <div className="text-6xl mb-2">🗺️</div>
-                <div className="text-lg">{data.mapCm1} سم</div>
-                <div className="text-sm text-gray-600">{data.realKm1} كم</div>
+                <div className="text-lg number-ltr">{data.mapCm1} سم</div>
+                <div className="text-sm text-gray-600"><span className="number-ltr">{data.realKm1}</span> كم</div>
               </div>
               <div className="text-2xl">➡️</div>
               <div className="text-center">
                 <div className="text-6xl mb-2">🗺️</div>
-                <div className="text-lg">{data.mapCm2} سم</div>
+                <div className="text-lg number-ltr">{data.mapCm2} سم</div>
                 <div className="text-sm text-gray-600">؟ كم</div>
               </div>
             </div>
@@ -359,17 +359,17 @@ function RatioVisualizer() {
             <div className="flex justify-center gap-6 mb-4">
               <div className="text-center">
                 <div className="text-4xl mb-2">🔴</div>
-                <div className="text-lg font-bold text-red-600">{data.red}</div>
+                <div className="text-lg font-bold text-red-600 number-ltr">{data.red}</div>
                 <div className="text-sm text-gray-600">أحمر</div>
               </div>
               <div className="text-center">
                 <div className="text-4xl mb-2">🔵</div>
-                <div className="text-lg font-bold text-blue-600">{data.blue}</div>
+                <div className="text-lg font-bold text-blue-600 number-ltr">{data.blue}</div>
                 <div className="text-sm text-gray-600">أزرق</div>
               </div>
               <div className="text-center">
                 <div className="text-4xl mb-2">🟢</div>
-                <div className="text-lg font-bold text-green-600">{data.green}</div>
+                <div className="text-lg font-bold text-green-600 number-ltr">{data.green}</div>
                 <div className="text-sm text-gray-600">أخضر</div>
               </div>
             </div>
@@ -401,7 +401,7 @@ function RatioVisualizer() {
             {exercise.difficulty}
           </div>
           <div className="text-sm sm:text-base md:text-lg font-semibold text-gray-600">
-            تمرين {currentExercise + 1} من {exercises.length}
+            تمرين <span className="number-ltr">{currentExercise + 1}</span> من <span className="number-ltr">{exercises.length}</span>
           </div>
         </div>
 
@@ -447,7 +447,7 @@ function RatioVisualizer() {
               type="text"
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
-              className="w-40 p-3 text-2xl font-bold text-center border-4 border-primary rounded-lg focus:outline-none focus:ring-4 focus:ring-primary/20"
+              className="w-40 p-3 text-2xl font-bold text-center border-4 border-primary rounded-lg focus:outline-none focus:ring-4 focus:ring-primary/20 number-input"
               placeholder="مثال: 3:2 أو 10"
             />
           </div>
@@ -510,7 +510,7 @@ function RatioVisualizer() {
             {calculationSteps.map((step, index) => (
               <div key={index} className="bg-purple-50 p-4 rounded-lg border-r-4 border-purple-500">
                 <div className="flex items-start gap-3">
-                  <div className="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm">
+                  <div className="bg-purple-600 text-white w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm number-ltr">
                     {index + 1}
                   </div>
                   <div className="text-lg text-gray-700 leading-relaxed flex-1">
@@ -528,7 +528,7 @@ function RatioVisualizer() {
         {/* Progress Info */}
         <div className="text-center">
           <div className="text-base sm:text-lg font-bold text-gray-700 mb-3">
-            التمرين {currentExercise + 1} من {exercises.length}
+            التمرين <span className="number-ltr">{currentExercise + 1}</span> من <span className="number-ltr">{exercises.length}</span>
           </div>
           {/* Progress Bar */}
           <div className="w-full bg-gray-200 rounded-full h-3 mb-3">

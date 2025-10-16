@@ -86,3 +86,15 @@ html {
   animation: bounce 2s ease-in-out infinite;
 }
 
+/* Number direction fix - force numbers to display LTR */
+.number-ltr {
+  direction: ltr;
+  unicode-bidi: bidi-override;
+}
+
+.number-input {
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: bidi-override;
+}
+

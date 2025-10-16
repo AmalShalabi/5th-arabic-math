@@ -64,7 +64,7 @@ function NumberLine() {
                   {/* الرقم */}
                   {(num % 2 === 0 || isHighlighted) && (
                     <span
-                      className={`text-xs mt-2 font-bold ${
+                      className={`text-xs mt-2 font-bold number-ltr ${
                         isZero
                           ? 'text-green-700 text-base'
                           : isPositive
@@ -95,7 +95,7 @@ function NumberLine() {
               }`}
             >
               <div
-                className={`text-2xl font-black ${
+                className={`text-2xl font-black number-ltr ${
                   point === 0
                     ? 'text-green-700'
                     : point > 0

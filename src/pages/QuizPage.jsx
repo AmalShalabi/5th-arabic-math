@@ -164,12 +164,12 @@ function QuizPage({ addStar }) {
             <div className="flex justify-center items-center gap-8 mt-4">
               <div className="bg-blue-100 px-6 py-3 rounded-full">
                 <span className="text-xl font-bold text-primary">
-                  السؤال {currentQuestion + 1} من {quiz.length}
+                  السؤال <span className="number-ltr">{currentQuestion + 1}</span> من <span className="number-ltr">{quiz.length}</span>
                 </span>
               </div>
               <div className="bg-yellow-100 px-6 py-3 rounded-full">
                 <span className="text-xl font-bold text-yellow-700">
-                  النقاط: {score}
+                  النقاط: <span className="number-ltr">{score}</span>
                 </span>
               </div>
             </div>
@@ -271,7 +271,7 @@ function QuizPage({ addStar }) {
                       ${answered && !correct ? 'bg-red-400 text-white hover:bg-red-500' : ''}
                     `}
                   >
-                    {index + 1}
+                    <span className="number-ltr">{index + 1}</span>
                   </button>
                 )
               })}
@@ -333,7 +333,7 @@ function QuizPage({ addStar }) {
 
           {/* Progress Info */}
           <div className="mt-6 text-center text-lg text-gray-600">
-            تم الإجابة على {Object.keys(userAnswers).length} من {quiz.length} سؤال
+            تم الإجابة على <span className="number-ltr">{Object.keys(userAnswers).length}</span> من <span className="number-ltr">{quiz.length}</span> سؤال
           </div>
         </div>
       </div>

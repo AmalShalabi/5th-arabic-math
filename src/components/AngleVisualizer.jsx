@@ -184,7 +184,7 @@ function AngleVisualizer() {
           x={centerX + 40 * Math.cos(-angleRad / 2)} 
           y={centerY + 40 * Math.sin(-angleRad / 2)} 
           textAnchor="middle" 
-          className="fill-current text-lg font-bold"
+          className="fill-current text-lg font-bold number-ltr"
           fill="#374151"
         >
           {angle}°
@@ -226,7 +226,7 @@ function AngleVisualizer() {
             {exercise.difficulty}
           </div>
           <div className="text-sm sm:text-base md:text-lg font-semibold text-gray-600">
-            تمرين {currentExercise + 1} من {exercises.length}
+            تمرين <span className="number-ltr">{currentExercise + 1}</span> من <span className="number-ltr">{exercises.length}</span>
           </div>
         </div>
 
@@ -244,7 +244,7 @@ function AngleVisualizer() {
         </div>
         
         <div className="text-center">
-          <div className="inline-block bg-gray-100 px-6 py-3 rounded-lg text-2xl font-bold text-gray-800">
+          <div className="inline-block bg-gray-100 px-6 py-3 rounded-lg text-2xl font-bold text-gray-800 number-ltr">
             {exercise.angle}°
           </div>
         </div>
@@ -282,7 +282,7 @@ function AngleVisualizer() {
               type="number"
               value={userAnswer}
               onChange={(e) => setUserAnswer(e.target.value)}
-              className="w-32 p-3 text-2xl font-bold text-center border-4 border-primary rounded-lg focus:outline-none focus:ring-4 focus:ring-primary/20"
+              className="w-32 p-3 text-2xl font-bold text-center border-4 border-primary rounded-lg focus:outline-none focus:ring-4 focus:ring-primary/20 number-input"
               placeholder="؟"
             />
             <span className="text-xl font-bold text-gray-600 ml-2">°</span>
@@ -341,7 +341,7 @@ function AngleVisualizer() {
         {/* Progress Info */}
         <div className="text-center">
           <div className="text-base sm:text-lg font-bold text-gray-700 mb-3">
-            التمرين {currentExercise + 1} من {exercises.length}
+            التمرين <span className="number-ltr">{currentExercise + 1}</span> من <span className="number-ltr">{exercises.length}</span>
           </div>
           {/* Progress Bar */}
           <div className="w-full bg-gray-200 rounded-full h-3 mb-3">

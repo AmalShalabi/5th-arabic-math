@@ -140,26 +140,19 @@ function FractionVisualizer() {
   }
 
   return (
-    <div className="bg-gradient-to-r from-pink-50 to-purple-50 p-3 sm:p-4 md:p-6 rounded-xl border-2 border-secondary mt-4 sm:mt-6 overflow-hidden">
-      <h3 className="text-base sm:text-xl md:text-2xl font-bold text-purple-700 mb-3 sm:mb-4 text-center">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3">
-          <div className="flex items-center gap-1">
-            <span>🎨</span>
-            <span>تمارين تفاعلية</span>
-            <span>🎨</span>
-          </div>
-          <div className="text-sm sm:text-base md:text-lg">تلوين الكسور</div>
-        </div>
+    <div className="bg-gradient-to-r from-pink-50 to-purple-50 p-2 sm:p-3 md:p-4 rounded-lg border-2 border-secondary mt-2 sm:mt-3 overflow-hidden">
+      <h3 className="text-sm sm:text-base md:text-lg font-bold text-purple-700 mb-2 text-center">
+        🎨 تمارين تلوين الكسور 🎨
       </h3>
 
       {/* Exercise Header */}
-      <div className="bg-white rounded-xl p-3 sm:p-4 md:p-6 mb-4 sm:mb-6 shadow-lg">
+      <div className="bg-white rounded-lg p-2 sm:p-3 mb-3 shadow-md">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-3 sm:mb-4 gap-2">
           <div className={`px-3 sm:px-4 py-1 sm:py-2 rounded-full border-2 ${getDifficultyColor(exercise.difficulty)} font-bold text-xs sm:text-sm`}>
             {exercise.difficulty}
           </div>
           <div className="text-sm sm:text-base md:text-lg font-semibold text-gray-600">
-            تمرين {currentExercise + 1} من {exercises.length}
+            تمرين <span className="number-ltr">{currentExercise + 1}</span> من <span className="number-ltr">{exercises.length}</span>
           </div>
         </div>
 
@@ -168,16 +161,16 @@ function FractionVisualizer() {
         </h4>
         
         <div className="text-center">
-          <span className="text-xl sm:text-2xl md:text-3xl font-black text-primary">
+          <span className="text-xl sm:text-2xl md:text-3xl font-black text-primary number-ltr">
             {exercise.fraction.numerator}/{exercise.fraction.denominator}
           </span>
         </div>
       </div>
 
       {/* Visual Shape */}
-      <div className="bg-white rounded-xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 shadow-lg">
+      <div className="bg-white rounded-lg p-3 mb-3 shadow-md">
         <div className="flex justify-center items-center">
-          <div className="relative w-full max-w-xs" style={{ aspectRatio: '1/1' }}>
+          <div className="relative w-full max-w-48 sm:max-w-56" style={{ aspectRatio: '1/1' }}>
             <svg viewBox="0 0 100 100" className="w-full h-full">
               {/* رسم القطع */}
               {Array.from({ length: exercise.pieces }).map((_, index) => {
@@ -219,7 +212,7 @@ function FractionVisualizer() {
         <div className="mt-3 text-center">
           <div className="inline-block bg-blue-100 px-4 py-2 rounded-full">
             <span className="text-sm sm:text-base font-bold text-blue-700">
-              لونت {selectedCount} من {exercise.pieces} قطعة
+              لونت <span className="number-ltr">{selectedCount}</span> من <span className="number-ltr">{exercise.pieces}</span> قطعة
             </span>
           </div>
         </div>
@@ -237,7 +230,7 @@ function FractionVisualizer() {
               <div className="text-4xl mb-2">🎉</div>
               <p>ممتاز! لونت الكسر بشكل صحيح! ✨</p>
               <p className="text-base mt-2">
-                {exercise.fraction.numerator}/{exercise.fraction.denominator} = {selectedCount} من {exercise.pieces} قطعة
+                <span className="number-ltr">{exercise.fraction.numerator}/{exercise.fraction.denominator}</span> = <span className="number-ltr">{selectedCount}</span> من <span className="number-ltr">{exercise.pieces}</span> قطعة
               </p>
             </div>
           ) : (
@@ -245,10 +238,10 @@ function FractionVisualizer() {
               <div className="text-4xl mb-2">💭</div>
               <p>حاول مرة أخرى!</p>
               <p className="text-base mt-2">
-                يجب تلوين {exercise.fraction.numerator} من {exercise.pieces} قطعة
+                يجب تلوين <span className="number-ltr">{exercise.fraction.numerator}</span> من <span className="number-ltr">{exercise.pieces}</span> قطعة
               </p>
               <p className="text-sm mt-1">
-                لونت {selectedCount} قطعة (يجب {exercise.fraction.numerator})
+                لونت <span className="number-ltr">{selectedCount}</span> قطعة (يجب <span className="number-ltr">{exercise.fraction.numerator}</span>)
               </p>
             </div>
           )}
@@ -256,19 +249,19 @@ function FractionVisualizer() {
       )}
 
       {/* Action Buttons */}
-      <div className="flex flex-wrap gap-3 justify-center">
+      <div className="flex gap-2 justify-center">
         <button
           onClick={checkAnswer}
-          className="bg-primary text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+          className="bg-primary text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition-all text-sm"
         >
-          ✅ تحقق من الإجابة
+          ✅ تحقق
         </button>
 
         <button
           onClick={resetExercise}
-          className="bg-gray-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 shadow-lg"
+          className="bg-gray-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-gray-600 transition-all text-sm"
         >
-          🔄 إعادة التلوين
+          🔄 إعادة
         </button>
       </div>
 
@@ -277,7 +270,7 @@ function FractionVisualizer() {
         {/* Progress Info */}
         <div className="text-center">
           <div className="text-base sm:text-lg font-bold text-gray-700 mb-3">
-            التمرين {currentExercise + 1} من {exercises.length}
+            التمرين <span className="number-ltr">{currentExercise + 1}</span> من <span className="number-ltr">{exercises.length}</span>
           </div>
           {/* Progress Bar */}
           <div className="w-full bg-gray-200 rounded-full h-3 mb-3">
