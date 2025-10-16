@@ -1,9 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { Toaster } from 'react-hot-toast'
 import Home from './pages/Home'
 import LessonPage from './pages/LessonPage'
 import QuizPage from './pages/QuizPage'
 import InteractivePage from './pages/InteractivePage'
+import LiveQuizDashboard from './pages/LiveQuizDashboard'
+import StudentJoin from './pages/StudentJoin'
+import StudentWaiting from './pages/StudentWaiting'
+import StudentGame from './pages/StudentGame'
 import Header from './components/Header'
 
 function App() {
@@ -42,7 +47,36 @@ function App() {
           <Route path="/lesson/:id" element={<LessonPage />} />
           <Route path="/quiz/:id" element={<QuizPage addStar={addStar} />} />
           <Route path="/interactive/:id" element={<InteractivePage />} />
+          
+          {/* Live Quiz Routes */}
+          <Route path="/live-quiz" element={<LiveQuizDashboard />} />
+          <Route path="/join/:gameId" element={<StudentJoin />} />
+          <Route path="/student/waiting/:gameId" element={<StudentWaiting />} />
+          <Route path="/student/game/:gameId" element={<StudentGame />} />
         </Routes>
+        
+        {/* Toast Notifications */}
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              background: '#363636',
+              color: '#fff',
+              fontSize: '16px',
+            },
+            success: {
+              style: {
+                background: '#10B981',
+              },
+            },
+            error: {
+              style: {
+                background: '#EF4444',
+              },
+            },
+          }}
+        />
       </div>
     </Router>
   )

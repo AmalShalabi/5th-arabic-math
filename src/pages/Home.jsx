@@ -112,6 +112,30 @@ function Home() {
         </div>
         )}
 
+        {/* Live Quiz Section */}
+        {!showGrades && (
+          <div className="mt-12 mb-8">
+            <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 text-center shadow-2xl">
+              <div className="text-6xl mb-4">🎮</div>
+              <h2 className="text-3xl font-bold text-white mb-4">لعبة تفاعلية مباشرة</h2>
+              <p className="text-xl text-white mb-6 opacity-90">
+                اجمع طلابك في لعبة ممتعة ومثيرة! أنشئ QR code واطلب من الطلاب الانضمام
+              </p>
+              <Link
+                to="/live-quiz"
+                className="inline-block bg-white text-purple-600 font-bold py-4 px-8 rounded-xl text-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              >
+                🚀 إنشاء لعبة مباشرة
+              </Link>
+              <div className="mt-4 text-white text-sm opacity-75">
+                <p>📱 الطلاب يمسحون QR code بالهاتف</p>
+                <p>🏆 لوحة متصدرين مباشرة</p>
+                <p>⚡ نتائج فورية</p>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Footer */}
         <div className="text-center mt-16 text-white text-xl">
           <p className="mb-2">✨ استمتع بالتعلم واجمع أكبر عدد من النجوم! ✨</p>
