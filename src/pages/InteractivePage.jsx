@@ -56,18 +56,17 @@ function InteractivePage() {
 
         {/* Page Card */}
         <div className="card animate-fadeIn">
-          {/* Header */}
-          <div className="text-center mb-4 pb-4 border-b-2 border-secondary">
-            <div className="text-5xl mb-2">{lesson.icon}</div>
-            <h1 className="text-3xl font-black text-gray-800 mb-2">
-              🎮 ألعاب تفاعلية
-            </h1>
-            <h2 className="text-2xl font-bold text-primary">
-              {lesson.title}
-            </h2>
-            <p className="text-lg text-gray-600 mt-2">
-              تعلّم بالممارسة والتفاعل!
-            </p>
+          {/* Compact Header */}
+          <div className="mb-3 flex items-center gap-3 pb-3 border-b border-secondary/20">
+            <div className="text-3xl">{lesson.icon}</div>
+            <div>
+              <h1 className="text-lg font-black text-gray-800 leading-tight">
+                🎮 {lesson.title}
+              </h1>
+              <p className="text-sm text-gray-600">
+                تعلّم بالممارسة والتفاعل!
+              </p>
+            </div>
           </div>
 
           {/* Interactive Content Based on Lesson */}
@@ -81,66 +80,66 @@ function InteractivePage() {
           
           {/* For lessons without interactive content yet */}
           {![1, 2, 3, 4, 6, 7, 8].includes(lesson.id) && (
-            <div className="text-center py-6">
-              <div className="text-5xl mb-4">🚧</div>
-              <h3 className="text-2xl font-bold text-gray-700 mb-3">
+            <div className="text-center py-4">
+              <div className="text-4xl mb-3">🚧</div>
+              <h3 className="text-xl font-bold text-gray-700 mb-2">
                 قريباً...
               </h3>
-              <p className="text-lg text-gray-600 mb-4">
+              <p className="text-base text-gray-600 mb-3">
                 الألعاب التفاعلية لهذا الدرس قيد التطوير
               </p>
-              <p className="text-base text-gray-500 mb-4">
+              <p className="text-sm text-gray-500 mb-3">
                 استكشف الألعاب التفاعلية المتوفرة حالياً:
               </p>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 max-w-4xl mx-auto">
+              <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 max-w-4xl mx-auto">
                 <button
                   onClick={() => navigate('/interactive/1')}
-                  className="bg-blue-100 hover:bg-blue-200 p-3 rounded-lg transition-all"
+                  className="bg-blue-100 hover:bg-blue-200 p-2 rounded-lg transition-all"
                 >
-                  <div className="text-2xl mb-1">🔢</div>
-                  <div className="font-bold text-sm">خط الأعداد</div>
+                  <div className="text-lg mb-1">🔢</div>
+                  <div className="font-bold text-xs">خط الأعداد</div>
                 </button>
                 <button
                   onClick={() => navigate('/interactive/2')}
-                  className="bg-green-100 hover:bg-green-200 p-3 rounded-lg transition-all"
+                  className="bg-green-100 hover:bg-green-200 p-2 rounded-lg transition-all"
                 >
-                  <div className="text-2xl mb-1">➕</div>
-                  <div className="font-bold text-sm">العمليات الحسابية</div>
+                  <div className="text-lg mb-1">➕</div>
+                  <div className="font-bold text-xs">العمليات الحسابية</div>
                 </button>
                 <button
                   onClick={() => navigate('/interactive/3')}
-                  className="bg-pink-100 hover:bg-pink-200 p-3 rounded-lg transition-all"
+                  className="bg-pink-100 hover:bg-pink-200 p-2 rounded-lg transition-all"
                 >
-                  <div className="text-2xl mb-1">🍕</div>
-                  <div className="font-bold text-sm">الكسور</div>
+                  <div className="text-lg mb-1">🍕</div>
+                  <div className="font-bold text-xs">الكسور</div>
                 </button>
                 <button
                   onClick={() => navigate('/interactive/4')}
-                  className="bg-purple-100 hover:bg-purple-200 p-3 rounded-lg transition-all"
+                  className="bg-purple-100 hover:bg-purple-200 p-2 rounded-lg transition-all"
                 >
-                  <div className="text-2xl mb-1">⚖️</div>
-                  <div className="font-bold text-sm">النسبة والتناسب</div>
+                  <div className="text-lg mb-1">⚖️</div>
+                  <div className="font-bold text-xs">النسبة والتناسب</div>
                 </button>
                 <button
                   onClick={() => navigate('/interactive/6')}
-                  className="bg-indigo-100 hover:bg-indigo-200 p-3 rounded-lg transition-all"
+                  className="bg-indigo-100 hover:bg-indigo-200 p-2 rounded-lg transition-all"
                 >
-                  <div className="text-2xl mb-1">📐</div>
-                  <div className="font-bold text-sm">الزوايا</div>
+                  <div className="text-lg mb-1">📐</div>
+                  <div className="font-bold text-xs">الزوايا</div>
                 </button>
                 <button
                   onClick={() => navigate('/interactive/7')}
-                  className="bg-teal-100 hover:bg-teal-200 p-3 rounded-lg transition-all"
+                  className="bg-teal-100 hover:bg-teal-200 p-2 rounded-lg transition-all"
                 >
-                  <div className="text-2xl mb-1">🔷</div>
-                  <div className="font-bold text-sm">الأشكال الهندسية</div>
+                  <div className="text-lg mb-1">🔷</div>
+                  <div className="font-bold text-xs">الأشكال الهندسية</div>
                 </button>
                 <button
                   onClick={() => navigate('/interactive/8')}
-                  className="bg-orange-100 hover:bg-orange-200 p-3 rounded-lg transition-all"
+                  className="bg-orange-100 hover:bg-orange-200 p-2 rounded-lg transition-all"
                 >
-                  <div className="text-2xl mb-1">📏</div>
-                  <div className="font-bold text-sm">المحيط والمساحة</div>
+                  <div className="text-lg mb-1">📏</div>
+                  <div className="font-bold text-xs">المحيط والمساحة</div>
                 </button>
               </div>
               <div className="mt-8">
