@@ -132,10 +132,10 @@ function QuizPage({ addStar }) {
   }
 
   return (
-    <div className="min-h-screen py-12 px-4">
+    <div className="min-h-screen py-6 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Navigation Buttons */}
-        <div className="mb-6 flex gap-3 relative z-[100]">
+        <div className="mb-4 flex gap-3 relative z-[100]">
           <button
             onClick={() => navigate('/')}
             className="bg-white/90 backdrop-blur-sm text-primary font-semibold py-2 px-4 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 flex items-center gap-2 text-sm border-2 border-primary/20 hover:border-primary/40"
@@ -156,19 +156,19 @@ function QuizPage({ addStar }) {
         {/* Quiz Card */}
         <div className="card animate-fadeIn">
           {/* Header */}
-          <div className="mb-8 text-center pb-6 border-b-4 border-primary">
-            <div className="text-6xl mb-4">{lesson.icon}</div>
-            <h1 className="text-4xl font-black text-gray-800 mb-2">
+          <div className="mb-4 text-center pb-4 border-b-2 border-primary">
+            <div className="text-4xl mb-2">{lesson.icon}</div>
+            <h1 className="text-2xl font-black text-gray-800 mb-2">
               اختبار: {lesson.title}
             </h1>
-            <div className="flex justify-center items-center gap-8 mt-4">
-              <div className="bg-blue-100 px-6 py-3 rounded-full">
-                <span className="text-xl font-bold text-primary">
+            <div className="flex justify-center items-center gap-4 mt-3">
+              <div className="bg-blue-100 px-4 py-2 rounded-full">
+                <span className="text-sm font-bold text-primary">
                   السؤال <span className="number-ltr">{currentQuestion + 1}</span> من <span className="number-ltr">{quiz.length}</span>
                 </span>
               </div>
-              <div className="bg-yellow-100 px-6 py-3 rounded-full">
-                <span className="text-xl font-bold text-yellow-700">
+              <div className="bg-yellow-100 px-4 py-2 rounded-full">
+                <span className="text-sm font-bold text-yellow-700">
                   النقاط: <span className="number-ltr">{score}</span>
                 </span>
               </div>
@@ -176,7 +176,7 @@ function QuizPage({ addStar }) {
           </div>
 
           {/* Progress Bar */}
-          <div className="mb-8 bg-gray-200 rounded-full h-4 overflow-hidden">
+          <div className="mb-4 bg-gray-200 rounded-full h-3 overflow-hidden">
             <div
               className="bg-gradient-to-r from-primary to-purple-500 h-full transition-all duration-500 rounded-full"
               style={{ width: `${((currentQuestion + 1) / quiz.length) * 100}%` }}
@@ -184,14 +184,14 @@ function QuizPage({ addStar }) {
           </div>
 
           {/* Question */}
-          <div className="mb-8 bg-gradient-to-r from-blue-50 to-purple-50 p-8 rounded-xl border-r-8 border-primary">
-            <h2 className="text-3xl font-bold text-gray-800 leading-relaxed">
+          <div className="mb-4 bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-xl border-r-4 border-primary">
+            <h2 className="text-xl font-bold text-gray-800 leading-relaxed">
               {question.question}
             </h2>
           </div>
 
           {/* Options */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
             {question.options.map((option, index) => {
               let bgColor = 'bg-white hover:bg-gray-50'
               let borderColor = 'border-gray-300'
@@ -216,7 +216,7 @@ function QuizPage({ addStar }) {
                 <button
                   key={index}
                   onClick={() => handleAnswerClick(index)}
-                  className={`${bgColor} border-4 ${borderColor} rounded-xl p-6 text-right text-xl font-bold transition-all duration-300 shadow-lg relative z-10`}
+                  className={`${bgColor} border-2 ${borderColor} rounded-lg p-4 text-right text-lg font-bold transition-all duration-300 shadow-lg relative z-10`}
                   style={{ transform: 'scale(1)', transition: 'all 0.3s ease' }}
                   onMouseEnter={(e) => {
                     e.target.style.transform = 'scale(1.05)';
@@ -304,12 +304,12 @@ function QuizPage({ addStar }) {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-between items-center gap-4">
+          <div className="flex justify-between items-center gap-3">
             {/* Previous Button */}
             <button
               onClick={handlePrevious}
               disabled={currentQuestion === 0}
-              className={`flex-1 py-4 px-6 rounded-lg font-bold text-xl transition-all duration-300 relative z-10 ${
+              className={`flex-1 py-3 px-4 rounded-lg font-bold text-lg transition-all duration-300 relative z-10 ${
                 currentQuestion === 0
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   : 'bg-blue-500 text-white hover:bg-blue-600 shadow-lg'
@@ -322,7 +322,7 @@ function QuizPage({ addStar }) {
             {Object.keys(userAnswers).length === quiz.length && (
               <button
                 onClick={handleShowResults}
-                className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white py-4 px-6 rounded-lg font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="flex-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white py-3 px-4 rounded-lg font-bold text-lg transition-all duration-300 shadow-lg"
               >
                 🎊 عرض النتائج
               </button>
@@ -332,7 +332,7 @@ function QuizPage({ addStar }) {
             <button
               onClick={handleNext}
               disabled={currentQuestion === quiz.length - 1}
-              className={`flex-1 py-4 px-6 rounded-lg font-bold text-xl transition-all duration-300 relative z-10 ${
+              className={`flex-1 py-3 px-4 rounded-lg font-bold text-lg transition-all duration-300 relative z-10 ${
                 currentQuestion === quiz.length - 1
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   : 'bg-blue-500 text-white hover:bg-blue-600 shadow-lg'
@@ -343,7 +343,7 @@ function QuizPage({ addStar }) {
           </div>
 
           {/* Progress Info */}
-          <div className="mt-6 text-center text-lg text-gray-600">
+          <div className="mt-4 text-center text-sm text-gray-600">
             تم الإجابة على <span className="number-ltr">{Object.keys(userAnswers).length}</span> من <span className="number-ltr">{quiz.length}</span> سؤال
           </div>
         </div>
