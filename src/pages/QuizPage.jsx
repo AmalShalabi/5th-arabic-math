@@ -237,22 +237,22 @@ function QuizPage({ addStar }) {
             })}
           </div>
 
-          {/* Feedback */}
+          {/* Compact Feedback */}
           {isAnswered && (
-            <div className={`mb-6 p-6 rounded-xl text-center text-2xl font-bold animate-fadeIn ${
+            <div className={`mb-3 p-3 rounded-lg text-center text-base font-bold animate-fadeIn ${
               currentAnswer.isCorrect
                 ? 'bg-green-100 text-green-700'
                 : 'bg-red-100 text-red-700'
             }`}>
               {currentAnswer.isCorrect ? (
-                <div>
-                  <div className="text-5xl mb-2">🎉</div>
-                  <p>رائع! إجابة صحيحة! 🌟</p>
+                <div className="flex items-center justify-center gap-2">
+                  <span className="text-2xl">🎉</span>
+                  <span>رائع! إجابة صحيحة! 🌟</span>
                 </div>
               ) : (
-                <div>
-                  <div className="text-5xl mb-2">💪</div>
-                  <p>يمكنك تغيير إجابتك! 📚</p>
+                <div className="flex items-center justify-center gap-2">
+                  <span className="text-2xl">💪</span>
+                  <span>يمكنك تغيير إجابتك! 📚</span>
                 </div>
               )}
             </div>
