@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import socketService from '../services/socketService'
 import lessonsData from '../data/lessons.json'
 
 function StudentGame() {
@@ -12,10 +13,41 @@ function StudentGame() {
   const [timeLeft, setTimeLeft] = useState(30)
   const [gameStatus, setGameStatus] = useState('playing') // playing, ended
   const [studentName] = useState(() => localStorage.getItem('studentName') || 'طالب')
+  const [gameSettings, setGameSettings] = useState({})
   
   // Use lesson 1 questions for demo (you can modify this)
   const questions = lessonsData.lessons[0].quiz || []
   const currentQ = questions[currentQuestion]
+
+  // Initialize WebSocket connection
+  useEffect(() => {
+    if (gameId) {
+      const socket = socketService.connect(gameId, 'student', studentName)
+      
+      // Listen for game events
+      socket.on('game-started', () => {
+        toast.success('بدأت اللعبة!')
+      })
+
+      socket.on('game-ended', () => {
+        setGameStatus('ended')
+        toast.success('انتهت اللعبة!')
+      })
+
+      socket.on('answer-result', (data) => {
+        if (data.correct) {
+          setScore(data.totalScore)
+          toast.success(`صحيح! +${data.points} نقطة`)
+        } else {
+          toast.error('إجابة خاطئة!')
+        }
+      })
+
+      return () => {
+        socketService.disconnect()
+      }
+    }
+  }, [gameId, studentName])
 
   // Timer effect
   useEffect(() => {
@@ -33,12 +65,19 @@ function StudentGame() {
     
     setSelectedAnswer(answerIndex)
     
+    // Send answer to server via WebSocket
+    socketService.submitAnswer(
+      gameId,
+      currentQ.id || currentQuestion,
+      answerIndex,
+      timeLeft,
+      currentQ.correct,
+      score
+    )
+    
     if (answerIndex === currentQ.correct) {
       const points = Math.max(100, timeLeft * 10) // More points for faster answers
       setScore(score + points)
-      toast.success(`صحيح! +${points} نقطة`)
-    } else {
-      toast.error('إجابة خاطئة!')
     }
   }
 

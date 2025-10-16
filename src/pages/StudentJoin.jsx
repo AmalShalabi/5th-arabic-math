@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import socketService from '../services/socketService'
 
 function StudentJoin() {
   const { gameId } = useParams()
@@ -9,16 +10,18 @@ function StudentJoin() {
   const [isConnected, setIsConnected] = useState(false)
   const [gameStatus, setGameStatus] = useState('waiting') // waiting, starting, active, ended
 
-  // Simulate WebSocket connection (we'll implement real WebSocket later)
+  // Initialize WebSocket connection
   useEffect(() => {
-    // Simulate connection
-    const timer = setTimeout(() => {
-      setIsConnected(true)
-      toast.success('تم الاتصال باللعبة!')
-    }, 1000)
+    if (gameId) {
+      // Simulate connection (in real app, this would connect to actual server)
+      const timer = setTimeout(() => {
+        setIsConnected(true)
+        toast.success('تم الاتصال باللعبة!')
+      }, 1000)
 
-    return () => clearTimeout(timer)
-  }, [])
+      return () => clearTimeout(timer)
+    }
+  }, [gameId])
 
   const handleJoinGame = (e) => {
     e.preventDefault()
@@ -36,6 +39,9 @@ function StudentJoin() {
     // Save student info to localStorage
     localStorage.setItem('studentName', studentName.trim())
     localStorage.setItem('gameId', gameId)
+    
+    // Join game via WebSocket
+    socketService.joinGame(gameId, studentName.trim())
     
     toast.success(`مرحباً ${studentName}! تم الانضمام للعبة`)
     
