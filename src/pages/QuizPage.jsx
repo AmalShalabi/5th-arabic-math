@@ -258,12 +258,12 @@ function QuizPage({ addStar }) {
             </div>
           )}
 
-          {/* Question Navigator - أرقام الأسئلة */}
-          <div className="mb-8 bg-gray-50 p-6 rounded-xl">
-            <h3 className="text-xl font-bold text-gray-700 mb-4 text-center">
+          {/* Compact Question Navigator - أرقام الأسئلة */}
+          <div className="mb-4 bg-gray-50 p-3 rounded-lg">
+            <h3 className="text-sm font-bold text-gray-700 mb-2 text-center">
               📋 جميع الأسئلة
             </h3>
-            <div className="grid grid-cols-5 md:grid-cols-10 gap-3">
+            <div className="grid grid-cols-6 md:grid-cols-12 gap-1">
               {quiz.map((_, index) => {
                 const answered = userAnswers[index] !== undefined
                 const correct = answered && userAnswers[index].isCorrect
@@ -274,8 +274,8 @@ function QuizPage({ addStar }) {
                     key={index}
                     onClick={() => setCurrentQuestion(index)}
                     className={`
-                      py-3 px-4 rounded-lg font-bold text-lg transition-all duration-300
-                      ${current ? 'ring-4 ring-primary ring-offset-2 scale-110' : ''}
+                      py-1 px-2 rounded-md font-bold text-sm transition-all duration-300
+                      ${current ? 'ring-2 ring-primary ring-offset-1 scale-105' : ''}
                       ${!answered ? 'bg-gray-200 text-gray-600 hover:bg-gray-300' : ''}
                       ${answered && correct ? 'bg-green-400 text-white hover:bg-green-500' : ''}
                       ${answered && !correct ? 'bg-red-400 text-white hover:bg-red-500' : ''}
@@ -286,17 +286,17 @@ function QuizPage({ addStar }) {
                 )
               })}
             </div>
-            <div className="flex justify-center gap-6 mt-4 text-sm">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-green-400 rounded"></div>
+            <div className="flex justify-center gap-3 mt-2 text-xs">
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-green-400 rounded"></div>
                 <span>صحيح</span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-red-400 rounded"></div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-red-400 rounded"></div>
                 <span>خطأ</span>
               </div>
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-gray-200 rounded"></div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-gray-200 rounded"></div>
                 <span>لم يُجب</span>
               </div>
             </div>
