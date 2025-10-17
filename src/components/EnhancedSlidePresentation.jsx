@@ -475,11 +475,12 @@ function EnhancedSlidePresentation() {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
                     index === currentSlide 
-                      ? 'bg-white scale-125' 
-                      : 'bg-white/30 hover:bg-white/50'
+                      ? 'bg-white scale-125 shadow-lg' 
+                      : 'bg-white/30 hover:bg-white/50 hover:scale-110'
                   }`}
+                  title={`انتقل إلى الشريحة ${index + 1}`}
                 />
               ))}
             </div>
@@ -508,10 +509,11 @@ function EnhancedSlidePresentation() {
             className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold transition-all duration-300 text-sm ${
               currentSlide === 0
                 ? 'bg-white/10 text-white/30 cursor-not-allowed'
-                : 'bg-white/20 text-white hover:bg-white/30 shadow-lg hover:shadow-xl backdrop-blur-sm hover:scale-105'
+                : 'bg-white/20 text-white hover:bg-white/30 shadow-lg hover:shadow-xl backdrop-blur-sm hover:scale-105 active:scale-95'
             }`}
+            title="السابق (مفتاح السهم الأيسر)"
           >
-            <span className="text-lg">←</span>
+            <span className="text-lg transition-transform duration-200 group-hover:-translate-x-0.5">←</span>
             السابق
           </button>
 
@@ -536,11 +538,12 @@ function EnhancedSlidePresentation() {
             className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold transition-all duration-300 text-sm ${
               currentSlide === slides.length - 1
                 ? 'bg-white/10 text-white/30 cursor-not-allowed'
-                : 'bg-white/20 text-white hover:bg-white/30 shadow-lg hover:shadow-xl backdrop-blur-sm hover:scale-105'
+                : 'bg-white/20 text-white hover:bg-white/30 shadow-lg hover:shadow-xl backdrop-blur-sm hover:scale-105 active:scale-95'
             }`}
+            title="التالي (مفتاح السهم الأيمن)"
           >
             التالي
-            <span className="text-lg">→</span>
+            <span className="text-lg transition-transform duration-200 group-hover:translate-x-0.5">→</span>
           </button>
         </div>
 
