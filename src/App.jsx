@@ -141,8 +141,8 @@ function SimpleHome() {
                 {lesson.id === 1 ? (
                   <button 
                     onClick={() => {
-                      console.log('Navigating to Lesson 1 slide presentation')
-                      navigate('/lesson/1')
+                      console.log('Navigating directly to Lesson 1 slide presentation')
+                      navigate('/lesson1-slides')
                     }}
                     className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold py-2 lg:py-3 px-4 rounded-lg transition-all text-sm md:text-base lg:text-lg shadow-lg hover:shadow-xl"
                   >
