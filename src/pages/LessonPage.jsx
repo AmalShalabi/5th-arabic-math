@@ -139,6 +139,30 @@ function LessonPage() {
             </div>
           </div>
 
+          {/* Kahoot Quiz Button */}
+          {lesson.kahootLink && (
+            <div className="mb-6 sm:mb-8 bg-gradient-to-r from-purple-50 to-pink-50 p-4 sm:p-6 md:p-8 rounded-xl border-2 sm:border-4 border-purple-300">
+              <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-purple-700 mb-3 sm:mb-4 text-center flex items-center justify-center gap-2 sm:gap-3">
+                <span>🎮</span>
+                اختبار تفاعلي
+                <span>🎮</span>
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-4 sm:mb-6 text-center px-2">
+                العب اختبار كاهوت تفاعلي لاختبار فهمك لهذا الدرس مع أصدقائك! 🎯
+              </p>
+              <div className="flex justify-center">
+                <button
+                  onClick={() => window.open(lesson.kahootLink, '_blank')}
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 sm:py-4 px-6 sm:px-8 rounded-xl transition-all duration-300 transform shadow-lg hover:shadow-2xl hover:scale-105 inline-flex items-center gap-2 sm:gap-3 text-base sm:text-lg"
+                >
+                  <span>🎮</span>
+                  العب اختبار كاهوت
+                  <span className="text-xs sm:text-sm">↗️</span>
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Number Line - للدرس الأول فقط */}
           {lesson.id === 1 && <NumberLine />}
 
