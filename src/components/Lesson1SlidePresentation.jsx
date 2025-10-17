@@ -6,41 +6,6 @@ function Lesson1SlidePresentation() {
   const navigate = useNavigate()
   const [currentSlide, setCurrentSlide] = useState(0)
 
-  const nextSlide = () => {
-    if (currentSlide < slides.length - 1) {
-      soundEffects.click()
-      setCurrentSlide(currentSlide + 1)
-    }
-  }
-
-  const prevSlide = () => {
-    if (currentSlide > 0) {
-      soundEffects.click()
-      setCurrentSlide(currentSlide - 1)
-    }
-  }
-
-  const goToSlide = (index) => {
-    soundEffects.click()
-    setCurrentSlide(index)
-  }
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-        event.preventDefault()
-        nextSlide()
-      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-        event.preventDefault()
-        prevSlide()
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [currentSlide])
-
   // Define slides for Lesson 1
   const slides = [
     {
@@ -158,6 +123,41 @@ function Lesson1SlidePresentation() {
       ]
     }
   ]
+
+  const nextSlide = () => {
+    if (currentSlide < slides.length - 1) {
+      soundEffects.click()
+      setCurrentSlide(currentSlide + 1)
+    }
+  }
+
+  const prevSlide = () => {
+    if (currentSlide > 0) {
+      soundEffects.click()
+      setCurrentSlide(currentSlide - 1)
+    }
+  }
+
+  const goToSlide = (index) => {
+    soundEffects.click()
+    setCurrentSlide(index)
+  }
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        event.preventDefault()
+        nextSlide()
+      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        event.preventDefault()
+        prevSlide()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [currentSlide])
 
   const renderSlideContent = () => {
     const slide = slides[currentSlide]
