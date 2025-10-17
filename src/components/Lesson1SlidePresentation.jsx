@@ -147,38 +147,38 @@ function Lesson1SlidePresentation() {
     switch (slide.type) {
                case 'title':
                  return (
-                   <div className="text-center">
-                     <div className="text-8xl md:text-9xl mb-8 animate-bounce">{slide.icon}</div>
-                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-800 mb-6 leading-tight">
+                   <div className="text-center h-full flex flex-col justify-center">
+                     <div className="text-6xl md:text-7xl mb-4 animate-bounce">{slide.icon}</div>
+                     <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-800 mb-3 leading-tight">
                        {slide.title}
                      </h1>
-                     <p className="text-xl md:text-2xl lg:text-3xl text-gray-600 leading-relaxed mb-8 font-semibold">
+                     <p className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-4 font-semibold">
                        {slide.subtitle}
                      </p>
                      
                      {/* Number Line Visual */}
-                     <div className="bg-white p-6 rounded-xl border-4 border-gray-300 mb-6 shadow-lg">
-                       <div className="flex items-center justify-center space-x-4 text-xl md:text-2xl font-bold">
-                         <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−5</span>
-                         <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−4</span>
-                         <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−3</span>
-                         <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−2</span>
-                         <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−1</span>
-                         <span className="text-blue-600 text-3xl bg-blue-50 px-4 py-3 rounded-xl font-black">0</span>
-                         <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+1</span>
-                         <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+2</span>
-                         <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+3</span>
-                         <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+4</span>
-                         <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+5</span>
+                     <div className="bg-white p-4 rounded-lg border-2 border-gray-300 mb-4 shadow-md">
+                       <div className="flex items-center justify-center space-x-2 text-base md:text-lg font-bold">
+                         <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−5</span>
+                         <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−4</span>
+                         <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−3</span>
+                         <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−2</span>
+                         <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−1</span>
+                         <span className="text-blue-600 text-xl bg-blue-50 px-3 py-2 rounded-lg font-black">0</span>
+                         <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+1</span>
+                         <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+2</span>
+                         <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+3</span>
+                         <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+4</span>
+                         <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+5</span>
                        </div>
-                       <div className="flex items-center justify-center mt-4 text-base font-semibold">
-                         <span className="text-red-600 bg-red-100 px-4 py-2 rounded-lg">← يسار (سالبة)</span>
-                         <span className="mx-6 text-gray-600 text-xl">|</span>
-                         <span className="text-green-600 bg-green-100 px-4 py-2 rounded-lg">يمين (موجبة) →</span>
+                       <div className="flex items-center justify-center mt-2 text-xs md:text-sm font-semibold">
+                         <span className="text-red-600 bg-red-100 px-2 py-1 rounded">← يسار (سالبة)</span>
+                         <span className="mx-3 text-gray-600">|</span>
+                         <span className="text-green-600 bg-green-100 px-2 py-1 rounded">يمين (موجبة) →</span>
                        </div>
                      </div>
                      
-                     <div className="text-lg md:text-xl text-gray-500 font-medium">
+                     <div className="text-base md:text-lg text-gray-500 font-medium">
                        {slide.content}
                      </div>
                    </div>
@@ -186,25 +186,25 @@ function Lesson1SlidePresentation() {
 
                case 'natural-numbers':
                  return (
-                   <div className="text-center">
-                     <div className="text-6xl md:text-7xl mb-6">{slide.icon}</div>
-                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                   <div className="text-center h-full flex flex-col justify-center">
+                     <div className="text-5xl md:text-6xl mb-3">{slide.icon}</div>
+                     <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
                        {slide.title}
                      </h2>
                      
-                     <div className="bg-green-50 p-6 md:p-8 rounded-xl border-r-6 border-green-500 mb-6">
-                       <p className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-4 font-semibold">
+                     <div className="bg-green-50 p-4 rounded-lg border-r-4 border-green-500 mb-4">
+                       <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-3 font-semibold">
                          {slide.content}
                        </p>
-                       <div className="text-3xl md:text-4xl font-bold text-green-700 bg-white p-4 rounded-lg">
+                       <div className="text-2xl md:text-3xl font-bold text-green-700 bg-white p-3 rounded-lg">
                          {slide.numbers}
                        </div>
                      </div>
                      
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                       <div className="bg-blue-50 p-6 rounded-xl border-r-6 border-blue-500">
-                         <h3 className="text-xl font-bold text-blue-700 mb-4">التمثيل البصري:</h3>
-                         <div className="flex items-center justify-center space-x-3 text-3xl mb-3">
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                       <div className="bg-blue-50 p-4 rounded-lg border-r-4 border-blue-500">
+                         <h3 className="text-lg font-bold text-blue-700 mb-2">التمثيل البصري:</h3>
+                         <div className="flex items-center justify-center space-x-2 text-2xl mb-2">
                            <span>🍎</span>
                            <span className="font-bold text-blue-600">1</span>
                            <span>🍎</span>
@@ -212,24 +212,24 @@ function Lesson1SlidePresentation() {
                            <span>🍎</span>
                            <span className="font-bold text-blue-600">3</span>
                          </div>
-                         <p className="text-base text-gray-600 font-medium">{slide.visual}</p>
+                         <p className="text-sm text-gray-600 font-medium">{slide.visual}</p>
                        </div>
                        
-                       <div className="bg-yellow-50 p-6 rounded-xl border-r-6 border-yellow-500">
-                         <h3 className="text-xl font-bold text-yellow-700 mb-4">مثال عملي:</h3>
-                         <p className="text-base md:text-lg text-gray-700 font-medium leading-relaxed">
+                       <div className="bg-yellow-50 p-4 rounded-lg border-r-4 border-yellow-500">
+                         <h3 className="text-lg font-bold text-yellow-700 mb-2">مثال عملي:</h3>
+                         <p className="text-sm md:text-base text-gray-700 font-medium leading-relaxed">
                            {slide.example}
                          </p>
                        </div>
                      </div>
 
                      {/* Key Points */}
-                     <div className="mt-6 bg-purple-50 p-6 rounded-xl border-r-6 border-purple-500">
-                       <h3 className="text-xl font-bold text-purple-700 mb-4">النقاط المهمة:</h3>
-                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                     <div className="bg-purple-50 p-4 rounded-lg border-r-4 border-purple-500">
+                       <h3 className="text-lg font-bold text-purple-700 mb-3">النقاط المهمة:</h3>
+                       <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                          {slide.keyPoints.map((point, index) => (
-                           <div key={index} className="bg-white p-4 rounded-lg border-2 border-purple-200">
-                             <p className="text-base font-bold text-purple-700">• {point}</p>
+                           <div key={index} className="bg-white p-2 rounded border border-purple-200">
+                             <p className="text-sm font-bold text-purple-700">• {point}</p>
                            </div>
                          ))}
                        </div>
@@ -239,38 +239,38 @@ function Lesson1SlidePresentation() {
 
                case 'directed-numbers':
                  return (
-                   <div className="text-center">
-                     <div className="text-6xl md:text-7xl mb-6">{slide.icon}</div>
-                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                   <div className="text-center h-full flex flex-col justify-center">
+                     <div className="text-5xl md:text-6xl mb-3">{slide.icon}</div>
+                     <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
                        {slide.title}
                      </h2>
                      
-                     <div className="bg-red-50 p-6 md:p-8 rounded-xl border-r-6 border-red-500 mb-6">
-                       <p className="text-xl md:text-2xl text-gray-800 leading-relaxed font-semibold">
+                     <div className="bg-red-50 p-4 rounded-lg border-r-4 border-red-500 mb-4">
+                       <p className="text-lg md:text-xl text-gray-800 leading-relaxed font-semibold">
                          {slide.content}
                        </p>
                      </div>
                      
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                       <div className="bg-blue-50 p-6 rounded-xl border-r-6 border-blue-500">
-                         <h3 className="text-xl font-bold text-blue-700 mb-4">التمثيل البصري:</h3>
-                         <div className="bg-white p-4 rounded-lg border-2 border-gray-200">
-                           <div className="flex items-center justify-center space-x-6 text-2xl font-bold">
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                       <div className="bg-blue-50 p-4 rounded-lg border-r-4 border-blue-500">
+                         <h3 className="text-lg font-bold text-blue-700 mb-2">التمثيل البصري:</h3>
+                         <div className="bg-white p-3 rounded-lg border border-gray-200">
+                           <div className="flex items-center justify-center space-x-4 text-lg font-bold">
                              <span className="text-red-600">🌡️ −3°</span>
-                             <span className="text-gray-400 text-3xl">|</span>
+                             <span className="text-gray-400 text-xl">|</span>
                              <span className="text-green-600">+4° 🌡️</span>
                            </div>
                          </div>
-                         <p className="text-base text-gray-600 mt-3 font-medium">{slide.visual}</p>
+                         <p className="text-sm text-gray-600 mt-2 font-medium">{slide.visual}</p>
                        </div>
                        
-                       <div className="bg-yellow-50 p-6 rounded-xl border-r-6 border-yellow-500">
-                         <h3 className="text-xl font-bold text-yellow-700 mb-4">مثال عملي:</h3>
-                         <p className="text-base md:text-lg text-gray-700 mb-4 font-medium">
+                       <div className="bg-yellow-50 p-4 rounded-lg border-r-4 border-yellow-500">
+                         <h3 className="text-lg font-bold text-yellow-700 mb-2">مثال عملي:</h3>
+                         <p className="text-sm md:text-base text-gray-700 mb-2 font-medium">
                            {slide.example}
                          </p>
-                         <div className="bg-green-50 p-4 rounded-lg border-2 border-green-400">
-                           <p className="text-base text-green-700 font-bold">
+                         <div className="bg-green-50 p-2 rounded-lg border border-green-400">
+                           <p className="text-sm text-green-700 font-bold">
                              {slide.solution}
                            </p>
                          </div>
@@ -278,12 +278,12 @@ function Lesson1SlidePresentation() {
                      </div>
 
                      {/* Key Points */}
-                     <div className="mt-6 bg-purple-50 p-6 rounded-xl border-r-6 border-purple-500">
-                       <h3 className="text-xl font-bold text-purple-700 mb-4">النقاط المهمة:</h3>
-                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                     <div className="bg-purple-50 p-4 rounded-lg border-r-4 border-purple-500">
+                       <h3 className="text-lg font-bold text-purple-700 mb-3">النقاط المهمة:</h3>
+                       <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                          {slide.keyPoints.map((point, index) => (
-                           <div key={index} className="bg-white p-4 rounded-lg border-2 border-purple-200">
-                             <p className="text-base font-bold text-purple-700">• {point}</p>
+                           <div key={index} className="bg-white p-2 rounded border border-purple-200">
+                             <p className="text-sm font-bold text-purple-700">• {point}</p>
                            </div>
                          ))}
                        </div>
@@ -293,70 +293,70 @@ function Lesson1SlidePresentation() {
 
                case 'number-line':
                  return (
-                   <div className="text-center">
-                     <div className="text-6xl md:text-7xl mb-6">{slide.icon}</div>
-                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                   <div className="text-center h-full flex flex-col justify-center">
+                     <div className="text-5xl md:text-6xl mb-3">{slide.icon}</div>
+                     <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
                        {slide.title}
                      </h2>
                      
-                     <div className="bg-purple-50 p-6 md:p-8 rounded-xl border-r-6 border-purple-500 mb-6">
-                       <p className="text-xl md:text-2xl text-gray-800 leading-relaxed font-semibold">
+                     <div className="bg-purple-50 p-4 rounded-lg border-r-4 border-purple-500 mb-4">
+                       <p className="text-lg md:text-xl text-gray-800 leading-relaxed font-semibold">
                          {slide.content}
                        </p>
                      </div>
 
                      {/* Interactive Number Line */}
-                     <div className="bg-white p-8 rounded-xl border-4 border-gray-300 mb-6 shadow-lg">
+                     <div className="bg-white p-4 rounded-lg border-2 border-gray-300 mb-4 shadow-md">
                        <div className="relative">
-                         <div className="flex items-center justify-center space-x-6 text-2xl md:text-3xl font-bold">
-                           <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−5</span>
-                           <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−4</span>
-                           <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−3</span>
-                           <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−2</span>
-                           <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−1</span>
-                           <span className="text-blue-600 text-4xl bg-blue-50 px-4 py-3 rounded-xl font-black">0</span>
-                           <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+1</span>
-                           <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+2</span>
-                           <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+3</span>
-                           <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+4</span>
-                           <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+5</span>
+                         <div className="flex items-center justify-center space-x-2 text-base md:text-lg font-bold">
+                           <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−5</span>
+                           <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−4</span>
+                           <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−3</span>
+                           <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−2</span>
+                           <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−1</span>
+                           <span className="text-blue-600 text-xl bg-blue-50 px-3 py-2 rounded-lg font-black">0</span>
+                           <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+1</span>
+                           <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+2</span>
+                           <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+3</span>
+                           <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+4</span>
+                           <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+5</span>
                          </div>
-                         <div className="flex items-center justify-center mt-4 text-base font-semibold">
-                           <span className="text-red-600 bg-red-100 px-4 py-2 rounded-lg">← يسار (سالبة)</span>
-                           <span className="mx-6 text-gray-600 text-xl">|</span>
-                           <span className="text-green-600 bg-green-100 px-4 py-2 rounded-lg">يمين (موجبة) →</span>
+                         <div className="flex items-center justify-center mt-2 text-xs md:text-sm font-semibold">
+                           <span className="text-red-600 bg-red-100 px-2 py-1 rounded">← يسار (سالبة)</span>
+                           <span className="mx-3 text-gray-600">|</span>
+                           <span className="text-green-600 bg-green-100 px-2 py-1 rounded">يمين (موجبة) →</span>
                          </div>
                        </div>
                      </div>
 
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                       <div className="bg-blue-50 p-6 rounded-xl border-r-6 border-blue-500">
-                         <h3 className="text-xl font-bold text-blue-700 mb-4">مثال:</h3>
-                         <p className="text-base md:text-lg text-gray-700 mb-4 font-medium">
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                       <div className="bg-blue-50 p-4 rounded-lg border-r-4 border-blue-500">
+                         <h3 className="text-lg font-bold text-blue-700 mb-2">مثال:</h3>
+                         <p className="text-sm md:text-base text-gray-700 mb-2 font-medium">
                            {slide.example}
                          </p>
-                         <div className="bg-green-50 p-4 rounded-lg border-2 border-green-400">
-                           <p className="text-base text-green-700 font-bold">
+                         <div className="bg-green-50 p-2 rounded-lg border border-green-400">
+                           <p className="text-sm text-green-700 font-bold">
                              الحساب: {slide.calculation}
                            </p>
                          </div>
                        </div>
                        
-                       <div className="bg-yellow-50 p-6 rounded-xl border-r-6 border-yellow-500">
-                         <h3 className="text-xl font-bold text-yellow-700 mb-4">التمثيل البصري:</h3>
-                         <p className="text-base text-gray-600 font-medium">
+                       <div className="bg-yellow-50 p-4 rounded-lg border-r-4 border-yellow-500">
+                         <h3 className="text-lg font-bold text-yellow-700 mb-2">التمثيل البصري:</h3>
+                         <p className="text-sm text-gray-600 font-medium">
                            {slide.visual}
                          </p>
                        </div>
                      </div>
 
                      {/* Key Points */}
-                     <div className="mt-6 bg-purple-50 p-6 rounded-xl border-r-6 border-purple-500">
-                       <h3 className="text-xl font-bold text-purple-700 mb-4">النقاط المهمة:</h3>
-                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                     <div className="bg-purple-50 p-4 rounded-lg border-r-4 border-purple-500">
+                       <h3 className="text-lg font-bold text-purple-700 mb-3">النقاط المهمة:</h3>
+                       <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                          {slide.keyPoints.map((point, index) => (
-                           <div key={index} className="bg-white p-4 rounded-lg border-2 border-purple-200">
-                             <p className="text-base font-bold text-purple-700">• {point}</p>
+                           <div key={index} className="bg-white p-2 rounded border border-purple-200">
+                             <p className="text-sm font-bold text-purple-700">• {point}</p>
                            </div>
                          ))}
                        </div>
@@ -366,26 +366,26 @@ function Lesson1SlidePresentation() {
 
                case 'operations':
                  return (
-                   <div className="text-center">
-                     <div className="text-6xl md:text-7xl mb-6">{slide.icon}</div>
-                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                   <div className="text-center h-full flex flex-col justify-center">
+                     <div className="text-5xl md:text-6xl mb-3">{slide.icon}</div>
+                     <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
                        {slide.title}
                      </h2>
                      
-                     <div className="bg-purple-50 p-6 md:p-8 rounded-xl border-r-6 border-purple-500 mb-6">
-                       <p className="text-xl md:text-2xl text-gray-800 leading-relaxed font-semibold">
+                     <div className="bg-purple-50 p-4 rounded-lg border-r-4 border-purple-500 mb-4">
+                       <p className="text-lg md:text-xl text-gray-800 leading-relaxed font-semibold">
                          {slide.content}
                        </p>
                      </div>
 
-                     <div className="space-y-6">
+                     <div className="space-y-3 mb-4">
                        {slide.operations.map((op, index) => (
-                         <div key={index} className={`bg-${op.color}-50 p-6 rounded-xl border-r-6 border-${op.color}-500 shadow-lg`}>
-                           <div className={`text-3xl md:text-4xl font-bold text-${op.color}-700 mb-4`}>
+                         <div key={index} className={`bg-${op.color}-50 p-4 rounded-lg border-r-4 border-${op.color}-500 shadow-md`}>
+                           <div className={`text-2xl md:text-3xl font-bold text-${op.color}-700 mb-2`}>
                              {op.problem}
                            </div>
-                           <div className={`bg-white p-4 rounded-lg border-2 border-${op.color}-200`}>
-                             <p className={`text-base font-bold text-${op.color}-600`}>
+                           <div className={`bg-white p-2 rounded border border-${op.color}-200`}>
+                             <p className={`text-sm font-bold text-${op.color}-600`}>
                                💡 {op.explanation}
                              </p>
                            </div>
@@ -393,9 +393,9 @@ function Lesson1SlidePresentation() {
                        ))}
                      </div>
 
-                     <div className="mt-6 bg-gray-50 p-6 rounded-xl border-2 border-gray-300">
-                       <h3 className="text-xl font-bold text-gray-700 mb-4">التمثيل البصري:</h3>
-                       <p className="text-base text-gray-600 font-medium">
+                     <div className="bg-gray-50 p-4 rounded-lg border border-gray-300">
+                       <h3 className="text-lg font-bold text-gray-700 mb-2">التمثيل البصري:</h3>
+                       <p className="text-sm text-gray-600 font-medium">
                          {slide.visual}
                        </p>
                      </div>
@@ -404,26 +404,26 @@ function Lesson1SlidePresentation() {
 
                case 'summary':
                  return (
-                   <div className="text-center">
-                     <div className="text-6xl md:text-7xl mb-6">{slide.icon}</div>
-                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                   <div className="text-center h-full flex flex-col justify-center">
+                     <div className="text-5xl md:text-6xl mb-3">{slide.icon}</div>
+                     <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
                        {slide.title}
                      </h2>
                      
-                     <div className="bg-blue-50 p-6 md:p-8 rounded-xl border-r-6 border-blue-500 mb-6">
-                       <p className="text-xl md:text-2xl text-gray-800 leading-relaxed font-semibold">
+                     <div className="bg-blue-50 p-4 rounded-lg border-r-4 border-blue-500 mb-4">
+                       <p className="text-lg md:text-xl text-gray-800 leading-relaxed font-semibold">
                          {slide.content}
                        </p>
                      </div>
 
-                     <div className="space-y-4">
+                     <div className="space-y-3 mb-4">
                        {slide.points.map((point, index) => (
-                         <div key={index} className="bg-white p-6 rounded-xl border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all">
-                           <div className="flex items-start gap-4">
-                             <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-2xl font-bold w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
+                         <div key={index} className="bg-white p-4 rounded-lg border border-gray-200 shadow-md">
+                           <div className="flex items-start gap-3">
+                             <div className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-lg font-bold w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
                                {index + 1}
                              </div>
-                             <p className="text-lg md:text-xl text-gray-800 font-medium leading-relaxed text-right">
+                             <p className="text-base md:text-lg text-gray-800 font-medium leading-relaxed text-right">
                                {point}
                              </p>
                            </div>
@@ -431,8 +431,8 @@ function Lesson1SlidePresentation() {
                        ))}
                      </div>
 
-                     <div className="mt-6 bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-xl border-2 border-green-300">
-                       <p className="text-lg font-bold text-gray-700">
+                     <div className="bg-gradient-to-r from-green-50 to-blue-50 p-4 rounded-lg border border-green-300">
+                       <p className="text-base font-bold text-gray-700">
                          🎯 الآن أنت جاهز لتطبيق ما تعلمته في الاختبارات والألعاب!
                        </p>
                      </div>
@@ -441,26 +441,26 @@ function Lesson1SlidePresentation() {
 
                case 'action':
                  return (
-                   <div className="text-center">
-                     <div className="text-6xl md:text-7xl mb-6">{slide.icon}</div>
-                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                   <div className="text-center h-full flex flex-col justify-center">
+                     <div className="text-5xl md:text-6xl mb-3">{slide.icon}</div>
+                     <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
                        {slide.title}
                      </h2>
                      
-                     <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-6 md:p-8 rounded-xl border-r-6 border-purple-500 mb-8">
-                       <p className="text-xl md:text-2xl text-gray-800 leading-relaxed font-semibold">
+                     <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 rounded-lg border-r-4 border-purple-500 mb-6">
+                       <p className="text-lg md:text-xl text-gray-800 leading-relaxed font-semibold">
                          {slide.content}
                        </p>
                      </div>
 
-                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                        {slide.actions.map((action, index) => (
                          <button
                            key={index}
                            onClick={() => action.external ? window.open(action.link, '_blank') : navigate(action.link)}
-                           className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-6 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-4 text-lg md:text-xl"
+                           className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg flex items-center justify-center gap-3 text-base md:text-lg"
                          >
-                           <span className="text-3xl">{action.icon}</span>
+                           <span className="text-2xl">{action.icon}</span>
                            <span>{action.label}</span>
                          </button>
                        ))}
@@ -490,18 +490,18 @@ function Lesson1SlidePresentation() {
         </div>
 
         {/* Slide Container */}
-        <div className="bg-white rounded-2xl shadow-2xl p-4 md:p-6 lg:p-8 animate-fadeIn">
+        <div className="bg-white rounded-2xl shadow-2xl p-4 md:p-6 lg:p-8 animate-fadeIn h-[75vh] flex flex-col">
           {/* Slide Content */}
-          <div className="min-h-[400px] md:min-h-[500px] flex items-center justify-center">
+          <div className="flex-grow flex items-center justify-center overflow-hidden">
             {renderSlideContent()}
           </div>
 
           {/* Navigation Controls */}
-          <div className="flex items-center justify-between mt-6">
+          <div className="flex items-center justify-between mt-4 flex-shrink-0">
             <button
               onClick={prevSlide}
               disabled={currentSlide === 0}
-              className={`px-4 py-2 rounded-lg font-bold text-sm transition-all duration-300 flex items-center gap-2 ${
+              className={`px-3 py-2 rounded-lg font-bold text-sm transition-all duration-300 flex items-center gap-2 ${
                 currentSlide === 0
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   : 'bg-blue-500 text-white hover:bg-blue-600 shadow-md hover:shadow-lg'
@@ -517,7 +517,7 @@ function Lesson1SlidePresentation() {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                     index === currentSlide
                       ? 'bg-blue-500 scale-125'
                       : 'bg-gray-300 hover:bg-gray-400'
@@ -530,7 +530,7 @@ function Lesson1SlidePresentation() {
             <button
               onClick={nextSlide}
               disabled={currentSlide === slides.length - 1}
-              className={`px-4 py-2 rounded-lg font-bold text-sm transition-all duration-300 flex items-center gap-2 ${
+              className={`px-3 py-2 rounded-lg font-bold text-sm transition-all duration-300 flex items-center gap-2 ${
                 currentSlide === slides.length - 1
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   : 'bg-blue-500 text-white hover:bg-blue-600 shadow-md hover:shadow-lg'
@@ -541,12 +541,6 @@ function Lesson1SlidePresentation() {
             </button>
           </div>
 
-          {/* Progress Info */}
-          <div className="text-center mt-4">
-            <span className="text-sm text-gray-500">
-              الشريحة {currentSlide + 1} من {slides.length}
-            </span>
-          </div>
         </div>
       </div>
     </div>
