@@ -8,6 +8,7 @@ import LessonPresentation from './components/LessonPresentation'
 import InteractivePresentation from './components/InteractivePresentation'
 import SimpleSlidePresentation from './components/SimpleSlidePresentation'
 import EnhancedSlidePresentation from './components/EnhancedSlidePresentation'
+import Lesson1SlidePresentation from './components/Lesson1SlidePresentation'
 import QuizPage from './pages/QuizPage'
 import InteractivePage from './pages/InteractivePage'
 import SoundTest from './components/SoundTest'
@@ -42,6 +43,7 @@ function App() {
         <Routes>
           <Route path="/" element={<SimpleHome />} />
           <Route path="/lesson/:id" element={<LessonPresentation />} />
+          <Route path="/lesson1-slides" element={<Lesson1SlidePresentation />} />
           {/* <Route path="/complete-guide" element={<CompleteMathPresentation />} /> */}
           <Route path="/presentation" element={<InteractivePresentation />} />
           <Route path="/slides" element={<SimpleSlidePresentation />} />

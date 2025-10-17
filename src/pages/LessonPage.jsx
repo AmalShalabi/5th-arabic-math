@@ -11,6 +11,12 @@ function LessonPage() {
   const lesson = lessonsData.lessons.find(l => l.id === parseInt(id))
   const [generatingPDF, setGeneratingPDF] = useState(false)
 
+  // Redirect Lesson 1 to slide presentation
+  if (parseInt(id) === 1) {
+    navigate('/lesson1-slides')
+    return null
+  }
+
   const generateFractionPDF = async () => {
     setGeneratingPDF(true)
     try {
