@@ -42,17 +42,22 @@ export const generateSoundEffect = (type, duration = 0.2) => {
     // Configure sound based on type
     switch (type) {
       case 'correct':
-        oscillator.frequency.setValueAtTime(800, audioContext.currentTime)
-        oscillator.frequency.exponentialRampToValueAtTime(1200, audioContext.currentTime + duration)
-        gainNode.gain.setValueAtTime(0.4, audioContext.currentTime) // Increased volume
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration)
+        // Gentle, uplifting sound - soft bell-like tone
+        oscillator.frequency.setValueAtTime(523, audioContext.currentTime) // C5
+        oscillator.frequency.setValueAtTime(659, audioContext.currentTime + 0.1) // E5
+        oscillator.frequency.setValueAtTime(784, audioContext.currentTime + 0.15) // G5
+        gainNode.gain.setValueAtTime(0.25, audioContext.currentTime) // Softer volume
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.4)
+        duration = 0.4
         break
         
       case 'incorrect':
-        oscillator.frequency.setValueAtTime(200, audioContext.currentTime)
-        oscillator.frequency.exponentialRampToValueAtTime(150, audioContext.currentTime + duration)
-        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime) // Increased volume
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration)
+        // Gentle, soft tone - not harsh or discouraging
+        oscillator.frequency.setValueAtTime(440, audioContext.currentTime) // A4
+        oscillator.frequency.exponentialRampToValueAtTime(392, audioContext.currentTime + 0.2) // G4
+        gainNode.gain.setValueAtTime(0.2, audioContext.currentTime) // Softer volume
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3)
+        duration = 0.3
         break
         
       case 'click':
