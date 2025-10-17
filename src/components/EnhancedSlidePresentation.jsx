@@ -271,14 +271,14 @@ function EnhancedSlidePresentation() {
     switch (currentSlideData.type) {
       case 'main':
         return (
-          <div className="w-full h-full flex flex-col items-center justify-center p-4">
-            <div className="text-5xl mb-4 animate-pulse">
+          <div className="w-full h-full flex flex-col items-center justify-center p-6">
+            <div className="text-6xl mb-6 animate-pulse">
               {currentSlideData.icon}
             </div>
-            <h1 className="text-2xl md:text-3xl font-black text-gray-800 text-center leading-tight mb-3">
+            <h1 className="text-3xl md:text-4xl font-black text-gray-800 text-center leading-tight mb-4">
               {currentSlideData.title}
             </h1>
-            <p className="text-sm md:text-base text-gray-600 text-center max-w-lg leading-relaxed">
+            <p className="text-base md:text-lg text-gray-600 text-center max-w-2xl leading-relaxed px-4">
               {currentSlideData.description}
             </p>
           </div>
@@ -286,24 +286,24 @@ function EnhancedSlidePresentation() {
 
       case 'illustration':
         return (
-          <div className="w-full h-full flex flex-col p-4 overflow-hidden">
-            <div className="text-center mb-3 flex-shrink-0">
-              <div className="text-3xl mb-2">{currentSlideData.icon}</div>
-              <h2 className="text-lg font-bold text-gray-800">{currentSlideData.title}</h2>
+          <div className="w-full h-full flex flex-col p-5 overflow-hidden">
+            <div className="text-center mb-4 flex-shrink-0">
+              <div className="text-4xl mb-3">{currentSlideData.icon}</div>
+              <h2 className="text-xl font-bold text-gray-800">{currentSlideData.title}</h2>
             </div>
             
-            <div className="mb-3 bg-blue-50 p-3 rounded-xl flex-shrink-0">
-              <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+            <div className="mb-4 bg-blue-50 p-4 rounded-xl flex-shrink-0">
+              <p className="text-sm md:text-base text-gray-700 leading-relaxed whitespace-pre-line">
                 {currentSlideData.content.explanation}
               </p>
             </div>
 
             <div className="flex-1 overflow-y-auto">
-              <div className="grid grid-cols-1 gap-2">
+              <div className="grid grid-cols-1 gap-3">
                 {currentSlideData.content.visualElements.map((element, index) => (
-                  <div key={index} className="bg-gradient-to-br from-blue-50 to-purple-50 p-3 rounded-xl border border-blue-200">
-                    <div className="text-2xl mb-1 text-center">{getVisualIcon(element.type)}</div>
-                    <p className="text-xs text-gray-700 text-center leading-relaxed">{element.content}</p>
+                  <div key={index} className="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl border border-blue-200">
+                    <div className="text-3xl mb-2 text-center">{getVisualIcon(element.type)}</div>
+                    <p className="text-sm text-gray-700 text-center leading-relaxed">{element.content}</p>
                   </div>
                 ))}
               </div>
@@ -313,30 +313,30 @@ function EnhancedSlidePresentation() {
 
       case 'example':
         return (
-          <div className="w-full h-full flex flex-col p-4 overflow-hidden">
-            <div className="text-center mb-3 flex-shrink-0">
-              <div className="text-3xl mb-2">{currentSlideData.icon}</div>
-              <h2 className="text-lg font-bold text-gray-800">{currentSlideData.title}</h2>
+          <div className="w-full h-full flex flex-col p-5 overflow-hidden">
+            <div className="text-center mb-4 flex-shrink-0">
+              <div className="text-4xl mb-3">{currentSlideData.icon}</div>
+              <h2 className="text-xl font-bold text-gray-800">{currentSlideData.title}</h2>
             </div>
 
-            <div className="mb-3 bg-yellow-50 p-3 rounded-xl flex-shrink-0">
-              <h3 className="text-sm font-bold text-yellow-800 mb-2">المثال الأساسي</h3>
-              <p className="text-xs text-gray-700 leading-relaxed whitespace-pre-line">
+            <div className="mb-4 bg-yellow-50 p-4 rounded-xl flex-shrink-0">
+              <h3 className="text-base font-bold text-yellow-800 mb-3">المثال الأساسي</h3>
+              <p className="text-sm md:text-base text-gray-700 leading-relaxed whitespace-pre-line">
                 {currentSlideData.content.example}
               </p>
             </div>
 
             <div className="flex-1 overflow-y-auto">
-              <div className="bg-green-50 p-3 rounded-xl">
-                <h3 className="text-sm font-bold text-green-800 mb-2">{currentSlideData.content.stepByStep.title}</h3>
-                <div className="space-y-2">
+              <div className="bg-green-50 p-4 rounded-xl">
+                <h3 className="text-base font-bold text-green-800 mb-3">{currentSlideData.content.stepByStep.title}</h3>
+                <div className="space-y-3">
                   {currentSlideData.content.stepByStep.steps.map((step, index) => (
-                    <div key={index} className="bg-white/70 p-2 rounded-lg border border-green-200">
-                      <div className="flex items-start gap-2">
-                        <span className="bg-green-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full min-w-fit">
+                    <div key={index} className="bg-white/70 p-3 rounded-lg border border-green-200">
+                      <div className="flex items-start gap-3">
+                        <span className="bg-green-500 text-white text-sm font-bold px-2 py-1 rounded-full min-w-fit">
                           {index + 1}
                         </span>
-                        <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line">
+                        <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">
                           {step}
                         </p>
                       </div>
@@ -354,19 +354,19 @@ function EnhancedSlidePresentation() {
         const isCorrect = selectedAnswers[currentSlideData.id] === question.correct
 
         return (
-          <div className="w-full h-full flex flex-col p-4 overflow-hidden">
-            <div className="text-center mb-3 flex-shrink-0">
-              <div className="text-3xl mb-2">{currentSlideData.icon}</div>
-              <h2 className="text-lg font-bold text-gray-800">{currentSlideData.title}</h2>
+          <div className="w-full h-full flex flex-col p-5 overflow-hidden">
+            <div className="text-center mb-4 flex-shrink-0">
+              <div className="text-4xl mb-3">{currentSlideData.icon}</div>
+              <h2 className="text-xl font-bold text-gray-800">{currentSlideData.title}</h2>
             </div>
 
-            <div className={`bg-gradient-to-r ${getDifficultyColor(currentSlideData.difficulty)} p-3 rounded-xl text-white mb-3 flex-shrink-0`}>
-              <h3 className="text-sm font-bold mb-2">السؤال:</h3>
-              <p className="text-sm">{question.question}</p>
+            <div className={`bg-gradient-to-r ${getDifficultyColor(currentSlideData.difficulty)} p-4 rounded-xl text-white mb-4 flex-shrink-0`}>
+              <h3 className="text-base font-bold mb-3">السؤال:</h3>
+              <p className="text-base md:text-lg">{question.question}</p>
             </div>
 
             <div className="flex-1 overflow-y-auto">
-              <div className="grid grid-cols-1 gap-2 mb-3">
+              <div className="grid grid-cols-1 gap-3 mb-4">
                 {question.options.map((option, index) => {
                   const isSelected = selectedAnswers[currentSlideData.id] === index
                   const isCorrectOption = index === question.correct
@@ -377,7 +377,7 @@ function EnhancedSlidePresentation() {
                       key={index}
                       onClick={() => handleAnswerSelect(currentSlideData.id, index)}
                       disabled={showResult}
-                      className={`p-3 rounded-xl text-left transition-all duration-300 ${
+                      className={`p-4 rounded-xl text-left transition-all duration-300 ${
                         showResult
                           ? isCorrectOption
                             ? 'bg-green-100 border-2 border-green-500 text-green-800'
@@ -386,11 +386,11 @@ function EnhancedSlidePresentation() {
                             : 'bg-gray-100 border-2 border-gray-300 text-gray-600'
                           : isSelected
                           ? 'bg-blue-100 border-2 border-blue-500 text-blue-800'
-                          : 'bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400 hover:bg-blue-50'
+                          : 'bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400 hover:bg-blue-50 hover:scale-[1.02]'
                       }`}
                     >
-                      <div className="flex items-center gap-2">
-                        <span className={`w-5 h-5 rounded-full border-2 flex items-center justify-center text-xs font-bold ${
+                      <div className="flex items-center gap-3">
+                        <span className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-sm font-bold ${
                           showResult
                             ? isCorrectOption
                               ? 'bg-green-500 border-green-500 text-white'
@@ -403,7 +403,7 @@ function EnhancedSlidePresentation() {
                         }`}>
                           {showResult && isCorrectOption ? '✓' : String.fromCharCode(65 + index)}
                         </span>
-                        <span className="text-sm">{option}</span>
+                        <span className="text-base">{option}</span>
                       </div>
                     </button>
                   )
@@ -411,18 +411,18 @@ function EnhancedSlidePresentation() {
               </div>
 
               {showSolutions[currentSlideData.id] && (
-                <div className={`p-3 rounded-xl ${
+                <div className={`p-4 rounded-xl ${
                   isCorrect ? 'bg-green-50 border-2 border-green-200' : 'bg-red-50 border-2 border-red-200'
                 }`}>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className={`text-lg ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className={`text-2xl ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
                       {isCorrect ? '🎉' : '💡'}
                     </span>
-                    <span className={`font-bold text-sm ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
+                    <span className={`font-bold text-base ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
                       {isCorrect ? 'إجابة صحيحة!' : 'إجابة خاطئة'}
                     </span>
                   </div>
-                  <p className={`text-xs ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
+                  <p className={`text-sm ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
                     {question.explanation}
                   </p>
                 </div>
@@ -487,14 +487,14 @@ function EnhancedSlidePresentation() {
         </div>
       </div>
 
-      {/* Main Slide - Responsive, No Scrolling */}
-      <div className="flex-1 flex items-center justify-center p-3 overflow-hidden">
-        <div className="w-full h-full max-w-5xl mx-auto">
+      {/* Main Slide - Optimized for Content Visibility */}
+      <div className="flex-1 flex items-center justify-center p-4 overflow-hidden">
+        <div className="w-full h-full max-w-6xl mx-auto">
           <div className="relative w-full h-full">
-            <div className="w-full h-full max-w-md max-h-md mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition-all duration-500">
+            <div className="w-full h-full max-w-2xl max-h-[80vh] mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-[1.01] transition-all duration-500">
               {renderSlideContent()}
             </div>
-            <div className="absolute inset-0 max-w-md max-h-md mx-auto rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-75 blur-sm -z-10 animate-pulse"></div>
+            <div className="absolute inset-0 max-w-2xl max-h-[80vh] mx-auto rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-75 blur-sm -z-10 animate-pulse"></div>
           </div>
         </div>
       </div>
@@ -508,10 +508,11 @@ function EnhancedSlidePresentation() {
             className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold transition-all duration-300 text-sm ${
               currentSlide === 0
                 ? 'bg-white/10 text-white/30 cursor-not-allowed'
-                : 'bg-white/20 text-white hover:bg-white/30 shadow-lg hover:shadow-xl backdrop-blur-sm'
+                : 'bg-white/20 text-white hover:bg-white/30 shadow-lg hover:shadow-xl backdrop-blur-sm hover:scale-105'
             }`}
           >
-            ⬅️ السابق
+            <span className="text-lg">←</span>
+            السابق
           </button>
 
           <div className="flex gap-2">
@@ -535,10 +536,11 @@ function EnhancedSlidePresentation() {
             className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold transition-all duration-300 text-sm ${
               currentSlide === slides.length - 1
                 ? 'bg-white/10 text-white/30 cursor-not-allowed'
-                : 'bg-white/20 text-white hover:bg-white/30 shadow-lg hover:shadow-xl backdrop-blur-sm'
+                : 'bg-white/20 text-white hover:bg-white/30 shadow-lg hover:shadow-xl backdrop-blur-sm hover:scale-105'
             }`}
           >
-            التالي ➡️
+            التالي
+            <span className="text-lg">→</span>
           </button>
         </div>
 
