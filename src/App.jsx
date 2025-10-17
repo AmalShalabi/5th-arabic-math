@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast'
 import lessonsData from './data/lessons.json'
 import Header from './components/Header'
 import LessonPresentation from './components/LessonPresentation'
+import CompleteMathPresentation from './components/CompleteMathPresentation'
 import QuizPage from './pages/QuizPage'
 import InteractivePage from './pages/InteractivePage'
 import SoundTest from './components/SoundTest'
@@ -38,6 +39,7 @@ function App() {
         <Routes>
           <Route path="/" element={<SimpleHome />} />
           <Route path="/lesson/:id" element={<LessonPresentation />} />
+          <Route path="/complete-guide" element={<CompleteMathPresentation />} />
           <Route path="/quiz/:id" element={<QuizPage addStar={addStar} />} />
           <Route path="/interactive/:id" element={<InteractivePage />} />
           <Route path="/live-quiz" element={<LiveQuizPlaceholder />} />
@@ -106,6 +108,17 @@ function SimpleHome() {
           <div className="mt-4 sm:mt-6 text-base sm:text-xl md:text-2xl text-white px-4">
             اختر موضوعاً لتبدأ رحلة التعلم! 🚀
           </div>
+        </div>
+
+        {/* Complete Guide Button */}
+        <div className="mb-8 text-center">
+          <button
+            onClick={() => navigate('/complete-guide')}
+            className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3"
+          >
+            📖 الدليل الشامل
+            <span className="text-sm">جميع المواضيع في مكان واحد</span>
+          </button>
         </div>
 
         {/* Lesson Cards */}
