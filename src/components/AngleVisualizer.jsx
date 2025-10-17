@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import soundManager from '../utils/soundEffects'
 
 function AngleVisualizer() {
   const [currentExercise, setCurrentExercise] = useState(0)
@@ -87,8 +88,22 @@ function AngleVisualizer() {
     }
   }
 
+  const handleAnswer = (answer) => {
+    setUserAnswer(answer)
+    setShowFeedback(true)
+    
+    // Play sound effect based on correctness
+    const isCorrect = answer === exercise.correctAnswer
+    if (isCorrect) {
+      soundManager.playCorrect()
+    } else {
+      soundManager.playIncorrect()
+    }
+  }
+
   const nextExercise = () => {
     if (currentExercise < exercises.length - 1) {
+      soundManager.playClick()
       setCurrentExercise(currentExercise + 1)
       setUserAnswer('')
       setShowFeedback(false)
@@ -98,6 +113,7 @@ function AngleVisualizer() {
 
   const previousExercise = () => {
     if (currentExercise > 0) {
+      soundManager.playClick()
       setCurrentExercise(currentExercise - 1)
       setUserAnswer('')
       setShowFeedback(false)
@@ -106,6 +122,7 @@ function AngleVisualizer() {
   }
 
   const resetExercise = () => {
+    soundManager.playClick()
     setUserAnswer('')
     setShowFeedback(false)
   }
@@ -260,7 +277,7 @@ function AngleVisualizer() {
               {exercise.options.map((option, index) => (
                 <button
                   key={index}
-                  onClick={() => setUserAnswer(option)}
+                  onClick={() => handleAnswer(option)}
                   className={`p-4 rounded-lg font-bold text-lg transition-all duration-300 relative z-10 ${
                     userAnswer === option
                       ? 'bg-primary text-white border-4 border-blue-600'
@@ -281,7 +298,18 @@ function AngleVisualizer() {
             <input
               type="number"
               value={userAnswer}
-              onChange={(e) => setUserAnswer(e.target.value)}
+              onChange={(e) => {
+                setUserAnswer(e.target.value)
+                // Check if answer is complete and play sound
+                if (e.target.value && !isNaN(e.target.value)) {
+                  const isCorrect = parseInt(e.target.value) === parseInt(exercise.correctAnswer)
+                  if (isCorrect) {
+                    soundManager.playCorrect()
+                  } else if (parseInt(e.target.value) !== parseInt(exercise.correctAnswer)) {
+                    soundManager.playIncorrect()
+                  }
+                }
+              }}
               className="w-32 p-3 text-2xl font-bold text-center border-4 border-primary rounded-lg focus:outline-none focus:ring-4 focus:ring-primary/20 number-input"
               placeholder="؟"
             />

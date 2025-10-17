@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import lessonsData from '../data/lessons.json'
 import ResultCard from '../components/ResultCard'
+import soundManager from '../utils/soundEffects'
 
 function QuizPage({ addStar }) {
   const { id } = useParams()
@@ -44,6 +45,13 @@ function QuizPage({ addStar }) {
   const handleAnswerClick = (index) => {
     const isCorrect = index === question.correct
     
+    // Play sound effect immediately
+    if (isCorrect) {
+      soundManager.playCorrect()
+    } else {
+      soundManager.playIncorrect()
+    }
+    
     // حفظ الإجابة
     setUserAnswers({
       ...userAnswers,
@@ -59,17 +67,22 @@ function QuizPage({ addStar }) {
 
   const handleNext = () => {
     if (currentQuestion < quiz.length - 1) {
+      soundManager.playClick()
       setCurrentQuestion(currentQuestion + 1)
     }
   }
 
   const handlePrevious = () => {
     if (currentQuestion > 0) {
+      soundManager.playClick()
       setCurrentQuestion(currentQuestion - 1)
     }
   }
 
   const handleShowResults = () => {
+    // Play success sound for completing quiz
+    soundManager.playSuccess()
+    
     // تحويل الإجابات إلى مصفوفة للنتائج
     const answersArray = quiz.map((q, index) => {
       const userAnswer = userAnswers[index]
@@ -293,7 +306,10 @@ function QuizPage({ addStar }) {
                 return (
                   <button
                     key={index}
-                    onClick={() => setCurrentQuestion(index)}
+                    onClick={() => {
+                      soundManager.playClick()
+                      setCurrentQuestion(index)
+                    }}
                     className={`
                       py-1 px-1 rounded font-bold text-xs transition-all duration-300
                       ${current ? 'ring-1 ring-primary scale-105' : ''}
