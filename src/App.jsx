@@ -122,8 +122,7 @@ function SimpleHome() {
           {lessonsData.lessons.map((lesson, index) => (
             <div key={lesson.id} className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 lg:p-10 text-center hover:scale-105 transition-transform duration-300 flex flex-col h-full">
               <div className="text-5xl md:text-6xl lg:text-7xl mb-4 lg:mb-6">{lesson.icon}</div>
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-3 lg:mb-4">{lesson.title}</h2>
-              <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-6 lg:mb-8 flex-grow leading-relaxed">{lesson.description}</p>
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-6 lg:mb-8">{lesson.title}</h2>
               <div className="space-y-2 lg:space-y-3 mt-auto">
                 <button 
                   onClick={() => handleQuizClick(lesson.id)}
