@@ -192,25 +192,25 @@ function Lesson1SlidePresentation() {
                        {slide.subtitle}
                      </p>
                      
-                     {/* Number Line Visual */}
-                     <div className="bg-white p-4 rounded-lg border-2 border-gray-300 mb-4 shadow-md">
-                       <div className="flex items-center justify-center space-x-2 text-base md:text-lg font-bold">
-                         <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−5</span>
-                         <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−4</span>
-                         <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−3</span>
-                         <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−2</span>
-                         <span className="text-red-600 bg-red-50 px-2 py-1 rounded">−1</span>
-                         <span className="text-blue-600 text-xl bg-blue-50 px-3 py-2 rounded-lg font-black">0</span>
-                         <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+1</span>
-                         <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+2</span>
-                         <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+3</span>
-                         <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+4</span>
-                         <span className="text-green-600 bg-green-50 px-2 py-1 rounded">+5</span>
+                     {/* Enhanced Number Line Visual */}
+                     <div className="bg-white p-6 rounded-xl border-4 border-gray-300 mb-6 shadow-lg">
+                       <div className="flex items-center justify-center space-x-3 text-lg md:text-xl font-bold">
+                         <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg animate-pulse">−5</span>
+                         <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−4</span>
+                         <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−3</span>
+                         <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−2</span>
+                         <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−1</span>
+                         <span className="text-blue-600 text-2xl bg-blue-50 px-4 py-3 rounded-xl font-black border-2 border-blue-300">0</span>
+                         <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+1</span>
+                         <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+2</span>
+                         <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+3</span>
+                         <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+4</span>
+                         <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg animate-pulse">+5</span>
                        </div>
-                       <div className="flex items-center justify-center mt-2 text-xs md:text-sm font-semibold">
-                         <span className="text-red-600 bg-red-100 px-2 py-1 rounded">← يسار (سالبة)</span>
-                         <span className="mx-3 text-gray-600">|</span>
-                         <span className="text-green-600 bg-green-100 px-2 py-1 rounded">يمين (موجبة) →</span>
+                       <div className="flex items-center justify-center mt-4 text-sm md:text-base font-semibold">
+                         <span className="text-red-600 bg-red-100 px-4 py-2 rounded-lg border border-red-300">← يسار (سالبة)</span>
+                         <span className="mx-6 text-gray-600 text-xl">|</span>
+                         <span className="text-green-600 bg-green-100 px-4 py-2 rounded-lg border border-green-300">يمين (موجبة) →</span>
                        </div>
                      </div>
                      
@@ -266,13 +266,13 @@ function Lesson1SlidePresentation() {
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                        <div className="bg-blue-50 p-4 rounded-lg border-r-4 border-blue-500">
                          <h3 className="text-lg font-bold text-blue-700 mb-2">التمثيل البصري:</h3>
-                         <div className="flex items-center justify-center space-x-2 text-2xl mb-2">
-                           <span>🍎</span>
-                           <span className="font-bold text-blue-600">1</span>
-                           <span>🍎</span>
-                           <span className="font-bold text-blue-600">2</span>
-                           <span>🍎</span>
-                           <span className="font-bold text-blue-600">3</span>
+                         <div className="flex items-center justify-center space-x-3 text-3xl mb-3">
+                           <span className="animate-bounce">🍎</span>
+                           <span className="font-bold text-blue-600 bg-blue-100 px-3 py-2 rounded-lg border-2 border-blue-300">1</span>
+                           <span className="animate-bounce" style={{animationDelay: '0.1s'}}>🍎</span>
+                           <span className="font-bold text-blue-600 bg-blue-100 px-3 py-2 rounded-lg border-2 border-blue-300">2</span>
+                           <span className="animate-bounce" style={{animationDelay: '0.2s'}}>🍎</span>
+                           <span className="font-bold text-blue-600 bg-blue-100 px-3 py-2 rounded-lg border-2 border-blue-300">3</span>
                          </div>
                          <p className="text-sm text-gray-600 font-medium">{slide.visual}</p>
                        </div>
@@ -318,11 +318,17 @@ function Lesson1SlidePresentation() {
                      
                      <div className="bg-blue-50 p-6 rounded-xl border-r-6 border-blue-500 mb-6">
                        <h3 className="text-xl font-bold text-blue-700 mb-4">التمثيل البصري:</h3>
-                       <div className="bg-white p-4 rounded-lg border-2 border-gray-200">
-                         <div className="flex items-center justify-center space-x-6 text-2xl font-bold">
-                           <span className="text-red-600">🌡️ −3°</span>
-                           <span className="text-gray-400 text-3xl">|</span>
-                           <span className="text-green-600">+4° 🌡️</span>
+                       <div className="bg-white p-6 rounded-xl border-4 border-gray-200 shadow-md">
+                         <div className="flex items-center justify-center space-x-8 text-3xl font-bold">
+                           <div className="flex flex-col items-center">
+                             <span className="text-4xl mb-2">🌡️</span>
+                             <span className="text-red-600 bg-red-100 px-4 py-2 rounded-lg border-2 border-red-300">−3°</span>
+                           </div>
+                           <span className="text-gray-400 text-4xl">|</span>
+                           <div className="flex flex-col items-center">
+                             <span className="text-green-600 bg-green-100 px-4 py-2 rounded-lg border-2 border-green-300">+4°</span>
+                             <span className="text-4xl mt-2">🌡️</span>
+                           </div>
                          </div>
                        </div>
                        <p className="text-base text-gray-600 mt-3 font-medium">{slide.visual}</p>
@@ -537,14 +543,14 @@ function Lesson1SlidePresentation() {
                        {slide.title}
                      </h2>
 
-                     <div className="space-y-3 mb-4">
+                     <div className="space-y-4 mb-4">
                        {slide.operations.map((op, index) => (
-                         <div key={index} className={`bg-${op.color}-50 p-4 rounded-lg border-r-4 border-${op.color}-500 shadow-md`}>
-                           <div className={`text-2xl md:text-3xl font-bold text-${op.color}-700 mb-2`}>
+                         <div key={index} className={`bg-${op.color}-50 p-6 rounded-xl border-r-6 border-${op.color}-500 shadow-lg hover:shadow-xl transition-all duration-300`}>
+                           <div className={`text-3xl md:text-4xl font-bold text-${op.color}-700 mb-4 text-center`}>
                              {op.problem}
                            </div>
-                           <div className={`bg-white p-2 rounded border border-${op.color}-200`}>
-                             <p className={`text-sm font-bold text-${op.color}-600`}>
+                           <div className={`bg-white p-4 rounded-lg border-2 border-${op.color}-200 shadow-sm`}>
+                             <p className={`text-base font-bold text-${op.color}-600 text-center`}>
                                💡 {op.explanation}
                              </p>
                            </div>
@@ -660,26 +666,28 @@ function Lesson1SlidePresentation() {
             <button
               onClick={prevSlide}
               disabled={currentSlide === 0}
-              className={`px-3 py-2 rounded-lg font-bold text-sm transition-all duration-300 flex items-center gap-2 ${
+              className={`px-4 py-3 rounded-lg font-bold text-base transition-all duration-300 flex items-center gap-3 ${
                 currentSlide === 0
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-blue-500 text-white hover:bg-blue-600 shadow-md hover:shadow-lg'
+                  : 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-xl transform hover:scale-105'
               }`}
             >
-              <span className="text-lg">←</span>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M15 19l-7-7 7-7" />
+              </svg>
               السابق
             </button>
 
-            {/* Slide Indicators */}
-            <div className="flex gap-2">
+            {/* Enhanced Slide Indicators */}
+            <div className="flex gap-3">
               {slides.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                  className={`w-4 h-4 rounded-full transition-all duration-300 ${
                     index === currentSlide
-                      ? 'bg-blue-500 scale-125'
-                      : 'bg-gray-300 hover:bg-gray-400'
+                      ? 'bg-gradient-to-r from-blue-500 to-blue-600 scale-125 shadow-lg border-2 border-blue-300'
+                      : 'bg-gray-300 hover:bg-gray-400 hover:scale-110'
                   }`}
                   title={`انتقل إلى الشريحة ${index + 1}`}
                 />
@@ -689,14 +697,16 @@ function Lesson1SlidePresentation() {
             <button
               onClick={nextSlide}
               disabled={currentSlide === slides.length - 1}
-              className={`px-3 py-2 rounded-lg font-bold text-sm transition-all duration-300 flex items-center gap-2 ${
+              className={`px-4 py-3 rounded-lg font-bold text-base transition-all duration-300 flex items-center gap-3 ${
                 currentSlide === slides.length - 1
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : 'bg-blue-500 text-white hover:bg-blue-600 shadow-md hover:shadow-lg'
+                  : 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 shadow-lg hover:shadow-xl transform hover:scale-105'
               }`}
             >
               التالي
-              <span className="text-lg">→</span>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
+              </svg>
             </button>
           </div>
 
