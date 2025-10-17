@@ -4,8 +4,10 @@ import { Toaster } from 'react-hot-toast'
 import lessonsData from './data/lessons.json'
 import Header from './components/Header'
 import LessonPresentation from './components/LessonPresentation'
-import CompleteMathPresentation from './components/CompleteMathPresentation'
+// import CompleteMathPresentation from './components/CompleteMathPresentation'
 import InteractivePresentation from './components/InteractivePresentation'
+import SimpleSlidePresentation from './components/SimpleSlidePresentation'
+import EnhancedSlidePresentation from './components/EnhancedSlidePresentation'
 import QuizPage from './pages/QuizPage'
 import InteractivePage from './pages/InteractivePage'
 import SoundTest from './components/SoundTest'
@@ -40,8 +42,11 @@ function App() {
         <Routes>
           <Route path="/" element={<SimpleHome />} />
           <Route path="/lesson/:id" element={<LessonPresentation />} />
-          <Route path="/complete-guide" element={<CompleteMathPresentation />} />
+          {/* <Route path="/complete-guide" element={<CompleteMathPresentation />} /> */}
           <Route path="/presentation" element={<InteractivePresentation />} />
+          <Route path="/slides" element={<SimpleSlidePresentation />} />
+          <Route path="/enhanced-slides/:lessonId" element={<EnhancedSlidePresentation />} />
+          <Route path="/enhanced" element={<EnhancedSlidePresentation />} />
           <Route path="/quiz/:id" element={<QuizPage addStar={addStar} />} />
           <Route path="/interactive/:id" element={<InteractivePage />} />
           <Route path="/live-quiz" element={<LiveQuizPlaceholder />} />
@@ -114,13 +119,13 @@ function SimpleHome() {
 
         {/* Action Buttons */}
         <div className="mb-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button
+          {/* <button
             onClick={() => navigate('/complete-guide')}
             className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3"
           >
             📖 الدليل الشامل
             <span className="text-sm">جميع المواضيع في مكان واحد</span>
-          </button>
+          </button> */}
           
           <button
             onClick={() => navigate('/presentation')}
@@ -128,6 +133,25 @@ function SimpleHome() {
           >
             📽️ عرض تفاعلي
             <span className="text-sm">مثل PowerPoint</span>
+          </button>
+          
+          <button
+            onClick={() => navigate('/slides')}
+            className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3"
+          >
+            📱 عرض بسيط
+            <span className="text-sm">مربعات نظيفة</span>
+          </button>
+          
+          <button
+            onClick={() => {
+              console.log('Testing enhanced slides navigation')
+              navigate('/enhanced-slides/1')
+            }}
+            className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3"
+          >
+            🎯 عرض شامل
+            <span className="text-sm">مع أسئلة تفاعلية</span>
           </button>
         </div>
 
@@ -156,6 +180,15 @@ function SimpleHome() {
                   className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg transition-all"
                 >
                   🎮 تفاعلي
+                </button>
+                <button 
+                  onClick={() => {
+                    console.log('Navigating to enhanced slides for lesson:', lesson.id)
+                    navigate(`/enhanced-slides/${lesson.id}`)
+                  }}
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition-all"
+                >
+                  🎯 عرض شامل
                 </button>
               </div>
             </div>
