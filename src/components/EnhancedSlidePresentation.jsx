@@ -271,14 +271,14 @@ function EnhancedSlidePresentation() {
     switch (currentSlideData.type) {
       case 'main':
         return (
-          <div className="w-full h-full flex flex-col items-center justify-center p-8">
-            <div className="text-8xl mb-8 animate-pulse">
+          <div className="w-full h-full flex flex-col items-center justify-center p-4">
+            <div className="text-5xl mb-4 animate-pulse">
               {currentSlideData.icon}
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-gray-800 text-center leading-tight mb-4">
+            <h1 className="text-2xl md:text-3xl font-black text-gray-800 text-center leading-tight mb-3">
               {currentSlideData.title}
             </h1>
-            <p className="text-lg text-gray-600 text-center max-w-2xl">
+            <p className="text-sm md:text-base text-gray-600 text-center max-w-lg leading-relaxed">
               {currentSlideData.description}
             </p>
           </div>
@@ -286,59 +286,63 @@ function EnhancedSlidePresentation() {
 
       case 'illustration':
         return (
-          <div className="w-full h-full p-6 overflow-y-auto">
-            <div className="text-center mb-6">
-              <div className="text-4xl mb-3">{currentSlideData.icon}</div>
-              <h2 className="text-2xl font-bold text-gray-800">{currentSlideData.title}</h2>
+          <div className="w-full h-full flex flex-col p-4 overflow-hidden">
+            <div className="text-center mb-3 flex-shrink-0">
+              <div className="text-3xl mb-2">{currentSlideData.icon}</div>
+              <h2 className="text-lg font-bold text-gray-800">{currentSlideData.title}</h2>
             </div>
             
-            <div className="mb-6 bg-blue-50 p-4 rounded-xl">
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+            <div className="mb-3 bg-blue-50 p-3 rounded-xl flex-shrink-0">
+              <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
                 {currentSlideData.content.explanation}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {currentSlideData.content.visualElements.map((element, index) => (
-                <div key={index} className="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-xl border border-blue-200">
-                  <div className="text-3xl mb-2 text-center">{getVisualIcon(element.type)}</div>
-                  <p className="text-gray-700 text-center">{element.content}</p>
-                </div>
-              ))}
+            <div className="flex-1 overflow-y-auto">
+              <div className="grid grid-cols-1 gap-2">
+                {currentSlideData.content.visualElements.map((element, index) => (
+                  <div key={index} className="bg-gradient-to-br from-blue-50 to-purple-50 p-3 rounded-xl border border-blue-200">
+                    <div className="text-2xl mb-1 text-center">{getVisualIcon(element.type)}</div>
+                    <p className="text-xs text-gray-700 text-center leading-relaxed">{element.content}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )
 
       case 'example':
         return (
-          <div className="w-full h-full p-6 overflow-y-auto">
-            <div className="text-center mb-6">
-              <div className="text-4xl mb-3">{currentSlideData.icon}</div>
-              <h2 className="text-2xl font-bold text-gray-800">{currentSlideData.title}</h2>
+          <div className="w-full h-full flex flex-col p-4 overflow-hidden">
+            <div className="text-center mb-3 flex-shrink-0">
+              <div className="text-3xl mb-2">{currentSlideData.icon}</div>
+              <h2 className="text-lg font-bold text-gray-800">{currentSlideData.title}</h2>
             </div>
 
-            <div className="mb-6 bg-yellow-50 p-4 rounded-xl">
-              <h3 className="text-lg font-bold text-yellow-800 mb-2">المثال الأساسي</h3>
-              <p className="text-gray-700 leading-relaxed whitespace-pre-line">
+            <div className="mb-3 bg-yellow-50 p-3 rounded-xl flex-shrink-0">
+              <h3 className="text-sm font-bold text-yellow-800 mb-2">المثال الأساسي</h3>
+              <p className="text-xs text-gray-700 leading-relaxed whitespace-pre-line">
                 {currentSlideData.content.example}
               </p>
             </div>
 
-            <div className="bg-green-50 p-4 rounded-xl">
-              <h3 className="text-lg font-bold text-green-800 mb-3">{currentSlideData.content.stepByStep.title}</h3>
-              <div className="space-y-3">
-                {currentSlideData.content.stepByStep.steps.map((step, index) => (
-                  <div key={index} className="bg-white/70 p-3 rounded-lg border border-green-200">
-                    <div className="flex items-start gap-3">
-                      <span className="bg-green-500 text-white text-sm font-bold px-2 py-1 rounded-full min-w-fit">
-                        {index + 1}
-                      </span>
-                      <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">
-                        {step}
-                      </p>
+            <div className="flex-1 overflow-y-auto">
+              <div className="bg-green-50 p-3 rounded-xl">
+                <h3 className="text-sm font-bold text-green-800 mb-2">{currentSlideData.content.stepByStep.title}</h3>
+                <div className="space-y-2">
+                  {currentSlideData.content.stepByStep.steps.map((step, index) => (
+                    <div key={index} className="bg-white/70 p-2 rounded-lg border border-green-200">
+                      <div className="flex items-start gap-2">
+                        <span className="bg-green-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full min-w-fit">
+                          {index + 1}
+                        </span>
+                        <p className="text-gray-700 text-xs leading-relaxed whitespace-pre-line">
+                          {step}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -350,78 +354,80 @@ function EnhancedSlidePresentation() {
         const isCorrect = selectedAnswers[currentSlideData.id] === question.correct
 
         return (
-          <div className="w-full h-full p-6 overflow-y-auto">
-            <div className="text-center mb-6">
-              <div className="text-4xl mb-3">{currentSlideData.icon}</div>
-              <h2 className="text-2xl font-bold text-gray-800">{currentSlideData.title}</h2>
+          <div className="w-full h-full flex flex-col p-4 overflow-hidden">
+            <div className="text-center mb-3 flex-shrink-0">
+              <div className="text-3xl mb-2">{currentSlideData.icon}</div>
+              <h2 className="text-lg font-bold text-gray-800">{currentSlideData.title}</h2>
             </div>
 
-            <div className={`bg-gradient-to-r ${getDifficultyColor(currentSlideData.difficulty)} p-6 rounded-xl text-white mb-6`}>
-              <h3 className="text-xl font-bold mb-4">السؤال:</h3>
-              <p className="text-lg">{question.question}</p>
+            <div className={`bg-gradient-to-r ${getDifficultyColor(currentSlideData.difficulty)} p-3 rounded-xl text-white mb-3 flex-shrink-0`}>
+              <h3 className="text-sm font-bold mb-2">السؤال:</h3>
+              <p className="text-sm">{question.question}</p>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 mb-6">
-              {question.options.map((option, index) => {
-                const isSelected = selectedAnswers[currentSlideData.id] === index
-                const isCorrectOption = index === question.correct
-                const showResult = showSolutions[currentSlideData.id]
+            <div className="flex-1 overflow-y-auto">
+              <div className="grid grid-cols-1 gap-2 mb-3">
+                {question.options.map((option, index) => {
+                  const isSelected = selectedAnswers[currentSlideData.id] === index
+                  const isCorrectOption = index === question.correct
+                  const showResult = showSolutions[currentSlideData.id]
 
-                return (
-                  <button
-                    key={index}
-                    onClick={() => handleAnswerSelect(currentSlideData.id, index)}
-                    disabled={showResult}
-                    className={`p-4 rounded-xl text-left transition-all duration-300 ${
-                      showResult
-                        ? isCorrectOption
-                          ? 'bg-green-100 border-2 border-green-500 text-green-800'
-                          : isSelected
-                          ? 'bg-red-100 border-2 border-red-500 text-red-800'
-                          : 'bg-gray-100 border-2 border-gray-300 text-gray-600'
-                        : isSelected
-                        ? 'bg-blue-100 border-2 border-blue-500 text-blue-800'
-                        : 'bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400 hover:bg-blue-50'
-                    }`}
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className={`w-6 h-6 rounded-full border-2 flex items-center justify-center text-sm font-bold ${
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => handleAnswerSelect(currentSlideData.id, index)}
+                      disabled={showResult}
+                      className={`p-3 rounded-xl text-left transition-all duration-300 ${
                         showResult
                           ? isCorrectOption
-                            ? 'bg-green-500 border-green-500 text-white'
+                            ? 'bg-green-100 border-2 border-green-500 text-green-800'
                             : isSelected
-                            ? 'bg-red-500 border-red-500 text-white'
-                            : 'border-gray-300'
+                            ? 'bg-red-100 border-2 border-red-500 text-red-800'
+                            : 'bg-gray-100 border-2 border-gray-300 text-gray-600'
                           : isSelected
-                          ? 'bg-blue-500 border-blue-500 text-white'
-                          : 'border-gray-300'
-                      }`}>
-                        {showResult && isCorrectOption ? '✓' : String.fromCharCode(65 + index)}
-                      </span>
-                      <span className="text-lg">{option}</span>
-                    </div>
-                  </button>
-                )
-              })}
-            </div>
-
-            {showSolutions[currentSlideData.id] && (
-              <div className={`p-4 rounded-xl ${
-                isCorrect ? 'bg-green-50 border-2 border-green-200' : 'bg-red-50 border-2 border-red-200'
-              }`}>
-                <div className="flex items-center gap-2 mb-2">
-                  <span className={`text-2xl ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
-                    {isCorrect ? '🎉' : '💡'}
-                  </span>
-                  <span className={`font-bold ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
-                    {isCorrect ? 'إجابة صحيحة!' : 'إجابة خاطئة'}
-                  </span>
-                </div>
-                <p className={`text-sm ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
-                  {question.explanation}
-                </p>
+                          ? 'bg-blue-100 border-2 border-blue-500 text-blue-800'
+                          : 'bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-400 hover:bg-blue-50'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className={`w-5 h-5 rounded-full border-2 flex items-center justify-center text-xs font-bold ${
+                          showResult
+                            ? isCorrectOption
+                              ? 'bg-green-500 border-green-500 text-white'
+                              : isSelected
+                              ? 'bg-red-500 border-red-500 text-white'
+                              : 'border-gray-300'
+                            : isSelected
+                            ? 'bg-blue-500 border-blue-500 text-white'
+                            : 'border-gray-300'
+                        }`}>
+                          {showResult && isCorrectOption ? '✓' : String.fromCharCode(65 + index)}
+                        </span>
+                        <span className="text-sm">{option}</span>
+                      </div>
+                    </button>
+                  )
+                })}
               </div>
-            )}
+
+              {showSolutions[currentSlideData.id] && (
+                <div className={`p-3 rounded-xl ${
+                  isCorrect ? 'bg-green-50 border-2 border-green-200' : 'bg-red-50 border-2 border-red-200'
+                }`}>
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className={`text-lg ${isCorrect ? 'text-green-600' : 'text-red-600'}`}>
+                      {isCorrect ? '🎉' : '💡'}
+                    </span>
+                    <span className={`font-bold text-sm ${isCorrect ? 'text-green-800' : 'text-red-800'}`}>
+                      {isCorrect ? 'إجابة صحيحة!' : 'إجابة خاطئة'}
+                    </span>
+                  </div>
+                  <p className={`text-xs ${isCorrect ? 'text-green-700' : 'text-red-700'}`}>
+                    {question.explanation}
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         )
 
@@ -431,29 +437,27 @@ function EnhancedSlidePresentation() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center p-4">
+    <div className="h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex flex-col overflow-hidden">
       
-      {/* Main Content Container */}
-      <div className="w-full max-w-6xl mx-auto">
-        
-        {/* Header Navigation */}
-        <div className="mb-6 flex items-center justify-between">
+      {/* Compact Header */}
+      <div className="flex-shrink-0 bg-white/5 backdrop-blur-sm border-b border-white/10 px-4 py-3">
+        <div className="flex items-center justify-between">
           <button
             onClick={() => navigate('/')}
-            className="bg-white/10 backdrop-blur-sm text-white font-semibold py-2 px-4 rounded-lg shadow-lg hover:bg-white/20 transition-all duration-300 flex items-center gap-2 text-sm border border-white/20"
+            className="bg-white/10 backdrop-blur-sm text-white font-semibold py-2 px-3 rounded-lg shadow-lg hover:bg-white/20 transition-all duration-300 flex items-center gap-2 text-sm border border-white/20"
           >
             🏠 الرئيسية
           </button>
           
           <div className="text-center">
-            <h1 className="text-lg font-bold text-white/90">عرض شامل</h1>
-            <p className="text-sm text-white/70">Comprehensive Presentation</p>
+            <h1 className="text-base font-bold text-white/90">عرض شامل</h1>
+            <p className="text-xs text-white/70">{currentLesson.title}</p>
           </div>
 
           <div className="flex gap-2">
             <button
               onClick={() => navigate('/slides')}
-              className="bg-white/10 text-white px-4 py-2 rounded-lg font-bold hover:bg-white/20 transition-all duration-300 shadow-lg text-sm border border-white/20"
+              className="bg-white/10 text-white px-3 py-2 rounded-lg font-bold hover:bg-white/20 transition-all duration-300 shadow-lg text-xs border border-white/20"
             >
               📱 البسيط
             </button>
@@ -461,9 +465,9 @@ function EnhancedSlidePresentation() {
         </div>
 
         {/* Slide Counter */}
-        <div className="mb-4 text-center">
-          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm px-6 py-2 rounded-full shadow-lg border border-white/20">
-            <span className="text-sm font-bold text-white/90">
+        <div className="mt-2 text-center">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-1 rounded-full shadow-lg border border-white/20">
+            <span className="text-xs font-bold text-white/90">
               {currentSlide + 1} / {slides.length}
             </span>
             <div className="flex gap-1">
@@ -471,7 +475,7 @@ function EnhancedSlidePresentation() {
                 <button
                   key={index}
                   onClick={() => setCurrentSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
                     index === currentSlide 
                       ? 'bg-white scale-125' 
                       : 'bg-white/30 hover:bg-white/50'
@@ -481,23 +485,27 @@ function EnhancedSlidePresentation() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Main Slide */}
-        <div className="flex items-center justify-center mb-6">
-          <div className="relative">
-            <div className="w-96 h-96 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] bg-white rounded-3xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-500">
+      {/* Main Slide - Responsive, No Scrolling */}
+      <div className="flex-1 flex items-center justify-center p-3 overflow-hidden">
+        <div className="w-full h-full max-w-5xl mx-auto">
+          <div className="relative w-full h-full">
+            <div className="w-full h-full max-w-md max-h-md mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-[1.02] transition-all duration-500">
               {renderSlideContent()}
             </div>
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-75 blur-sm -z-10 animate-pulse"></div>
+            <div className="absolute inset-0 max-w-md max-h-md mx-auto rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-75 blur-sm -z-10 animate-pulse"></div>
           </div>
         </div>
+      </div>
 
-        {/* Navigation Controls */}
-        <div className="flex justify-between items-center">
+      {/* Fixed Navigation */}
+      <div className="flex-shrink-0 bg-white/5 backdrop-blur-sm border-t border-white/10 px-4 py-3">
+        <div className="flex justify-between items-center mb-2">
           <button
             onClick={prevSlide}
             disabled={currentSlide === 0}
-            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all duration-300 ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold transition-all duration-300 text-sm ${
               currentSlide === 0
                 ? 'bg-white/10 text-white/30 cursor-not-allowed'
                 : 'bg-white/20 text-white hover:bg-white/30 shadow-lg hover:shadow-xl backdrop-blur-sm'
@@ -506,16 +514,16 @@ function EnhancedSlidePresentation() {
             ⬅️ السابق
           </button>
 
-          <div className="flex gap-3">
+          <div className="flex gap-2">
             <button
               onClick={() => navigate('/')}
-              className="bg-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm"
+              className="bg-white/20 text-white px-3 py-2 rounded-xl font-bold hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm text-sm"
             >
               🏠 الرئيسية
             </button>
             <button
               onClick={() => navigate(`/quiz/${currentLesson.id}`)}
-              className="bg-white/20 text-white px-6 py-3 rounded-xl font-bold hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm"
+              className="bg-white/20 text-white px-3 py-2 rounded-xl font-bold hover:bg-white/30 transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm text-sm"
             >
               🎯 الاختبار
             </button>
@@ -524,7 +532,7 @@ function EnhancedSlidePresentation() {
           <button
             onClick={nextSlide}
             disabled={currentSlide === slides.length - 1}
-            className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all duration-300 ${
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl font-bold transition-all duration-300 text-sm ${
               currentSlide === slides.length - 1
                 ? 'bg-white/10 text-white/30 cursor-not-allowed'
                 : 'bg-white/20 text-white hover:bg-white/30 shadow-lg hover:shadow-xl backdrop-blur-sm'
@@ -534,21 +542,19 @@ function EnhancedSlidePresentation() {
           </button>
         </div>
 
-        {/* Progress Bar */}
-        <div className="mt-4">
-          <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl shadow-lg border border-white/20">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-bold text-white/90">تقدم العرض</span>
-              <span className="text-sm font-bold text-white/90">
-                {Math.round(((currentSlide + 1) / slides.length) * 100)}%
-              </span>
-            </div>
-            <div className="w-full bg-white/20 rounded-full h-2">
-              <div 
-                className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 h-2 rounded-full transition-all duration-500 shadow-lg"
-                style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
-              ></div>
-            </div>
+        {/* Compact Progress Bar */}
+        <div className="bg-white/10 backdrop-blur-sm p-2 rounded-xl shadow-lg border border-white/20">
+          <div className="flex justify-between items-center mb-1">
+            <span className="text-xs font-bold text-white/90">تقدم العرض</span>
+            <span className="text-xs font-bold text-white/90">
+              {Math.round(((currentSlide + 1) / slides.length) * 100)}%
+            </span>
+          </div>
+          <div className="w-full bg-white/20 rounded-full h-1.5">
+            <div 
+              className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 h-1.5 rounded-full transition-all duration-500 shadow-lg"
+              style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
+            ></div>
           </div>
         </div>
       </div>
