@@ -6,6 +6,11 @@ function Lesson1SlidePresentation() {
   const navigate = useNavigate()
   const [currentSlide, setCurrentSlide] = useState(0)
 
+  // Debug logging
+  useEffect(() => {
+    console.log('Lesson1SlidePresentation loaded successfully!')
+  }, [])
+
   // Define slides for Lesson 1
   const slides = [
     {

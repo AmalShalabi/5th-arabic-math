@@ -13,8 +13,16 @@ function LessonPage() {
 
   // Redirect Lesson 1 to slide presentation
   if (parseInt(id) === 1) {
+    console.log('Redirecting Lesson 1 to slide presentation...')
     navigate('/lesson1-slides')
-    return null
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin text-4xl mb-4">🔄</div>
+          <p className="text-xl">جاري التوجه إلى العرض التفاعلي...</p>
+        </div>
+      </div>
+    )
   }
 
   const generateFractionPDF = async () => {
