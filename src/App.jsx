@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { Toaster } from 'react-hot-toast'
 import lessonsData from './data/lessons.json'
 import Header from './components/Header'
-import LessonPage from './pages/LessonPage'
+import LessonPresentation from './components/LessonPresentation'
 import QuizPage from './pages/QuizPage'
 import InteractivePage from './pages/InteractivePage'
 import SoundTest from './components/SoundTest'
@@ -37,7 +37,7 @@ function App() {
         <Header stars={totalStars} visitors={visitorCount} />
         <Routes>
           <Route path="/" element={<SimpleHome />} />
-          <Route path="/lesson/:id" element={<LessonPage />} />
+          <Route path="/lesson/:id" element={<LessonPresentation />} />
           <Route path="/quiz/:id" element={<QuizPage addStar={addStar} />} />
           <Route path="/interactive/:id" element={<InteractivePage />} />
           <Route path="/live-quiz" element={<LiveQuizPlaceholder />} />
