@@ -85,9 +85,6 @@ function App() {
 function SimpleHome() {
   const navigate = useNavigate()
 
-  const handleLessonClick = (lessonId) => {
-    navigate(`/lesson/${lessonId}`)
-  }
 
   const handleQuizClick = (lessonId) => {
     navigate(`/quiz/${lessonId}`)
@@ -126,12 +123,6 @@ function SimpleHome() {
               <h2 className="text-2xl font-bold text-gray-800 mb-3">{lesson.title}</h2>
               <p className="text-gray-600 mb-6 flex-grow">{lesson.description}</p>
               <div className="space-y-2 mt-auto">
-                <button 
-                  onClick={() => handleLessonClick(lesson.id)}
-                  className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-all"
-                >
-                  📚 درس
-                </button>
                 <button 
                   onClick={() => handleQuizClick(lesson.id)}
                   className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-all"
