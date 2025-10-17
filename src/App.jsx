@@ -117,43 +117,6 @@ function SimpleHome() {
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="mb-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
-          {/* <button
-            onClick={() => navigate('/complete-guide')}
-            className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3"
-          >
-            📖 الدليل الشامل
-            <span className="text-sm">جميع المواضيع في مكان واحد</span>
-          </button> */}
-          
-          <button
-            onClick={() => navigate('/presentation')}
-            className="bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3"
-          >
-            📽️ عرض تفاعلي
-            <span className="text-sm">مثل PowerPoint</span>
-          </button>
-          
-          <button
-            onClick={() => navigate('/slides')}
-            className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3"
-          >
-            📱 عرض بسيط
-            <span className="text-sm">مربعات نظيفة</span>
-          </button>
-          
-          <button
-            onClick={() => {
-              console.log('Testing enhanced slides navigation')
-              navigate('/enhanced-slides/1')
-            }}
-            className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3"
-          >
-            🎯 عرض شامل
-            <span className="text-sm">مع أسئلة تفاعلية</span>
-          </button>
-        </div>
 
         {/* Lesson Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
