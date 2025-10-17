@@ -5,6 +5,7 @@ import lessonsData from './data/lessons.json'
 import Header from './components/Header'
 import LessonPresentation from './components/LessonPresentation'
 import CompleteMathPresentation from './components/CompleteMathPresentation'
+import InteractivePresentation from './components/InteractivePresentation'
 import QuizPage from './pages/QuizPage'
 import InteractivePage from './pages/InteractivePage'
 import SoundTest from './components/SoundTest'
@@ -40,6 +41,7 @@ function App() {
           <Route path="/" element={<SimpleHome />} />
           <Route path="/lesson/:id" element={<LessonPresentation />} />
           <Route path="/complete-guide" element={<CompleteMathPresentation />} />
+          <Route path="/presentation" element={<InteractivePresentation />} />
           <Route path="/quiz/:id" element={<QuizPage addStar={addStar} />} />
           <Route path="/interactive/:id" element={<InteractivePage />} />
           <Route path="/live-quiz" element={<LiveQuizPlaceholder />} />
@@ -110,14 +112,22 @@ function SimpleHome() {
           </div>
         </div>
 
-        {/* Complete Guide Button */}
-        <div className="mb-8 text-center">
+        {/* Action Buttons */}
+        <div className="mb-8 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
             onClick={() => navigate('/complete-guide')}
             className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3"
           >
             📖 الدليل الشامل
             <span className="text-sm">جميع المواضيع في مكان واحد</span>
+          </button>
+          
+          <button
+            onClick={() => navigate('/presentation')}
+            className="bg-gradient-to-r from-green-500 to-teal-600 hover:from-green-600 hover:to-teal-700 text-white font-bold py-4 px-8 rounded-xl text-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-3"
+          >
+            📽️ عرض تفاعلي
+            <span className="text-sm">مثل PowerPoint</span>
           </button>
         </div>
 
