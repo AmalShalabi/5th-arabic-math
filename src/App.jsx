@@ -137,15 +137,28 @@ function SimpleHome() {
                 >
                   🎮 تفاعلي
                 </button>
-                <button 
-                  onClick={() => {
-                    console.log('Navigating to enhanced slides for lesson:', lesson.id)
-                    navigate(`/enhanced-slides/${lesson.id}`)
-                  }}
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 lg:py-3 px-4 rounded-lg transition-all text-sm md:text-base lg:text-lg"
-                >
-                  🎯 عرض شامل
-                </button>
+                {/* Special button for Lesson 1 - Slide Presentation */}
+                {lesson.id === 1 ? (
+                  <button 
+                    onClick={() => {
+                      console.log('Navigating to Lesson 1 slide presentation')
+                      navigate('/lesson/1')
+                    }}
+                    className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold py-2 lg:py-3 px-4 rounded-lg transition-all text-sm md:text-base lg:text-lg shadow-lg hover:shadow-xl"
+                  >
+                    🧮 عرض تفاعلي
+                  </button>
+                ) : (
+                  <button 
+                    onClick={() => {
+                      console.log('Navigating to enhanced slides for lesson:', lesson.id)
+                      navigate(`/enhanced-slides/${lesson.id}`)
+                    }}
+                    className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 lg:py-3 px-4 rounded-lg transition-all text-sm md:text-base lg:text-lg"
+                  >
+                    🎯 عرض شامل
+                  </button>
+                )}
               </div>
             </div>
           ))}
