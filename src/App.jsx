@@ -6,6 +6,7 @@ import Header from './components/Header'
 import LessonPage from './pages/LessonPage'
 import QuizPage from './pages/QuizPage'
 import InteractivePage from './pages/InteractivePage'
+import SoundTest from './components/SoundTest'
 
 function App() {
   const [totalStars, setTotalStars] = useState(0)
@@ -64,6 +65,9 @@ function App() {
             },
           }}
         />
+        
+        {/* Sound Test Component */}
+        <SoundTest />
       </div>
     </Router>
   )

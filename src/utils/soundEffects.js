@@ -7,8 +7,9 @@ class SoundManager {
   constructor() {
     this.sounds = {}
     this.enabled = true
-    this.volume = 0.3 // Default volume (30%)
+    this.volume = 0.5 // Increased default volume (50%)
     this.useGeneratedSounds = true // Use Web Audio API sounds by default
+    this.htmlAudioFallback = true // Enable HTML5 audio fallback
     this.loadSounds()
   }
 
@@ -34,13 +35,91 @@ class SoundManager {
     })
   }
 
+  // Create simple HTML5 audio fallback
+  createSimpleAudio(type) {
+    if (!this.htmlAudioFallback) return null
+    
+    const frequencies = {
+      correct: [800, 1000, 1200],
+      incorrect: [200, 180, 150],
+      click: [1000],
+      success: [523, 659, 784]
+    }
+    
+    const freqs = frequencies[type] || [440]
+    const duration = type === 'click' ? 0.1 : 0.2
+    
+    // Create a simple beep using data URI
+    const sampleRate = 44100
+    const length = sampleRate * duration
+    const buffer = new ArrayBuffer(44 + length * 2)
+    const view = new DataView(buffer)
+    
+    // WAV header
+    const writeString = (offset, string) => {
+      for (let i = 0; i < string.length; i++) {
+        view.setUint8(offset + i, string.charCodeAt(i))
+      }
+    }
+    
+    writeString(0, 'RIFF')
+    view.setUint32(4, 36 + length * 2, true)
+    writeString(8, 'WAVE')
+    writeString(12, 'fmt ')
+    view.setUint32(16, 16, true)
+    view.setUint16(20, 1, true)
+    view.setUint16(22, 1, true)
+    view.setUint32(24, sampleRate, true)
+    view.setUint32(28, sampleRate * 2, true)
+    view.setUint16(32, 2, true)
+    view.setUint16(34, 16, true)
+    writeString(36, 'data')
+    view.setUint32(40, length * 2, true)
+    
+    // Generate audio data
+    for (let i = 0; i < length; i++) {
+      let sample = 0
+      freqs.forEach(freq => {
+        sample += Math.sin(2 * Math.PI * freq * i / sampleRate) * 0.3
+      })
+      sample = Math.max(-1, Math.min(1, sample))
+      view.setInt16(44 + i * 2, sample * 0x7FFF, true)
+    }
+    
+    const blob = new Blob([buffer], { type: 'audio/wav' })
+    return URL.createObjectURL(blob)
+  }
+
   // Play a sound effect
   play(soundName) {
     if (!this.enabled) {
       return
     }
 
-    // Try to use generated sounds first (Web Audio API)
+    // Try HTML5 audio fallback first (most reliable)
+    if (this.htmlAudioFallback) {
+      try {
+        const audioUrl = this.createSimpleAudio(soundName)
+        if (audioUrl) {
+          const audio = new Audio(audioUrl)
+          audio.volume = this.volume
+          audio.play().catch(error => {
+            console.warn(`HTML5 audio failed for ${soundName}:`, error)
+            // Try generated sounds as fallback
+            if (generatedSounds[soundName]) {
+              generatedSounds[soundName]()
+            }
+          })
+          // Clean up the blob URL after a delay
+          setTimeout(() => URL.revokeObjectURL(audioUrl), 1000)
+          return
+        }
+      } catch (error) {
+        console.warn(`HTML5 audio creation failed for ${soundName}:`, error)
+      }
+    }
+
+    // Try to use generated sounds (Web Audio API)
     if (this.useGeneratedSounds && generatedSounds[soundName]) {
       try {
         generatedSounds[soundName]()
@@ -57,25 +136,9 @@ class SoundManager {
         this.sounds[soundName].currentTime = 0
         this.sounds[soundName].play().catch(error => {
           console.warn(`Failed to play sound file: ${soundName}`, error)
-          // Try generated sound as final fallback
-          if (generatedSounds[soundName]) {
-            try {
-              generatedSounds[soundName]()
-            } catch (fallbackError) {
-              console.warn(`All sound methods failed for: ${soundName}`)
-            }
-          }
         })
       } catch (error) {
         console.warn(`Error playing sound: ${soundName}`, error)
-        // Try generated sound as final fallback
-        if (generatedSounds[soundName]) {
-          try {
-            generatedSounds[soundName]()
-          } catch (fallbackError) {
-            console.warn(`All sound methods failed for: ${soundName}`)
-          }
-        }
       }
     }
   }
