@@ -37,87 +37,6 @@ function EnhancedSlidePresentation() {
     )
   }
 
-  // Generate all slides for the current lesson
-  const generateSlides = () => {
-    const slides = []
-
-    // 1. Main slide with lesson title
-    slides.push({
-      type: 'main',
-      id: 'main',
-      title: currentLesson.title,
-      icon: currentLesson.icon,
-      description: currentLesson.description
-    })
-
-    // 2. Concept illustration slide
-    slides.push({
-      type: 'illustration',
-      id: 'illustration',
-      title: 'التمثيل البصري',
-      icon: '👁️',
-      content: {
-        explanation: currentLesson.content.explanation,
-        visualElements: getVisualElements(currentLesson.id)
-      }
-    })
-
-    // 3. Example slide
-    slides.push({
-      type: 'example',
-      id: 'example',
-      title: 'مثال عملي',
-      icon: '💡',
-      content: {
-        example: currentLesson.content.example,
-        stepByStep: getStepByStepExample(currentLesson.id)
-      }
-    })
-
-    // 4. Practice questions (Easy)
-    const easyQuestions = getPracticeQuestions(currentLesson.id, 'easy')
-    easyQuestions.forEach((question, index) => {
-      slides.push({
-        type: 'question',
-        id: `easy-${index}`,
-        difficulty: 'easy',
-        title: 'سؤال سهل',
-        icon: '🟢',
-        content: question
-      })
-    })
-
-    // 5. Practice questions (Medium)
-    const mediumQuestions = getPracticeQuestions(currentLesson.id, 'medium')
-    mediumQuestions.forEach((question, index) => {
-      slides.push({
-        type: 'question',
-        id: `medium-${index}`,
-        difficulty: 'medium',
-        title: 'سؤال متوسط',
-        icon: '🟡',
-        content: question
-      })
-    })
-
-    // 6. Practice questions (Hard)
-    const hardQuestions = getPracticeQuestions(currentLesson.id, 'hard')
-    hardQuestions.forEach((question, index) => {
-      slides.push({
-        type: 'question',
-        id: `hard-${index}`,
-        difficulty: 'hard',
-        title: 'سؤال صعب',
-        icon: '🔴',
-        content: question
-      })
-    })
-
-    return slides
-  }
-
-  const slides = generateSlides()
-
   // Helper functions to get content based on lesson ID
   const getVisualElements = (lessonId) => {
     const visualElements = {
@@ -218,6 +137,87 @@ function EnhancedSlidePresentation() {
     }
     return icons[type] || '📊'
   }
+
+  // Generate all slides for the current lesson
+  const generateSlides = () => {
+    const slides = []
+
+    // 1. Main slide with lesson title
+    slides.push({
+      type: 'main',
+      id: 'main',
+      title: currentLesson.title,
+      icon: currentLesson.icon,
+      description: currentLesson.description
+    })
+
+    // 2. Concept illustration slide
+    slides.push({
+      type: 'illustration',
+      id: 'illustration',
+      title: 'التمثيل البصري',
+      icon: '👁️',
+      content: {
+        explanation: currentLesson.content.explanation,
+        visualElements: getVisualElements(currentLesson.id)
+      }
+    })
+
+    // 3. Example slide
+    slides.push({
+      type: 'example',
+      id: 'example',
+      title: 'مثال عملي',
+      icon: '💡',
+      content: {
+        example: currentLesson.content.example,
+        stepByStep: getStepByStepExample(currentLesson.id)
+      }
+    })
+
+    // 4. Practice questions (Easy)
+    const easyQuestions = getPracticeQuestions(currentLesson.id, 'easy')
+    easyQuestions.forEach((question, index) => {
+      slides.push({
+        type: 'question',
+        id: `easy-${index}`,
+        difficulty: 'easy',
+        title: 'سؤال سهل',
+        icon: '🟢',
+        content: question
+      })
+    })
+
+    // 5. Practice questions (Medium)
+    const mediumQuestions = getPracticeQuestions(currentLesson.id, 'medium')
+    mediumQuestions.forEach((question, index) => {
+      slides.push({
+        type: 'question',
+        id: `medium-${index}`,
+        difficulty: 'medium',
+        title: 'سؤال متوسط',
+        icon: '🟡',
+        content: question
+      })
+    })
+
+    // 6. Practice questions (Hard)
+    const hardQuestions = getPracticeQuestions(currentLesson.id, 'hard')
+    hardQuestions.forEach((question, index) => {
+      slides.push({
+        type: 'question',
+        id: `hard-${index}`,
+        difficulty: 'hard',
+        title: 'سؤال صعب',
+        icon: '🔴',
+        content: question
+      })
+    })
+
+    return slides
+  }
+
+  const slides = generateSlides()
 
   const nextSlide = () => {
     if (currentSlide < slides.length - 1) {
