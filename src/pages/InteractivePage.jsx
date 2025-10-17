@@ -54,16 +54,16 @@ function InteractivePage() {
           </button>
         </div>
 
-        {/* Page Card */}
-        <div className="card animate-fadeIn">
-          {/* Compact Header */}
-          <div className="mb-3 flex items-center gap-3 pb-3 border-b border-secondary/20">
-            <div className="text-3xl">{lesson.icon}</div>
+        {/* Refined Page Card */}
+        <div className="card animate-fadeIn max-w-4xl mx-auto">
+          {/* Ultra-Compact Header */}
+          <div className="mb-2 flex items-center gap-2 pb-2 border-b border-secondary/20">
+            <div className="text-xl">{lesson.icon}</div>
             <div>
-              <h1 className="text-lg font-black text-gray-800 leading-tight">
+              <h1 className="text-base font-black text-gray-800 leading-tight">
                 🎮 {lesson.title}
               </h1>
-              <p className="text-sm text-gray-600">
+              <p className="text-xs text-gray-600">
                 تعلّم بالممارسة والتفاعل!
               </p>
             </div>
@@ -80,15 +80,15 @@ function InteractivePage() {
           
           {/* For lessons without interactive content yet */}
           {![1, 2, 3, 4, 6, 7, 8].includes(lesson.id) && (
-            <div className="text-center py-4">
-              <div className="text-4xl mb-3">🚧</div>
-              <h3 className="text-xl font-bold text-gray-700 mb-2">
+            <div className="text-center py-2">
+              <div className="text-2xl mb-2">🚧</div>
+              <h3 className="text-base font-bold text-gray-700 mb-1">
                 قريباً...
               </h3>
-              <p className="text-base text-gray-600 mb-3">
+              <p className="text-sm text-gray-600 mb-2">
                 الألعاب التفاعلية لهذا الدرس قيد التطوير
               </p>
-              <p className="text-sm text-gray-500 mb-3">
+              <p className="text-xs text-gray-500 mb-2">
                 استكشف الألعاب التفاعلية المتوفرة حالياً:
               </p>
               <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 max-w-4xl mx-auto">
