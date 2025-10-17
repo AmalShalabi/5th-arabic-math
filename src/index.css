@@ -16,6 +16,26 @@ body {
   overflow-x: hidden;
 }
 
+/* Desktop layout optimizations */
+@media (min-width: 1024px) {
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+}
+
+@media (min-width: 1280px) {
+  body {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1536px) {
+  body {
+    font-size: 18px;
+  }
+}
+
 #root {
   min-height: 100vh;
   overflow-x: hidden;
@@ -151,5 +171,36 @@ html {
 .navigation-element {
   position: relative;
   z-index: 100;
+}
+
+/* Desktop layout utilities */
+@media (min-width: 1024px) {
+  .desktop-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .desktop-spacing {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .desktop-container {
+    max-width: 1400px;
+  }
+  
+  .desktop-spacing {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+/* Improve readability on large screens */
+@media (min-width: 1024px) {
+  .text-balance {
+    text-wrap: balance;
+  }
 }
 

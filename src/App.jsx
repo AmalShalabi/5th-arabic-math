@@ -99,39 +99,39 @@ function SimpleHome() {
   }
 
   return (
-    <div className="min-h-screen py-12 px-4">
-      <div className="max-w-7xl mx-auto">
+    <div className="min-h-screen py-8 md:py-12 lg:py-16 px-4 md:px-6 lg:px-8">
+      <div className="max-w-6xl lg:max-w-5xl xl:max-w-6xl mx-auto">
         {/* Welcome Section */}
-        <div className="text-center mb-8 sm:mb-12 animate-fadeIn px-2">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 drop-shadow-2xl leading-tight">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16 animate-fadeIn px-2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4 lg:mb-6 drop-shadow-2xl leading-tight">
             🎓 مرحباً بك في عالم الرياضيات
           </h1>
-          <p className="text-lg sm:text-2xl md:text-3xl text-white font-semibold drop-shadow-lg">
+          <p className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-white font-semibold drop-shadow-lg mb-2">
             الصف الخامس الابتدائي
           </p>
-          <div className="mt-4 sm:mt-6 text-base sm:text-xl md:text-2xl text-white px-4">
+          <div className="mt-4 sm:mt-6 lg:mt-8 text-base sm:text-xl md:text-2xl lg:text-3xl text-white px-4 opacity-90">
             اختر موضوعاً لتبدأ رحلة التعلم! 🚀
           </div>
         </div>
 
 
         {/* Lesson Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-10">
           {lessonsData.lessons.map((lesson, index) => (
-            <div key={lesson.id} className="bg-white rounded-2xl shadow-2xl p-8 text-center hover:scale-105 transition-transform duration-300 flex flex-col h-full">
-              <div className="text-6xl mb-4">{lesson.icon}</div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-3">{lesson.title}</h2>
-              <p className="text-gray-600 mb-6 flex-grow">{lesson.description}</p>
-              <div className="space-y-2 mt-auto">
+            <div key={lesson.id} className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 lg:p-10 text-center hover:scale-105 transition-transform duration-300 flex flex-col h-full">
+              <div className="text-5xl md:text-6xl lg:text-7xl mb-4 lg:mb-6">{lesson.icon}</div>
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-3 lg:mb-4">{lesson.title}</h2>
+              <p className="text-sm md:text-base lg:text-lg text-gray-600 mb-6 lg:mb-8 flex-grow leading-relaxed">{lesson.description}</p>
+              <div className="space-y-2 lg:space-y-3 mt-auto">
                 <button 
                   onClick={() => handleQuizClick(lesson.id)}
-                  className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-all"
+                  className="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 lg:py-3 px-4 rounded-lg transition-all text-sm md:text-base lg:text-lg"
                 >
                   🎯 اختبار
                 </button>
                 <button 
                   onClick={() => handleInteractiveClick(lesson.id)}
-                  className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-lg transition-all"
+                  className="w-full bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 lg:py-3 px-4 rounded-lg transition-all text-sm md:text-base lg:text-lg"
                 >
                   🎮 تفاعلي
                 </button>
@@ -140,7 +140,7 @@ function SimpleHome() {
                     console.log('Navigating to enhanced slides for lesson:', lesson.id)
                     navigate(`/enhanced-slides/${lesson.id}`)
                   }}
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition-all"
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 lg:py-3 px-4 rounded-lg transition-all text-sm md:text-base lg:text-lg"
                 >
                   🎯 عرض شامل
                 </button>
@@ -150,20 +150,20 @@ function SimpleHome() {
         </div>
 
         {/* Live Quiz Section */}
-        <div className="mt-12 mb-8">
-          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-8 text-center shadow-2xl">
-            <div className="text-6xl mb-4">🎮</div>
-            <h2 className="text-3xl font-bold text-white mb-4">لعبة تفاعلية مباشرة</h2>
-            <p className="text-xl text-white mb-6 opacity-90">
+        <div className="mt-12 lg:mt-16 mb-8 lg:mb-12">
+          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-6 md:p-8 lg:p-12 text-center shadow-2xl">
+            <div className="text-5xl md:text-6xl lg:text-7xl mb-4 lg:mb-6">🎮</div>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6">لعبة تفاعلية مباشرة</h2>
+            <p className="text-lg md:text-xl lg:text-2xl text-white mb-6 lg:mb-8 opacity-90 leading-relaxed">
               اجمع طلابك في لعبة ممتعة ومثيرة! أنشئ QR code واطلب من الطلاب الانضمام
             </p>
             <button 
               onClick={handleLiveQuizClick}
-              className="inline-block bg-white text-purple-600 font-bold py-4 px-8 rounded-xl text-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              className="inline-block bg-white text-purple-600 font-bold py-3 md:py-4 lg:py-5 px-6 md:px-8 lg:px-10 rounded-xl text-lg md:text-xl lg:text-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
             >
               🚀 إنشاء لعبة مباشرة
             </button>
-            <div className="mt-4 text-white text-sm opacity-75">
+            <div className="mt-6 lg:mt-8 text-white text-sm md:text-base lg:text-lg opacity-75 space-y-1">
               <p>📱 الطلاب يمسحون QR code بالهاتف</p>
               <p>🏆 لوحة متصدرين مباشرة</p>
               <p>⚡ نتائج فورية</p>
