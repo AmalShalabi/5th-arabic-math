@@ -23,28 +23,35 @@ function Lesson1SlidePresentation() {
     },
     {
       id: 2,
-      type: 'natural-numbers',
-      title: 'مفهوم الأعداد الطبيعية',
+      type: 'natural-numbers-intro',
+      title: 'ما هي الأعداد الطبيعية؟',
       icon: '🍎',
-      content: 'الأعداد الطبيعية هي الأعداد التي نستخدمها للعدّ مثل:',
+      content: 'الأعداد الطبيعية هي الأعداد التي نستخدمها للعدّ',
       numbers: '0, 1, 2, 3, 4, 5…',
-      visual: 'تفاحات مرقمة بالأعداد الطبيعية',
-      example: 'لدي 3 تفاحات وأضفت تفاحتين فأصبح المجموع 5 تفاحات',
-      keyPoints: [
-        'تبدأ من الصفر',
-        'تستخدم للعد والحساب',
-        'لا تحتوي على أعداد سالبة'
-      ]
+      description: 'تبدأ من الصفر وتستمر إلى ما لا نهاية'
     },
     {
       id: 3,
-      type: 'directed-numbers',
-      title: 'مفهوم الأعداد الموجهة',
+      type: 'natural-numbers-examples',
+      title: 'أمثلة على الأعداد الطبيعية',
+      icon: '📚',
+      content: 'دعنا نرى كيف نستخدم الأعداد الطبيعية',
+      visual: 'تفاحات مرقمة بالأعداد الطبيعية',
+      example: 'لدي 3 تفاحات وأضفت تفاحتين فأصبح المجموع 5 تفاحات',
+      keyPoints: [
+        'تستخدم للعد والحساب',
+        'لا تحتوي على أعداد سالبة',
+        'تبدأ من الصفر'
+      ]
+    },
+    {
+      id: 4,
+      type: 'directed-numbers-intro',
+      title: 'ما هي الأعداد الموجهة؟',
       icon: '🌡️',
-      content: 'تشمل الأعداد الموجّهة الأعداد الموجبة (+) والسالبة (−)، ونستخدمها لتمثيل القيم فوق وتحت الصفر',
+      content: 'تشمل الأعداد الموجّهة الأعداد الموجبة (+) والسالبة (−)',
+      description: 'نستخدمها لتمثيل القيم فوق وتحت الصفر',
       visual: 'ميزان حرارة يظهر −3° و +4°',
-      example: 'إذا كانت درجة الحرارة في الصباح −3° وفي الظهر +4°، ما الفرق؟',
-      solution: 'الفرق = +4° - (−3°) = +4° + 3° = +7°',
       keyPoints: [
         'تشمل الأعداد الموجبة والسالبة',
         'تستخدم لتمثيل الاتجاهات',
@@ -52,14 +59,26 @@ function Lesson1SlidePresentation() {
       ]
     },
     {
-      id: 4,
-      type: 'number-line',
+      id: 5,
+      type: 'directed-numbers-examples',
+      title: 'أمثلة على الأعداد الموجهة',
+      icon: '🌡️',
+      content: 'مثال عملي على الأعداد الموجهة',
+      example: 'إذا كانت درجة الحرارة في الصباح −3° وفي الظهر +4°، ما الفرق؟',
+      solution: 'الفرق = +4° - (−3°) = +4° + 3° = +7°',
+      applications: [
+        'درجات الحرارة',
+        'الارتفاع والانخفاض',
+        'الربح والخسارة'
+      ]
+    },
+    {
+      id: 6,
+      type: 'number-line-intro',
       title: 'خط الأعداد',
       icon: '📏',
-      content: 'يُستخدم خط الأعداد لتمثيل الأعداد الموجهة من اليسار (الأعداد السالبة) إلى اليمين (الأعداد الموجبة)',
-      example: 'تحرك سامي 3 خطوات يسارًا من الصفر ثم خطوتين يمينًا، وصل إلى −1',
-      visual: 'خط أعداد متحرك',
-      calculation: '0 - 3 + 2 = -1',
+      content: 'يُستخدم خط الأعداد لتمثيل الأعداد الموجهة',
+      description: 'من اليسار (الأعداد السالبة) إلى اليمين (الأعداد الموجبة)',
       keyPoints: [
         'الأعداد السالبة على اليسار',
         'الأعداد الموجبة على اليمين',
@@ -67,11 +86,28 @@ function Lesson1SlidePresentation() {
       ]
     },
     {
-      id: 5,
-      type: 'operations',
-      title: 'عمليات على الأعداد الموجهة',
+      id: 7,
+      type: 'number-line-example',
+      title: 'مثال على خط الأعداد',
+      icon: '👟',
+      content: 'مثال عملي باستخدام خط الأعداد',
+      example: 'تحرك سامي 3 خطوات يسارًا من الصفر ثم خطوتين يمينًا، وصل إلى −1',
+      visual: 'خط أعداد متحرك',
+      calculation: '0 - 3 + 2 = -1'
+    },
+    {
+      id: 8,
+      type: 'operations-intro',
+      title: 'العمليات على الأعداد الموجهة',
       icon: '➕',
       content: 'دعنا نتعلم العمليات على الأعداد الموجهة',
+      description: 'نبدأ بفهم قواعد العمليات الأساسية'
+    },
+    {
+      id: 9,
+      type: 'operations-examples',
+      title: 'أمثلة على العمليات',
+      icon: '🧮',
       operations: [
         { problem: '+3 + (−2) = +1', color: 'blue', explanation: 'إضافة عدد سالب = طرح العدد الموجب' },
         { problem: '−4 + (+7) = +3', color: 'green', explanation: 'إضافة عدد موجب = زيادة القيمة' },
@@ -80,7 +116,7 @@ function Lesson1SlidePresentation() {
       visual: 'تغيّر موقع النقطة على خط الأعداد بألوان مختلفة عند كل عملية'
     },
     {
-      id: 6,
+      id: 10,
       type: 'summary',
       title: 'ملخص الدرس',
       icon: '📚',
@@ -93,7 +129,7 @@ function Lesson1SlidePresentation() {
       ]
     },
     {
-      id: 7,
+      id: 11,
       type: 'action',
       title: 'هل أنت جاهز للاختبار؟',
       icon: '🚀',
@@ -184,7 +220,36 @@ function Lesson1SlidePresentation() {
                    </div>
                  )
 
-               case 'natural-numbers':
+               case 'natural-numbers-intro':
+                 return (
+                   <div className="text-center h-full flex flex-col justify-center">
+                     <div className="text-6xl md:text-7xl mb-4">{slide.icon}</div>
+                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                       {slide.title}
+                     </h2>
+                     
+                     <div className="bg-green-50 p-6 rounded-xl border-r-6 border-green-500 mb-6">
+                       <p className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-4 font-semibold">
+                         {slide.content}
+                       </p>
+                       <div className="text-4xl md:text-5xl font-bold text-green-700 bg-white p-6 rounded-lg mb-4">
+                         {slide.numbers}
+                       </div>
+                       <p className="text-lg md:text-xl text-gray-600 font-medium">
+                         {slide.description}
+                       </p>
+                     </div>
+
+                     <div className="bg-blue-50 p-6 rounded-xl border-r-6 border-blue-500">
+                       <h3 className="text-xl font-bold text-blue-700 mb-4">💡 تذكر:</h3>
+                       <p className="text-lg md:text-xl text-gray-700 font-medium">
+                         الأعداد الطبيعية هي أول نوع من الأعداد التي نتعلمها في الرياضيات
+                       </p>
+                     </div>
+                   </div>
+                 )
+
+               case 'natural-numbers-examples':
                  return (
                    <div className="text-center h-full flex flex-col justify-center">
                      <div className="text-5xl md:text-6xl mb-3">{slide.icon}</div>
@@ -193,12 +258,9 @@ function Lesson1SlidePresentation() {
                      </h2>
                      
                      <div className="bg-green-50 p-4 rounded-lg border-r-4 border-green-500 mb-4">
-                       <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-3 font-semibold">
+                       <p className="text-lg md:text-xl text-gray-800 leading-relaxed font-semibold">
                          {slide.content}
                        </p>
-                       <div className="text-2xl md:text-3xl font-bold text-green-700 bg-white p-3 rounded-lg">
-                         {slide.numbers}
-                       </div>
                      </div>
                      
                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -237,7 +299,50 @@ function Lesson1SlidePresentation() {
                    </div>
                  )
 
-               case 'directed-numbers':
+               case 'directed-numbers-intro':
+                 return (
+                   <div className="text-center h-full flex flex-col justify-center">
+                     <div className="text-6xl md:text-7xl mb-4">{slide.icon}</div>
+                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                       {slide.title}
+                     </h2>
+                     
+                     <div className="bg-red-50 p-6 rounded-xl border-r-6 border-red-500 mb-6">
+                       <p className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-4 font-semibold">
+                         {slide.content}
+                       </p>
+                       <p className="text-lg md:text-xl text-gray-600 font-medium">
+                         {slide.description}
+                       </p>
+                     </div>
+                     
+                     <div className="bg-blue-50 p-6 rounded-xl border-r-6 border-blue-500 mb-6">
+                       <h3 className="text-xl font-bold text-blue-700 mb-4">التمثيل البصري:</h3>
+                       <div className="bg-white p-4 rounded-lg border-2 border-gray-200">
+                         <div className="flex items-center justify-center space-x-6 text-2xl font-bold">
+                           <span className="text-red-600">🌡️ −3°</span>
+                           <span className="text-gray-400 text-3xl">|</span>
+                           <span className="text-green-600">+4° 🌡️</span>
+                         </div>
+                       </div>
+                       <p className="text-base text-gray-600 mt-3 font-medium">{slide.visual}</p>
+                     </div>
+
+                     {/* Key Points */}
+                     <div className="bg-purple-50 p-6 rounded-xl border-r-6 border-purple-500">
+                       <h3 className="text-xl font-bold text-purple-700 mb-4">النقاط المهمة:</h3>
+                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                         {slide.keyPoints.map((point, index) => (
+                           <div key={index} className="bg-white p-3 rounded-lg border-2 border-purple-200">
+                             <p className="text-base font-bold text-purple-700">• {point}</p>
+                           </div>
+                         ))}
+                       </div>
+                     </div>
+                   </div>
+                 )
+
+               case 'directed-numbers-examples':
                  return (
                    <div className="text-center h-full flex flex-col justify-center">
                      <div className="text-5xl md:text-6xl mb-3">{slide.icon}</div>
@@ -251,39 +356,25 @@ function Lesson1SlidePresentation() {
                        </p>
                      </div>
                      
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                       <div className="bg-blue-50 p-4 rounded-lg border-r-4 border-blue-500">
-                         <h3 className="text-lg font-bold text-blue-700 mb-2">التمثيل البصري:</h3>
-                         <div className="bg-white p-3 rounded-lg border border-gray-200">
-                           <div className="flex items-center justify-center space-x-4 text-lg font-bold">
-                             <span className="text-red-600">🌡️ −3°</span>
-                             <span className="text-gray-400 text-xl">|</span>
-                             <span className="text-green-600">+4° 🌡️</span>
-                           </div>
-                         </div>
-                         <p className="text-sm text-gray-600 mt-2 font-medium">{slide.visual}</p>
-                       </div>
-                       
-                       <div className="bg-yellow-50 p-4 rounded-lg border-r-4 border-yellow-500">
-                         <h3 className="text-lg font-bold text-yellow-700 mb-2">مثال عملي:</h3>
-                         <p className="text-sm md:text-base text-gray-700 mb-2 font-medium">
-                           {slide.example}
+                     <div className="bg-yellow-50 p-4 rounded-lg border-r-4 border-yellow-500 mb-4">
+                       <h3 className="text-lg font-bold text-yellow-700 mb-2">مثال عملي:</h3>
+                       <p className="text-sm md:text-base text-gray-700 mb-2 font-medium">
+                         {slide.example}
+                       </p>
+                       <div className="bg-green-50 p-2 rounded-lg border border-green-400">
+                         <p className="text-sm text-green-700 font-bold">
+                           {slide.solution}
                          </p>
-                         <div className="bg-green-50 p-2 rounded-lg border border-green-400">
-                           <p className="text-sm text-green-700 font-bold">
-                             {slide.solution}
-                           </p>
-                         </div>
                        </div>
                      </div>
 
-                     {/* Key Points */}
-                     <div className="bg-purple-50 p-4 rounded-lg border-r-4 border-purple-500">
-                       <h3 className="text-lg font-bold text-purple-700 mb-3">النقاط المهمة:</h3>
+                     {/* Applications */}
+                     <div className="bg-blue-50 p-4 rounded-lg border-r-4 border-blue-500">
+                       <h3 className="text-lg font-bold text-blue-700 mb-3">تطبيقات في الحياة:</h3>
                        <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                         {slide.keyPoints.map((point, index) => (
-                           <div key={index} className="bg-white p-2 rounded border border-purple-200">
-                             <p className="text-sm font-bold text-purple-700">• {point}</p>
+                         {slide.applications.map((app, index) => (
+                           <div key={index} className="bg-white p-2 rounded border border-blue-200">
+                             <p className="text-sm font-bold text-blue-700">• {app}</p>
                            </div>
                          ))}
                        </div>
@@ -291,7 +382,62 @@ function Lesson1SlidePresentation() {
                    </div>
                  )
 
-               case 'number-line':
+               case 'number-line-intro':
+                 return (
+                   <div className="text-center h-full flex flex-col justify-center">
+                     <div className="text-6xl md:text-7xl mb-4">{slide.icon}</div>
+                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                       {slide.title}
+                     </h2>
+                     
+                     <div className="bg-purple-50 p-6 rounded-xl border-r-6 border-purple-500 mb-6">
+                       <p className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-4 font-semibold">
+                         {slide.content}
+                       </p>
+                       <p className="text-lg md:text-xl text-gray-600 font-medium">
+                         {slide.description}
+                       </p>
+                     </div>
+
+                     {/* Interactive Number Line */}
+                     <div className="bg-white p-6 rounded-xl border-4 border-gray-300 mb-6 shadow-lg">
+                       <div className="relative">
+                         <div className="flex items-center justify-center space-x-3 text-xl md:text-2xl font-bold">
+                           <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−5</span>
+                           <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−4</span>
+                           <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−3</span>
+                           <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−2</span>
+                           <span className="text-red-600 bg-red-50 px-3 py-2 rounded-lg">−1</span>
+                           <span className="text-blue-600 text-3xl bg-blue-50 px-4 py-3 rounded-xl font-black">0</span>
+                           <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+1</span>
+                           <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+2</span>
+                           <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+3</span>
+                           <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+4</span>
+                           <span className="text-green-600 bg-green-50 px-3 py-2 rounded-lg">+5</span>
+                         </div>
+                         <div className="flex items-center justify-center mt-4 text-base font-semibold">
+                           <span className="text-red-600 bg-red-100 px-4 py-2 rounded-lg">← يسار (سالبة)</span>
+                           <span className="mx-6 text-gray-600 text-xl">|</span>
+                           <span className="text-green-600 bg-green-100 px-4 py-2 rounded-lg">يمين (موجبة) →</span>
+                         </div>
+                       </div>
+                     </div>
+
+                     {/* Key Points */}
+                     <div className="bg-purple-50 p-6 rounded-xl border-r-6 border-purple-500">
+                       <h3 className="text-xl font-bold text-purple-700 mb-4">النقاط المهمة:</h3>
+                       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                         {slide.keyPoints.map((point, index) => (
+                           <div key={index} className="bg-white p-3 rounded-lg border-2 border-purple-200">
+                             <p className="text-base font-bold text-purple-700">• {point}</p>
+                           </div>
+                         ))}
+                       </div>
+                     </div>
+                   </div>
+                 )
+
+               case 'number-line-example':
                  return (
                    <div className="text-center h-full flex flex-col justify-center">
                      <div className="text-5xl md:text-6xl mb-3">{slide.icon}</div>
@@ -303,6 +449,18 @@ function Lesson1SlidePresentation() {
                        <p className="text-lg md:text-xl text-gray-800 leading-relaxed font-semibold">
                          {slide.content}
                        </p>
+                     </div>
+
+                     <div className="bg-blue-50 p-4 rounded-lg border-r-4 border-blue-500 mb-4">
+                       <h3 className="text-lg font-bold text-blue-700 mb-2">مثال:</h3>
+                       <p className="text-sm md:text-base text-gray-700 mb-2 font-medium">
+                         {slide.example}
+                       </p>
+                       <div className="bg-green-50 p-2 rounded-lg border border-green-400">
+                         <p className="text-sm text-green-700 font-bold">
+                           الحساب: {slide.calculation}
+                         </p>
+                       </div>
                      </div>
 
                      {/* Interactive Number Line */}
@@ -329,54 +487,55 @@ function Lesson1SlidePresentation() {
                        </div>
                      </div>
 
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                       <div className="bg-blue-50 p-4 rounded-lg border-r-4 border-blue-500">
-                         <h3 className="text-lg font-bold text-blue-700 mb-2">مثال:</h3>
-                         <p className="text-sm md:text-base text-gray-700 mb-2 font-medium">
-                           {slide.example}
-                         </p>
-                         <div className="bg-green-50 p-2 rounded-lg border border-green-400">
-                           <p className="text-sm text-green-700 font-bold">
-                             الحساب: {slide.calculation}
-                           </p>
-                         </div>
-                       </div>
-                       
-                       <div className="bg-yellow-50 p-4 rounded-lg border-r-4 border-yellow-500">
-                         <h3 className="text-lg font-bold text-yellow-700 mb-2">التمثيل البصري:</h3>
-                         <p className="text-sm text-gray-600 font-medium">
-                           {slide.visual}
-                         </p>
-                       </div>
-                     </div>
-
-                     {/* Key Points */}
-                     <div className="bg-purple-50 p-4 rounded-lg border-r-4 border-purple-500">
-                       <h3 className="text-lg font-bold text-purple-700 mb-3">النقاط المهمة:</h3>
-                       <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-                         {slide.keyPoints.map((point, index) => (
-                           <div key={index} className="bg-white p-2 rounded border border-purple-200">
-                             <p className="text-sm font-bold text-purple-700">• {point}</p>
-                           </div>
-                         ))}
-                       </div>
+                     <div className="bg-yellow-50 p-4 rounded-lg border-r-4 border-yellow-500">
+                       <h3 className="text-lg font-bold text-yellow-700 mb-2">التمثيل البصري:</h3>
+                       <p className="text-sm text-gray-600 font-medium">
+                         {slide.visual}
+                       </p>
                      </div>
                    </div>
                  )
 
-               case 'operations':
+               case 'operations-intro':
+                 return (
+                   <div className="text-center h-full flex flex-col justify-center">
+                     <div className="text-6xl md:text-7xl mb-4">{slide.icon}</div>
+                     <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                       {slide.title}
+                     </h2>
+                     
+                     <div className="bg-purple-50 p-6 rounded-xl border-r-6 border-purple-500 mb-6">
+                       <p className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-4 font-semibold">
+                         {slide.content}
+                       </p>
+                       <p className="text-lg md:text-xl text-gray-600 font-medium">
+                         {slide.description}
+                       </p>
+                     </div>
+
+                     <div className="bg-blue-50 p-6 rounded-xl border-r-6 border-blue-500 mb-6">
+                       <h3 className="text-xl font-bold text-blue-700 mb-4">🎯 الهدف:</h3>
+                       <p className="text-lg md:text-xl text-gray-700 font-medium leading-relaxed">
+                         فهم كيفية إجراء العمليات الحسابية على الأعداد الموجهة بطريقة صحيحة
+                       </p>
+                     </div>
+
+                     <div className="bg-green-50 p-6 rounded-xl border-r-6 border-green-500">
+                       <h3 className="text-xl font-bold text-green-700 mb-4">💡 تذكر:</h3>
+                       <p className="text-lg md:text-xl text-gray-700 font-medium">
+                         كل عملية لها قواعد خاصة تساعدنا في الحصول على النتيجة الصحيحة
+                       </p>
+                     </div>
+                   </div>
+                 )
+
+               case 'operations-examples':
                  return (
                    <div className="text-center h-full flex flex-col justify-center">
                      <div className="text-5xl md:text-6xl mb-3">{slide.icon}</div>
                      <h2 className="text-2xl md:text-3xl font-bold text-gray-800 mb-4">
                        {slide.title}
                      </h2>
-                     
-                     <div className="bg-purple-50 p-4 rounded-lg border-r-4 border-purple-500 mb-4">
-                       <p className="text-lg md:text-xl text-gray-800 leading-relaxed font-semibold">
-                         {slide.content}
-                       </p>
-                     </div>
 
                      <div className="space-y-3 mb-4">
                        {slide.operations.map((op, index) => (
